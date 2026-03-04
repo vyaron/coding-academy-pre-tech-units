@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useExam } from '../../context/ExamContext';
 import ScoreCircle from './ScoreCircle';
 import ReviewAccordion from './ReviewAccordion';
 import './ResultsScreen.css';
 
 export default function ResultsScreen() {
+  const navigate = useNavigate();
   const { state, dispatch } = useExam();
   const { results, exam } = state;
   if (!results || !exam) return null;
@@ -17,7 +19,7 @@ export default function ResultsScreen() {
           <div className="results-header-title">// EXAM RESULTS</div>
           <div className="results-header-sub">{exam.title.toUpperCase()}</div>
         </div>
-        <button className="btn-restart" onClick={() => dispatch({ type: 'RESTART' })}>
+        <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/'); }}>
           ↩ NEW EXAM
         </button>
       </header>

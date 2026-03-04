@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useExam } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
 import './HomeScreen.css';
@@ -8,7 +9,7 @@ const EXAMPLE_EXAMS = [
     key: 'cyber-rtl',
     icon: '🔒',
     name: 'מבחן לדוגמה גאמא סייבר',
-    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ל-8200. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
+    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ליחידה טכנולוגית. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
     time: '60 דק',
     questions: 11,
   },
@@ -19,6 +20,14 @@ const EXAMPLE_EXAMS = [
     desc: 'מבחן לדוגמה באבטחת רשתות – פרוטוקולים, פגיעויות ושיטות הגנה. מתאים להכנה למיונים טכנולוגיים.',
     time: '30 דק',
     questions: 11,
+  },
+  {
+    key: 'child-8200',
+    icon: '🎯',
+    name: 'האם הילד/ה שלי מתאים/ה ליחידה טכנולוגית?',
+    desc: 'שאלון הערכה להורים – בדקו את הפוטנציאל של הילד/ה שלכם להתקבל ליחידה טכנולוגית על בסיס נטיות, כישורים והישגים.',
+    time: '20 דק',
+    questions: 10,
   },
 ];
 
@@ -41,7 +50,14 @@ function validateExam(data: unknown): Exam {
   return data as Exam;
 }
 
+const ROUTED_EXAMS: Record<string, string> = {
+  'cyber-rtl':   '/quiz/gama-cyber',
+  'network-ltr': '/quiz/network',
+  'child-8200':  '/quiz/child-8200',
+};
+
 export default function HomeScreen() {
+  const navigate = useNavigate();
   const { dispatch } = useExam();
   const fileRef = useRef<HTMLInputElement>(null);
   const [dragOver, setDragOver] = useState(false);
@@ -52,12 +68,17 @@ export default function HomeScreen() {
     try {
       const exam = validateExam(data);
       dispatch({ type: 'LOAD_EXAM', exam });
+      navigate('/exam');
     } catch (e: unknown) {
       setError((e as Error).message);
     }
   }
 
   async function loadExample(key: string) {
+    if (ROUTED_EXAMS[key]) {
+      navigate(ROUTED_EXAMS[key]);
+      return;
+    }
     setLoading(key);
     setError(null);
     try {
@@ -91,8 +112,8 @@ export default function HomeScreen() {
     <div className="home" dir="rtl">
       {/* Header */}
       <div className="home-header">
-        <h1 className="home-title">מבחנים לדוגמה למיונים ל-8200</h1>
-        <p className="home-subtitle">מבחן גאמא סייבר | שאלון 8200 לדוגמה | הכנה מקצועית למיונים</p>
+        <h1 className="home-title">מבחנים לדוגמה למיונים ליחידה טכנולוגית</h1>
+        <h2 className="home-subtitle">מבחן גאמא סייבר | מבחני 8200 / ממרם | הכנה טכנולוגית למיונים</h2>
       </div>
 
       {/* Cards */}

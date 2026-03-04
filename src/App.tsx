@@ -1,18 +1,29 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { ExamProvider, useExam } from './context/ExamContext';
 import BackgroundCanvas from './components/BackgroundCanvas';
 import HomeScreen from './components/HomeScreen/HomeScreen';
+import QuizIntroScreen from './components/QuizIntroScreen/QuizIntroScreen';
 import ExamScreen from './components/ExamScreen/ExamScreen';
 import ResultsScreen from './components/ResultsScreen/ResultsScreen';
 import './components/ExamScreen/questions/CodeQuestion.css';
 
-function AppInner() {
+function ExamTestRoute() {
   const { state } = useExam();
+  if (!state.exam) return <Navigate to="/" replace />;
+  if (state.screen === 'results') return <ResultsScreen />;
+  return <ExamScreen />;
+}
+
+function AppInner() {
   return (
-    <div style={{ height: '100%', position: 'relative' }}>
+    <div style={{ minHeight: '100%', position: 'relative' }}>
       <BackgroundCanvas />
-      {state.screen === 'home'    && <HomeScreen />}
-      {state.screen === 'exam'    && <ExamScreen />}
-      {state.screen === 'results' && <ResultsScreen />}
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/quiz/:quizId" element={<QuizIntroScreen />} />
+        <Route path="/quiz/:quizId/test" element={<ExamTestRoute />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 }

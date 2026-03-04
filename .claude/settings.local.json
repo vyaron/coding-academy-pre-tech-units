@@ -8,7 +8,11 @@
       "Bash(pnpm approve-builds)",
       "Bash(pnpm add @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities)",
       "Bash(pnpm approve-builds --all)",
-      "Bash(pnpm tsc --noEmit)"
+      "Bash(pnpm tsc --noEmit)",
+      "Bash(npm install react-router-dom)",
+      "Bash(npm install react-router-dom --legacy-peer-deps)",
+      "Bash(pnpm add react-router-dom)",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(q[''id''], q[''type''], q[''text''][:80]\\) for q in d[''questions'']]\")"
     ]
   }
 }
