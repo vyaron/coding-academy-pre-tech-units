@@ -102,6 +102,13 @@
   color: var(--lp-accent);
   text-decoration: none;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+}
+.lp-logo-img {
+  height: 56px;
+  width: auto;
+  display: block;
 }
 
 .lp-nav-links {
@@ -412,6 +419,11 @@
   z-index: 1;
 }
 .lp-footer strong { color: var(--lp-accent); }
+.lp-footer-logo {
+  height: 60px;
+  width: auto;
+  opacity: 0.85;
+}
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {

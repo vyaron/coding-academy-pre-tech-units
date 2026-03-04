@@ -230,8 +230,8 @@ export default function LandingPage() {
 
       {/* ── FOOTER ── */}
       <footer className="lp-footer">
-        <p><strong>CODING-ACADEMY</strong> — Master the Art of Coding</p>
-        <p style={{ marginTop: '0.5rem' }}>coding-academy.org &nbsp;|&nbsp; כל הזכויות שמורות</p>
+        <img src={`${import.meta.env.BASE_URL}img/logo.png`} alt="Coding Academy" className="lp-footer-logo" />
+        <p style={{ marginTop: '0.75rem' }}>coding-academy.org &nbsp;|&nbsp; כל הזכויות שמורות</p>
       </footer>
 
     </div>
