@@ -410,11 +410,10 @@
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 .lp-footer {
-  text-align: center;
   padding: 3rem 2rem;
   border-top: 1px solid var(--lp-border);
   color: var(--lp-muted);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   position: relative;
   z-index: 1;
 }
@@ -422,7 +421,85 @@
 .lp-footer-logo {
   height: 60px;
   width: auto;
+  max-width: 200px;
+  object-fit: contain;
   opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.lp-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.lp-footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-footer-title {
+  color: var(--lp-accent);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.lp-footer-desc {
+  line-height: 1.6;
+  color: var(--lp-text);
+  font-size: 0.85rem;
+}
+
+.lp-footer-contact {
+  margin-top: 1rem;
+}
+
+.lp-footer-contact p {
+  margin: 0.3rem 0;
+}
+
+.lp-footer-contact a {
+  color: var(--lp-accent);
+  text-decoration: none;
+}
+
+.lp-footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.lp-footer-hours p {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.3rem 0;
+}
+
+.lp-footer-address {
+  margin-top: 0.75rem;
+  color: var(--lp-text);
+}
+
+.lp-footer-map {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+  border: 1px solid var(--lp-border);
+}
+
+.lp-footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lp-border);
+  text-align: center;
+}
+
+.lp-footer-disclaimer {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
@@ -432,4 +509,20 @@
   .lp-step-num { font-size: 1.5rem; }
   .lp-stats { gap: 2rem; }
   .lp-cta-banner { padding: 2.5rem 1.5rem; }
+  .lp-footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .lp-footer-col {
+    align-items: center;
+  }
+  .lp-footer-logo {
+    margin: 0 auto 1rem;
+  }
+  .lp-footer-hours p {
+    justify-content: center;
+  }
+  .lp-footer-map {
+    margin: 0 auto;
+  }
 }

@@ -230,8 +230,45 @@ export default function LandingPage() {
 
       {/* ── FOOTER ── */}
       <footer className="lp-footer">
-        <img src={`${import.meta.env.BASE_URL}img/logo.png`} alt="Coding Academy" className="lp-footer-logo" />
-        <p style={{ marginTop: '0.75rem' }}>coding-academy.org &nbsp;|&nbsp; כל הזכויות שמורות</p>
+        <div className="lp-footer-grid">
+          {/* Right column - Logo & Contact */}
+          <div className="lp-footer-col">
+            <img src={`${import.meta.env.BASE_URL}img/logo.png`} alt="Coding Academy" className="lp-footer-logo" />
+            <p className="lp-footer-desc">
+              יש רגעים שמגדירים את מי שנהיה.<br />
+              הבחירה ללכת למסלול טכנולוגי היא אחד מהם.<br />
+              יחידה טכנולוגית היא לא רק שירות — זו הזדמנות להפוך פוטנציאל לכוח, וסקרנות למקצוע.
+            </p>
+            <p className="lp-footer-desc" style={{ marginTop: '0.5rem' }}>
+              הכשרה ברמה הגבוהה ביותר, ניסיון אמיתי, וסביבה שמגדלת מצוינות — זו נקודת הזינוק לקריירה שתמיד רצית.
+            </p>
+            <div className="lp-footer-contact">
+              <p>טלפון: <a href="tel:0795551155" dir="ltr" style={{ unicodeBidi: 'embed' }}>079-555-1155</a></p>
+              <p>דוא"ל: <a href="mailto:admin@misterbit.co.il">admin@misterbit.co.il</a></p>
+            </div>
+          </div>
+
+          {/* Middle column - Hours */}
+          <div className="lp-footer-col">
+            <h4 className="lp-footer-title">שעות פעילות</h4>
+            <div className="lp-footer-hours">
+              <p><span>ראשון – חמישי:</span> <span>10:00 – 19:00</span></p>
+              <p><span>שישי:</span> <span>10:00 – 14:00</span></p>
+            </div>
+          </div>
+
+          {/* Left column - Map */}
+          <div className="lp-footer-col">
+            <h4 className="lp-footer-title">איך מגיעים אלינו</h4>
+            <img src={`${import.meta.env.BASE_URL}img/map.png`} alt="מפה" className="lp-footer-map" />
+            <p className="lp-footer-address">הבונים 4, רמת גן</p>
+          </div>
+        </div>
+
+        <div className="lp-footer-bottom">
+          <p className="lp-footer-disclaimer">הקורס מסיר כל אחריות משפטית בכל הנוגע לקבלה לתפקיד הצבאי</p>
+          <p>© כל הזכויות שמורות ל-Coding Academy</p>
+        </div>
       </footer>
 
     </div>
