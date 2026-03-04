@@ -6,6 +6,22 @@ import './HomeScreen.css';
 
 const EXAMPLE_EXAMS = [
   {
+    key: 'tzav-rishon',
+    icon: '📋',
+    name: 'מבחן לדוגמה - צו ראשון',
+    desc: 'מבחן סימולציה מלא להכנה לצו ראשון – אנלוגיות מילוליות, צורנים, הבנת הוראות ומתמטיקה.',
+    time: '45 דק',
+    questions: 15,
+  },
+  {
+    key: 'shalon-300',
+    icon: '🧠',
+    name: 'שאלון 300',
+    desc: 'שאלון אישיות ממוחשב לתהליכי מיון ליחידות טכנולוגיות – 300 היגדים להערכת התאמה אישיותית.',
+    time: '25 דק',
+    questions: 300,
+  },
+  {
     key: 'tech-fit',
     icon: '⚡',
     name: 'מבחן התאמה ליחידות טכנולוגיות',
@@ -46,9 +62,9 @@ function validateExam(data: unknown): Exam {
   if (typeof d.title !== 'string') throw new Error('Missing "title" string');
   d.questions.forEach((q: unknown, i: number) => {
     const qObj = q as Record<string, unknown>;
-    if (!['single', 'code', 'order', 'truefalse'].includes(qObj.type as string))
+    if (!['single', 'code', 'order', 'truefalse', 'personality'].includes(qObj.type as string))
       throw new Error(`Question ${i + 1}: unknown type "${qObj.type}"`);
-    if ((qObj.type === 'single' || qObj.type === 'code') && !Array.isArray(qObj.options))
+    if ((qObj.type === 'single' || qObj.type === 'code' || qObj.type === 'personality') && !Array.isArray(qObj.options))
       throw new Error(`Question ${i + 1}: missing options array`);
     if (qObj.type === 'order' && !Array.isArray(qObj.items))
       throw new Error(`Question ${i + 1}: order type requires items array`);
@@ -59,10 +75,12 @@ function validateExam(data: unknown): Exam {
 }
 
 const ROUTED_EXAMS: Record<string, string> = {
-  'cyber-rtl':   '/quiz/gama-cyber',
-  'network-ltr': '/quiz/network',
-  'child-8200':  '/quiz/child-8200',
-  'tech-fit':    '/quiz/tech-fit',
+  'cyber-rtl':    '/quiz/gama-cyber',
+  'network-ltr':  '/quiz/network',
+  'child-8200':   '/quiz/child-8200',
+  'tech-fit':     '/quiz/tech-fit',
+  'shalon-300':   '/quiz/shalon-300',
+  'tzav-rishon':  '/quiz/tzav-rishon',
 };
 
 export default function HomeScreen() {

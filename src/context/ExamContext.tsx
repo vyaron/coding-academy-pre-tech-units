@@ -80,6 +80,8 @@ function computeResults(exam: Exam, answers: Answers, shuffledOrders: Record<num
       const order = shuffledOrders[q.id] ?? [];
       const n = (q as OrderQuestion).items.length;
       isCorrect = order.length === n && order.every((v, i) => v === i);
+    } else if (q.type === 'personality') {
+      isCorrect = true; // any answer is valid
     }
 
     if (isCorrect) {

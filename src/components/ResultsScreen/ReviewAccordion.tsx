@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { PerQuestionResult } from '../../types/exam';
-import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType } from '../../types/exam';
+import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType, PersonalityQuestion as PQType } from '../../types/exam';
 import SingleChoice from '../ExamScreen/questions/SingleChoice';
 import CodeQuestion from '../ExamScreen/questions/CodeQuestion';
 import OrderQuestion from '../ExamScreen/questions/OrderQuestion';
@@ -49,7 +49,10 @@ export default function ReviewAccordion({ perQuestion }: Props) {
           const { q, correct, earned } = pq;
           const isOpen = open[i] ?? false;
           const rawAnswer = state.answers[q.id];
-          const status = correct ? 'correct' : rawAnswer !== undefined ? 'wrong' : 'skip';
+          const isPersonality = q.type === 'personality';
+          const status = isPersonality
+            ? (rawAnswer !== undefined ? 'answered' : 'skip')
+            : (correct ? 'correct' : rawAnswer !== undefined ? 'wrong' : 'skip');
 
           return (
             <div key={q.id} className="review-item">
@@ -59,10 +62,10 @@ export default function ReviewAccordion({ perQuestion }: Props) {
               >
                 <span className="review-item-num">Q{i + 1}</span>
                 <span className={`review-item-status ${status}`}>
-                  {status === 'correct' ? '✓ CORRECT' : status === 'wrong' ? '✗ WRONG' : '— SKIPPED'}
+                  {status === 'correct' ? '✓ CORRECT' : status === 'wrong' ? '✗ WRONG' : status === 'answered' ? '◉ ANSWERED' : '— SKIPPED'}
                 </span>
                 <span className="review-item-text">{q.text}</span>
-                <span className="review-item-pts">{earned}/{q.points}pts</span>
+                {!isPersonality && <span className="review-item-pts">{earned}/{q.points}pts</span>}
                 <span className={`review-item-chevron${isOpen ? ' open' : ''}`}>▶</span>
               </div>
 
@@ -78,6 +81,16 @@ export default function ReviewAccordion({ perQuestion }: Props) {
                       selected={typeof rawAnswer === 'number' ? rawAnswer : null}
                       onSelect={() => {}}
                       reviewMode
+                    />
+                  )}
+
+                  {q.type === 'personality' && (
+                    <SingleChoice
+                      question={q as PQType}
+                      selected={typeof rawAnswer === 'number' ? rawAnswer : null}
+                      onSelect={() => {}}
+                      reviewMode
+                      noCorrect
                     />
                   )}
 

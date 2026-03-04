@@ -1,4 +1,4 @@
-export type QuestionType = 'single' | 'code' | 'order' | 'truefalse';
+export type QuestionType = 'single' | 'code' | 'order' | 'truefalse' | 'personality';
 
 interface BaseQuestion {
   id: number;
@@ -31,15 +31,21 @@ export interface TrueFalseQuestion extends BaseQuestion {
   correct: boolean; // true = right, false = wrong
 }
 
-export type Question = SingleQuestion | CodeQuestion | OrderQuestion | TrueFalseQuestion;
+export interface PersonalityQuestion extends BaseQuestion {
+  type: 'personality';
+  options: string[];
+}
+
+export type Question = SingleQuestion | CodeQuestion | OrderQuestion | TrueFalseQuestion | PersonalityQuestion;
 
 export interface Exam {
   title: string;
   subtitle?: string;
   direction: 'ltr' | 'rtl';
   lang: string;
-  duration: number;     // seconds; 0 = no timer
-  passingScore: number; // 0–100
+  duration: number;       // seconds; 0 = no timer
+  passingScore: number;   // 0–100
+  isPersonality?: boolean;
   questions: Question[];
 }
 

@@ -11,6 +11,35 @@ export default function ResultsScreen() {
   if (!results || !exam) return null;
 
   const { score, passed, correct, wrong, unanswered, earned, total } = results;
+  const answeredCount = total - unanswered;
+
+  if (exam.isPersonality) {
+    return (
+      <div className="results-screen">
+        <header className="results-header">
+          <div>
+            <div className="results-header-title">// QUESTIONNAIRE COMPLETE</div>
+            <div className="results-header-sub">{exam.title.toUpperCase()}</div>
+          </div>
+          <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/'); }}>
+            ↩ BACK
+          </button>
+        </header>
+
+        <div className="results-body">
+          <div className="results-score-section">
+            <div className="score-verdict pass" style={{ fontSize: '2rem' }}>✓ הושלם</div>
+            <div className="score-detail">
+              ענית על {answeredCount} מתוך {total} שאלות
+              {unanswered > 0 && ` · ${unanswered} לא נענו`}
+            </div>
+          </div>
+
+          <ReviewAccordion perQuestion={results.perQuestion} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="results-screen">

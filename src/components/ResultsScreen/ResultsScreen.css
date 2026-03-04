@@ -213,9 +213,10 @@
 
 .review-item-bar:hover { background: var(--surface2); }
 
-.review-item-bar.correct { border-inline-start-color: var(--green); }
-.review-item-bar.wrong   { border-inline-start-color: var(--red); }
-.review-item-bar.skip    { border-inline-start-color: var(--text-dim); }
+.review-item-bar.correct  { border-inline-start-color: var(--green); }
+.review-item-bar.wrong    { border-inline-start-color: var(--red); }
+.review-item-bar.skip     { border-inline-start-color: var(--text-dim); }
+.review-item-bar.answered { border-inline-start-color: var(--cyan); }
 
 .review-item-num {
   font-family: var(--font-mono);
@@ -230,9 +231,10 @@
   flex-shrink: 0;
 }
 
-.review-item-status.correct { color: var(--green); }
-.review-item-status.wrong   { color: var(--red); }
-.review-item-status.skip    { color: var(--text-dim); }
+.review-item-status.correct  { color: var(--green); }
+.review-item-status.wrong    { color: var(--red); }
+.review-item-status.skip     { color: var(--text-dim); }
+.review-item-status.answered { color: var(--cyan); }
 
 .review-item-text {
   flex: 1;

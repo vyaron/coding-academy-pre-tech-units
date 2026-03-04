@@ -4,7 +4,7 @@ import SingleChoice from './questions/SingleChoice';
 import CodeQuestion from './questions/CodeQuestion';
 import OrderQuestion from './questions/OrderQuestion';
 import TrueFalseQuestion from './questions/TrueFalseQuestion';
-import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType } from '../../types/exam';
+import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType, PersonalityQuestion as PQType } from '../../types/exam';
 
 export default function QuestionArea() {
   const { state, dispatch, currentQuestion, totalQuestions } = useExam();
@@ -35,25 +35,28 @@ export default function QuestionArea() {
         {/* Header */}
         <div className="q-header">
           <span className="q-badge">{ui.questionBadge(qNum, totalQuestions)}</span>
-          <span className="q-points-badge">{q.points} pts</span>
-          <button
-            className={`q-flag-btn${isFlagged ? ' active' : ''}`}
-            onClick={() => dispatch({ type: 'TOGGLE_FLAG', qId: q.id })}
-          >
-            <span>⚑</span>
-            {isFlagged ? ui.flaggedBtn : ui.flag}
-          </button>
+          {q.type !== 'personality' && <span className="q-points-badge">{q.points} pts</span>}
+          {q.type !== 'personality' && (
+            <button
+              className={`q-flag-btn${isFlagged ? ' active' : ''}`}
+              onClick={() => dispatch({ type: 'TOGGLE_FLAG', qId: q.id })}
+            >
+              <span>⚑</span>
+              {isFlagged ? ui.flaggedBtn : ui.flag}
+            </button>
+          )}
         </div>
 
         {/* Question text */}
         <p className="q-text">{q.text}</p>
 
         {/* Question type */}
-        {q.type === 'single' && (
+        {(q.type === 'single' || q.type === 'personality') && (
           <SingleChoice
-            question={q as SingleQuestion}
+            question={q as SingleQuestion | PQType}
             selected={typeof rawAnswer === 'number' ? rawAnswer : null}
             onSelect={handleSelect}
+            noCorrect={q.type === 'personality'}
           />
         )}
 
