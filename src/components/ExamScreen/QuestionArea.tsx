@@ -21,7 +21,7 @@ export default function QuestionArea() {
   function handleSelect(idx: number) {
     dispatch({ type: 'SET_ANSWER', qId: q.id, answer: idx });
     if (currentIndex + 1 < totalQuestions) {
-      setTimeout(() => dispatch({ type: 'GO_TO', index: currentIndex + 1 }), 300);
+      setTimeout(() => dispatch({ type: 'GO_TO', index: currentIndex + 1 }), 700);
     }
   }
 
@@ -34,7 +34,7 @@ export default function QuestionArea() {
       <div className="q-area" key={q.id}>
         {/* Header */}
         <div className="q-header">
-          <span className="q-badge">Q{qNum} / {totalQuestions}</span>
+          <span className="q-badge">{ui.questionBadge(qNum, totalQuestions)}</span>
           <span className="q-points-badge">{q.points} pts</span>
           <button
             className={`q-flag-btn${isFlagged ? ' active' : ''}`}

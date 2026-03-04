@@ -48,6 +48,17 @@
   text-shadow: var(--glow-cyan);
   letter-spacing: 0.08em;
   transition: color 0.3s, text-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sidebar-timer-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 3px currentColor);
 }
 
 .sidebar-timer-value.warn {

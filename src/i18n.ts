@@ -12,6 +12,7 @@ interface UIStrings {
   flag: string;
   flaggedBtn: string;
   finishTitle: string;
+  questionBadge: (current: number, total: number) => string;
   unanswered: (n: number) => string;
   allAnswered: string;
   submit: string;
@@ -32,6 +33,7 @@ const en: UIStrings = {
   flag:        'FLAG',
   flaggedBtn:  'FLAGGED',
   finishTitle: 'FINISH EXAM?',
+  questionBadge: (c, total) => `Q${c} / ${total}`,
   unanswered:  (n) => `${n} question${n !== 1 ? 's' : ''} still unanswered.`,
   allAnswered: 'All questions answered.',
   submit:      'SUBMIT',
@@ -49,9 +51,10 @@ const he: UIStrings = {
   finishExam:  '■ סיים מבחן',
   prev:        'הקודם →',
   next:        '← הבא',
-  flag:        'סמן',
+  flag:        'סמן לעצמי לחזור',
   flaggedBtn:  'מסומן',
   finishTitle: 'לסיים את המבחן?',
+  questionBadge: (c, total) => `שאלה ${c} מתוך ${total}`,
   unanswered:  (n) => `${n} שאלות עדיין לא נענו.`,
   allAnswered: 'כל השאלות נענו.',
   submit:      'הגש',
