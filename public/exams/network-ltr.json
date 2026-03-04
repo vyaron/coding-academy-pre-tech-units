@@ -1,0 +1,147 @@
+{
+  "title": "Network Security Fundamentals",
+  "subtitle": "Practice Exam – 10 Questions",
+  "direction": "ltr",
+  "lang": "en",
+  "duration": 1800,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "text": "Which layer of the OSI model is responsible for end-to-end communication and error recovery?",
+      "points": 2,
+      "options": [
+        "Layer 2 – Data Link",
+        "Layer 3 – Network",
+        "Layer 4 – Transport",
+        "Layer 6 – Presentation"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "text": "What is the default port for HTTPS traffic?",
+      "points": 2,
+      "options": ["80", "8080", "443", "22"],
+      "correct": 2
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "text": "Which attack floods a target with SYN packets to exhaust connection state tables?",
+      "points": 3,
+      "options": [
+        "DNS Amplification",
+        "SYN Flood",
+        "ARP Poisoning",
+        "Smurf Attack"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "text": "What does the principle of Least Privilege state?",
+      "points": 2,
+      "options": [
+        "All users should have admin access by default",
+        "Users should only have the minimum access rights required for their tasks",
+        "Systems should log all user activity",
+        "Passwords must be changed every 30 days"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 5,
+      "type": "code",
+      "text": "What security vulnerability does this Python code introduce?",
+      "code": "from flask import Flask, request, render_template_string\napp = Flask(__name__)\n\n@app.route('/greet')\ndef greet():\n    name = request.args.get('name', 'World')\n    template = f'<h1>Hello, {name}!</h1>'\n    return render_template_string(template)",
+      "language": "python",
+      "points": 4,
+      "options": [
+        "SQL Injection",
+        "Server-Side Template Injection (SSTI)",
+        "Path Traversal",
+        "Insecure Deserialization"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "text": "Which vulnerability is present in this Node.js code?",
+      "code": "const express = require('express');\nconst app = express();\n\napp.get('/file', (req, res) => {\n  const filename = req.query.name;\n  const filepath = '/var/www/files/' + filename;\n  res.sendFile(filepath);\n});",
+      "language": "javascript",
+      "points": 3,
+      "options": [
+        "SQL Injection",
+        "XSS",
+        "Path Traversal",
+        "CSRF"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 7,
+      "type": "code",
+      "text": "What security issue exists in this authentication check?",
+      "code": "def verify_token(token):\n    try:\n        payload = jwt.decode(\n            token,\n            options={'verify_signature': False}\n        )\n        return payload['user_id']\n    except:\n        return None",
+      "language": "python",
+      "points": 4,
+      "options": [
+        "Weak hashing algorithm",
+        "JWT signature verification is disabled — tokens are not verified",
+        "Missing rate limiting",
+        "Cleartext password storage"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 8,
+      "type": "code",
+      "text": "What type of attack does this bash snippet perform?",
+      "code": "#!/bin/bash\nTARGET=\"192.168.1.1\"\nfor port in $(seq 1 1024); do\n  (echo > /dev/tcp/$TARGET/$port) 2>/dev/null && \\\n    echo \"[+] Port $port is OPEN\"\ndone",
+      "language": "bash",
+      "points": 3,
+      "options": [
+        "Brute-force password attack",
+        "TCP port scanning",
+        "DNS enumeration",
+        "ARP spoofing"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 9,
+      "type": "order",
+      "text": "Arrange the OSI model layers in the correct order from bottom (physical) to top (application):",
+      "points": 4,
+      "items": [
+        "Layer 1 – Physical",
+        "Layer 2 – Data Link",
+        "Layer 3 – Network",
+        "Layer 4 – Transport",
+        "Layer 5 – Session",
+        "Layer 6 – Presentation",
+        "Layer 7 – Application"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "order",
+      "text": "Arrange the steps of a DNS resolution in the correct order:",
+      "points": 4,
+      "items": [
+        "Browser checks local DNS cache",
+        "OS queries the configured DNS resolver (e.g. 8.8.8.8)",
+        "Resolver contacts root nameserver",
+        "Resolver contacts TLD nameserver (.com)",
+        "Resolver contacts authoritative nameserver",
+        "IP address returned to the client",
+        "Browser connects to the IP address"
+      ]
+    }
+  ]
+}

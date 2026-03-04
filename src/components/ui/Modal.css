@@ -1,0 +1,96 @@
+/* ── Modal ───────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(6, 8, 15, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  animation: glow-in 0.18s ease;
+}
+
+.modal-box {
+  background: var(--surface2);
+  border: 1px solid var(--cyan-dim);
+  border-radius: var(--radius);
+  padding: 2rem 2.25rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--glow-cyan);
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  color: var(--yellow);
+}
+
+.modal-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.modal-message {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-message.danger {
+  color: var(--yellow);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.modal-btn.confirm {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.modal-btn.confirm:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: var(--glow-green);
+}
+
+.modal-btn.confirm.danger-confirm {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.modal-btn.confirm.danger-confirm:hover {
+  background: rgba(255, 34, 68, 0.1);
+  box-shadow: var(--glow-red);
+}
+
+.modal-btn.cancel {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.modal-btn.cancel:hover {
+  border-color: var(--border-h);
+  color: var(--text);
+}

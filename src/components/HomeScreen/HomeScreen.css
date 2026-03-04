@@ -1,0 +1,183 @@
+/* ── HomeScreen ──────────────────────────────────────────────────────────── */
+.home {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem;
+  animation: glow-in 0.5s ease;
+}
+
+/* Logo */
+.home-logo {
+  text-align: center;
+}
+
+.home-logo h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.home-logo h1 .logo-cyber {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.home-logo h1 .logo-bracket {
+  color: var(--text-dim);
+}
+
+.home-logo h1 .logo-exam {
+  color: var(--green);
+  text-shadow: var(--glow-green);
+}
+
+.home-logo-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.22em;
+  margin-top: 0.4rem;
+}
+
+.home-logo-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--cyan);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: pulse 1s infinite;
+}
+
+/* Content card */
+.home-content {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Section label */
+.home-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.22em;
+  margin-bottom: 0.5rem;
+}
+
+/* Exam cards */
+.home-exam-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.home-exam-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.home-exam-card:hover {
+  border-color: var(--cyan-dim);
+  background: var(--surface2);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.08);
+}
+
+.home-exam-card-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.home-exam-card-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.home-exam-card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 0.15rem;
+}
+
+/* Divider */
+.home-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.home-divider-text {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+}
+
+/* File loader */
+.home-file-zone {
+  background: var(--surface);
+  border: 1px dashed var(--border-h);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home-file-zone:hover,
+.home-file-zone.drag-over {
+  border-color: var(--cyan);
+  background: rgba(0, 229, 255, 0.04);
+  box-shadow: var(--glow-cyan);
+}
+
+.home-file-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--cyan);
+}
+
+.home-file-prompt span {
+  color: var(--text-dim);
+}
+
+/* Error banner */
+.home-error {
+  background: rgba(255, 34, 68, 0.08);
+  border: 1px solid var(--red-dim);
+  border-radius: var(--radius);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--red);
+  animation: slide-up 0.2s ease;
+}

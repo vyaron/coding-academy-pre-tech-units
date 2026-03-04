@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(printf 'y\\\\n')",
+      "Bash(pnpm create vite . --template react-ts)",
+      "Bash(pnpm create vite . --template react-ts -- --skip-existing)",
+      "Bash(pnpm install)",
+      "Bash(pnpm approve-builds)",
+      "Bash(pnpm add @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities)",
+      "Bash(pnpm approve-builds --all)",
+      "Bash(pnpm tsc --noEmit)"
+    ]
+  }
+}

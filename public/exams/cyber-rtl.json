@@ -1,0 +1,131 @@
+{
+  "title": "מבחן גאמא סייבר",
+  "subtitle": "מבחן לדוגמה - 10 שאלות",
+  "direction": "rtl",
+  "lang": "he",
+  "duration": 3600,
+  "passingScore": 90,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "text": "מהו פרוטוקול ההצפנה הנפוץ ביותר לאבטחת תעבורת אינטרנט?",
+      "points": 3,
+      "options": ["SSL 2.0", "TLS 1.3", "SSH", "FTP"],
+      "correct": 1
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "text": "איזה מן הבאים מתאר את עיקרון ה-CIA Triad באבטחת מידע?",
+      "points": 2,
+      "options": [
+        "Confidentiality, Integrity, Availability",
+        "Cryptography, Identification, Authentication",
+        "Control, Inspection, Analysis",
+        "Certification, Infrastructure, Authorization"
+      ],
+      "correct": 0
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "text": "מהו מתקפת Man-in-the-Middle (MITM)?",
+      "points": 3,
+      "options": [
+        "מתקפה שמשביתה שרתים על ידי שיטפון בקשות",
+        "מתקפה שמאפשרת לתוקף לקרוא ולשנות תקשורת בין שני צדדים",
+        "ניצול חולשה בזיכרון כדי להריץ קוד זדוני",
+        "גניבת עוגיות הפעלה של משתמש"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "text": "באיזה שכבת OSI פועל פרוטוקול IP?",
+      "points": 2,
+      "options": [
+        "שכבה 2 – Data Link",
+        "שכבה 3 – Network",
+        "שכבה 4 – Transport",
+        "שכבה 7 – Application"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 5,
+      "type": "code",
+      "text": "בהינתן הקוד הבא, איזו חולשת אבטחה קיימת?",
+      "code": "app.get('/user', (req, res) => {\n  const userId = req.query.id;\n  const query = `SELECT * FROM users WHERE id = ${userId}`;\n  db.query(query, (err, result) => {\n    res.json(result);\n  });\n});",
+      "language": "javascript",
+      "points": 4,
+      "options": ["Buffer Overflow", "SQL Injection", "XSS", "CSRF"],
+      "correct": 1
+    },
+    {
+      "id": 6,
+      "type": "code",
+      "text": "מה הבעיה באבטחה בקוד הפייתון הבא?",
+      "code": "import os\n\ndef run_command(user_input):\n    command = f\"ls {user_input}\"\n    output = os.system(command)\n    return output\n\n# Usage: run_command(request.args.get('path'))",
+      "language": "python",
+      "points": 4,
+      "options": [
+        "SQL Injection",
+        "Path Traversal בלבד",
+        "Command Injection",
+        "Insecure Deserialization"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 7,
+      "type": "code",
+      "text": "מהי הבעיה בקוד JavaScript הבא?",
+      "code": "app.get('/search', (req, res) => {\n  const term = req.query.q;\n  res.send(`\n    <h1>Results for: ${term}</h1>\n    <p>No results found</p>\n  `);\n});",
+      "language": "javascript",
+      "points": 3,
+      "options": ["SQL Injection", "CSRF", "XSS – Reflected", "Buffer Overflow"],
+      "correct": 2
+    },
+    {
+      "id": 8,
+      "type": "code",
+      "text": "מהי הפגיעות שקיימת בקוד הבא?",
+      "code": "# Python Flask route\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    query = \"SELECT * FROM users WHERE username='\" + username + \"' AND password='\" + password + \"'\"\n    user = db.execute(query).fetchone()\n    if user:\n        session['user'] = username\n        return redirect('/dashboard')\n    return 'Invalid credentials', 401",
+      "language": "python",
+      "points": 4,
+      "options": [
+        "Brute Force בלבד",
+        "SQL Injection",
+        "CSRF",
+        "Insecure Direct Object Reference"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 9,
+      "type": "order",
+      "text": "סדר את שלבי לחיצת יד של TCP (3-Way Handshake) בסדר הנכון:",
+      "points": 4,
+      "items": [
+        "הלקוח שולח SYN לשרת",
+        "השרת משיב עם SYN-ACK",
+        "הלקוח שולח ACK לשרת",
+        "החיבור נוצר בהצלחה"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "order",
+      "text": "סדר את שלבי ביצוע ההוראה במעבד (Instruction Cycle) בסדר הנכון:",
+      "points": 4,
+      "items": [
+        "Fetch – קריאת ההוראה מהזיכרון",
+        "Decode – פענוח ההוראה",
+        "Execute – ביצוע ההוראה",
+        "Store – שמירת התוצאה"
+      ]
+    }
+  ]
+}
