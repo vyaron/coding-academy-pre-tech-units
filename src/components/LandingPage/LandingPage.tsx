@@ -217,7 +217,7 @@ export default function LandingPage() {
           <h2>🤝 פגישת ייעוץ עם מדריכ/ה מהקורס</h2>
           <p>מענה לכל שאלה ע"י יועצי לימוד מקצועיים, בחירת המסלול המתאים לך והתנסות בקוד ראשונית.</p>
           <a
-            href="https://coding-academy.org"
+            href="https://www.coding-academy.org/#contact"
             target="_blank"
             rel="noopener noreferrer"
             className="lp-btn-primary"
