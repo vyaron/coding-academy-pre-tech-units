@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# 🎯 מבחני הכנה ליחידות טכנולוגיות
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+פלטפורמת אימון אינטראקטיבית להכנה לגיוס ליחידות טכנולוגיות נבחרות בצבא.
 
-Currently, two official plugins are available:
+**🌐 [כניסה לאתר](https://vyaron.github.io/coding-academy-pre-tech-units/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## מבחנים זמינים
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| מבחן | נושא | שאלות | זמן |
+|------|------|-------|-----|
+| מבחן קבלה לגמ"א | הערכה כללית | 20 | 40 דק׳ |
+| מבחן לדוגמה – כלל חמן | הגיון בניה | 15 | 60 דק׳ |
+| מתמטיקה – אחוזים | חישובי אחוזים | 10 | 20 דק׳ |
+| מתמטיקה – שברים | חישובי שברים | 10 | 20 דק׳ |
+| הגיון מילולי | הסקת מסקנות | 10 | 20 דק׳ |
+| אנגלית – אוצר מילים | אנגלית טכנית | 10 | 20 דק׳ |
+| Python – בסיסי | יסודות תכנות | 10 | 25 דק׳ |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## תכונות
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **מבחנים מגוונים** – שאלות אמת/שקר, בחירה יחידה, ובחירה מרובה
+- **ניקוד חי** – ציון מתעדכן בזמן אמת במהלך המבחן
+- **טיימר** – ספירה לאחור עם אינדיקטור חזותי
+- **סיפור הקשר** – מבחן כלל חמן כולל סיפור בנייה הנפתח בכפתור ייעודי
+- **עמוד תוצאות** – סיכום מפורט עם פירוט כל תשובה
+- **ציון עובר** – כל מבחן מוגדר עם סף עבירה משלו
+- **דגל שאלה** – סמן שאלות לחזרה לפני הגשה
+- **עיצוב רספונסיבי** – עובד במובייל ובדסקטופ
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## טכנולוגיות
+
+- **React 19** + **TypeScript**
+- **Vite** – בנייה וסביבת פיתוח
+- **React Router v7** (HashRouter לתאימות GitHub Pages)
+- **CSS** – ללא ספריות UI, עיצוב מותאם אישית
+- **GitHub Actions** – CI/CD אוטומטי לעמוד GitHub Pages
+
+---
+
+## הרצה מקומית
+
+```bash
+# התקנת תלויות
+pnpm install
+
+# הפעלת שרת פיתוח
+pnpm dev
+
+# בנייה לייצור
+pnpm build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## הוספת מבחן חדש
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+1. צור קובץ JSON חדש ב-`public/exams/`:
+
+```json
+{
+  "id": "my-exam",
+  "title": "שם המבחן",
+  "description": "תיאור קצר",
+  "duration": 1200,
+  "passingScore": 75,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "truefalse",
+      "text": "טקסט השאלה",
+      "answer": true,
+      "explanation": "הסבר לתשובה"
     },
-  },
-])
+    {
+      "id": "q2",
+      "type": "single",
+      "text": "טקסט השאלה",
+      "options": ["א", "ב", "ג", "ד"],
+      "answer": 0,
+      "explanation": "הסבר לתשובה"
+    }
+  ]
+}
+```
+
+2. הוסף את המבחן ל-`QuizIntroScreen.tsx` (מערך `QUIZ_CONFIGS`)
+3. הוסף לרשימת המבחנים ב-`HomeScreen.tsx` (מערך `EXAMPLE_EXAMS` ו/או `ROUTED_EXAMS`)
+
+---
+
+## פריסה
+
+הפרויקט נפרס אוטומטית ל-GitHub Pages בכל push לענף `main` דרך GitHub Actions.
+
+```
+https://vyaron.github.io/coding-academy-pre-tech-units/
 ```
