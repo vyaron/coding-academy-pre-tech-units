@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { PerQuestionResult } from '../../types/exam';
-import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType } from '../../types/exam';
+import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType } from '../../types/exam';
 import SingleChoice from '../ExamScreen/questions/SingleChoice';
 import CodeQuestion from '../ExamScreen/questions/CodeQuestion';
 import OrderQuestion from '../ExamScreen/questions/OrderQuestion';
+import TrueFalseQuestion from '../ExamScreen/questions/TrueFalseQuestion';
 import { useExam } from '../../context/ExamContext';
 
 interface Props {
@@ -95,6 +96,16 @@ export default function ReviewAccordion({ perQuestion }: Props) {
                       order={Array.isArray(rawAnswer) ? rawAnswer : (q as OQType).items.map((_, idx) => idx)}
                       onOrderChange={() => {}}
                       reviewMode
+                    />
+                  )}
+
+                  {q.type === 'truefalse' && (
+                    <TrueFalseQuestion
+                      question={q as TFType}
+                      selected={typeof rawAnswer === 'number' ? rawAnswer : null}
+                      onSelect={() => {}}
+                      reviewMode
+                      lang={state.exam?.lang}
                     />
                   )}
                 </div>

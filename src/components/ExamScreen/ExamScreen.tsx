@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useExam } from '../../context/ExamContext';
 import { useKeyboard } from '../../hooks/useKeyboard';
+import { t } from '../../i18n';
 import Sidebar from './Sidebar';
 import QuestionArea from './QuestionArea';
 import Modal from '../ui/Modal';
@@ -11,15 +12,14 @@ export default function ExamScreen() {
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   const { currentIndex } = state;
-  const isFirst = currentIndex === 0;
-  const isLast  = currentIndex === totalQuestions - 1;
+  const ui = t(state.exam?.lang ?? 'en');
 
   function next() {
-    if (!isLast) dispatch({ type: 'GO_TO', index: currentIndex + 1 });
+    if (currentIndex < totalQuestions - 1) dispatch({ type: 'GO_TO', index: currentIndex + 1 });
   }
 
   function prev() {
-    if (!isFirst) dispatch({ type: 'GO_TO', index: currentIndex - 1 });
+    if (currentIndex > 0) dispatch({ type: 'GO_TO', index: currentIndex - 1 });
   }
 
   function flagCurrent() {
@@ -36,32 +36,15 @@ export default function ExamScreen() {
       <div className="exam-layout">
         <Sidebar onFinish={() => setConfirmOpen(true)} />
         <QuestionArea />
-
-        {/* Navigation bar */}
-        <nav className="exam-nav">
-          <button className="nav-btn" onClick={prev} disabled={isFirst}>
-            ← PREV
-          </button>
-          <span className="nav-center mono">
-            {currentIndex + 1} / {totalQuestions}
-          </span>
-          <button className="nav-btn" onClick={next} disabled={isLast}>
-            NEXT →
-          </button>
-        </nav>
       </div>
 
       {confirmOpen && (
         <Modal
           icon="⚠"
-          title="FINISH EXAM?"
-          message={
-            unanswered > 0
-              ? `${unanswered} question${unanswered !== 1 ? 's' : ''} still unanswered.`
-              : 'All questions answered.'
-          }
-          confirmLabel="SUBMIT"
-          cancelLabel="CANCEL"
+          title={ui.finishTitle}
+          message={unanswered > 0 ? ui.unanswered(unanswered) : ui.allAnswered}
+          confirmLabel={ui.submit}
+          cancelLabel={ui.cancel}
           onConfirm={() => { setConfirmOpen(false); dispatch({ type: 'FINISH' }); }}
           onCancel={() => setConfirmOpen(false)}
           danger={unanswered > 0}

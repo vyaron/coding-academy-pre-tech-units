@@ -4,8 +4,8 @@ import type { Exam } from '../../types/exam';
 import './HomeScreen.css';
 
 const EXAMPLE_EXAMS = [
-  { key: 'cyber-rtl',   icon: '🔒', name: 'גאמא סייבר',        meta: '10 שאלות · 60 דק · RTL' },
-  { key: 'network-ltr', icon: '🌐', name: 'Network Security', meta: '10Q · 30min · LTR' },
+  { key: 'cyber-rtl',   icon: '🔒', name: 'גאמא סייבר',        meta: '11 שאלות · 60 דק · RTL' },
+  { key: 'network-ltr', icon: '🌐', name: 'Network Security', meta: '11Q · 30min · LTR' },
 ];
 
 function validateExam(data: unknown): Exam {
@@ -15,12 +15,14 @@ function validateExam(data: unknown): Exam {
   if (typeof d.title !== 'string') throw new Error('Missing "title" string');
   d.questions.forEach((q: unknown, i: number) => {
     const qObj = q as Record<string, unknown>;
-    if (!['single', 'code', 'order'].includes(qObj.type as string))
+    if (!['single', 'code', 'order', 'truefalse'].includes(qObj.type as string))
       throw new Error(`Question ${i + 1}: unknown type "${qObj.type}"`);
     if ((qObj.type === 'single' || qObj.type === 'code') && !Array.isArray(qObj.options))
       throw new Error(`Question ${i + 1}: missing options array`);
     if (qObj.type === 'order' && !Array.isArray(qObj.items))
       throw new Error(`Question ${i + 1}: order type requires items array`);
+    if (qObj.type === 'truefalse' && typeof qObj.correct !== 'boolean')
+      throw new Error(`Question ${i + 1}: truefalse type requires a boolean "correct" field`);
   });
   return data as Exam;
 }

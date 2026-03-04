@@ -1,6 +1,6 @@
 {
   "title": "מבחן גאמא סייבר",
-  "subtitle": "מבחן לדוגמה - 10 שאלות",
+  "subtitle": "מבחן לדוגמה - 11 שאלות",
   "direction": "rtl",
   "lang": "he",
   "duration": 3600,
@@ -126,6 +126,13 @@
         "Execute – ביצוע ההוראה",
         "Store – שמירת התוצאה"
       ]
+    },
+    {
+      "id": 11,
+      "type": "truefalse",
+      "text": "פרוטוקול HTTPS משתמש בהצפנה סימטרית בלבד להגנה על התעבורה.",
+      "points": 2,
+      "correct": false
     }
   ]
 }

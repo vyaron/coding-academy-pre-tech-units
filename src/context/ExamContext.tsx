@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, ReactNode } from 'react';
-import type { Exam, Answers, Results, Question, OrderQuestion } from '../types/exam';
+import type { Exam, Answers, Results, Question, OrderQuestion, TrueFalseQuestion } from '../types/exam';
 
 // ── State ────────────────────────────────────────────────────────────────────
 
@@ -74,6 +74,8 @@ function computeResults(exam: Exam, answers: Answers, shuffledOrders: Record<num
 
     if (q.type === 'single' || q.type === 'code') {
       isCorrect = ans === q.correct;
+    } else if (q.type === 'truefalse') {
+      isCorrect = ans === ((q as TrueFalseQuestion).correct ? 1 : 0);
     } else if (q.type === 'order') {
       const order = shuffledOrders[q.id] ?? [];
       const n = (q as OrderQuestion).items.length;

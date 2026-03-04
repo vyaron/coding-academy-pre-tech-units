@@ -1,6 +1,6 @@
 {
   "title": "Network Security Fundamentals",
-  "subtitle": "Practice Exam – 10 Questions",
+  "subtitle": "Practice Exam – 11 Questions",
   "direction": "ltr",
   "lang": "en",
   "duration": 1800,
@@ -142,6 +142,13 @@
         "IP address returned to the client",
         "Browser connects to the IP address"
       ]
+    },
+    {
+      "id": 11,
+      "type": "truefalse",
+      "text": "UDP guarantees delivery of packets and ensures they arrive in order.",
+      "points": 2,
+      "correct": false
     }
   ]
 }

@@ -1,8 +1,10 @@
 import { useExam } from '../../context/ExamContext';
+import { t } from '../../i18n';
 import SingleChoice from './questions/SingleChoice';
 import CodeQuestion from './questions/CodeQuestion';
 import OrderQuestion from './questions/OrderQuestion';
-import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType } from '../../types/exam';
+import TrueFalseQuestion from './questions/TrueFalseQuestion';
+import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType } from '../../types/exam';
 
 export default function QuestionArea() {
   const { state, dispatch, currentQuestion, totalQuestions } = useExam();
@@ -14,6 +16,7 @@ export default function QuestionArea() {
   const dir = exam.direction;
   const isFlagged = flags.has(q.id);
   const rawAnswer = answers[q.id];
+  const ui = t(exam.lang);
 
   function handleSelect(idx: number) {
     dispatch({ type: 'SET_ANSWER', qId: q.id, answer: idx });
@@ -38,7 +41,7 @@ export default function QuestionArea() {
             onClick={() => dispatch({ type: 'TOGGLE_FLAG', qId: q.id })}
           >
             <span>⚑</span>
-            {isFlagged ? 'FLAGGED' : 'FLAG'}
+            {isFlagged ? ui.flaggedBtn : ui.flag}
           </button>
         </div>
 
@@ -67,6 +70,15 @@ export default function QuestionArea() {
             question={q as OQType}
             order={shuffledOrders[q.id] ?? []}
             onOrderChange={handleOrderChange}
+          />
+        )}
+
+        {q.type === 'truefalse' && (
+          <TrueFalseQuestion
+            question={q as TFType}
+            selected={typeof rawAnswer === 'number' ? rawAnswer : null}
+            onSelect={handleSelect}
+            lang={exam.lang}
           />
         )}
       </div>

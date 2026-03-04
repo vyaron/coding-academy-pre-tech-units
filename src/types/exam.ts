@@ -1,4 +1,4 @@
-export type QuestionType = 'single' | 'code' | 'order';
+export type QuestionType = 'single' | 'code' | 'order' | 'truefalse';
 
 interface BaseQuestion {
   id: number;
@@ -26,7 +26,12 @@ export interface OrderQuestion extends BaseQuestion {
   items: string[];
 }
 
-export type Question = SingleQuestion | CodeQuestion | OrderQuestion;
+export interface TrueFalseQuestion extends BaseQuestion {
+  type: 'truefalse';
+  correct: boolean; // true = right, false = wrong
+}
+
+export type Question = SingleQuestion | CodeQuestion | OrderQuestion | TrueFalseQuestion;
 
 export interface Exam {
   title: string;

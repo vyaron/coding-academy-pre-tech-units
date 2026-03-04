@@ -129,3 +129,69 @@
 
 .option-marker.correct-mark { color: var(--green); }
 .option-marker.wrong-mark   { color: var(--red); }
+
+/* ── True / False ────────────────────────────────────────────────────────── */
+.tf-row {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.tf-btn {
+  flex: 1;
+  padding: 2rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  transition: all var(--transition);
+}
+
+.tf-btn:hover:not(:disabled) {
+  border-color: var(--cyan-dim);
+  background: var(--surface2);
+}
+
+.tf-btn.selected {
+  border-color: var(--cyan);
+  background: rgba(0, 229, 255, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.1);
+}
+
+.tf-btn.correct {
+  border-color: var(--green);
+  background: rgba(0, 255, 136, 0.07);
+  cursor: default;
+}
+
+.tf-btn.wrong {
+  border-color: var(--red);
+  background: rgba(255, 34, 68, 0.07);
+  cursor: default;
+}
+
+.tf-btn:disabled { cursor: default; }
+
+.tf-icon {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text-dim);
+}
+
+.tf-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tf-btn.selected .tf-icon { color: var(--cyan); }
+.tf-btn.correct  .tf-icon { color: var(--green); }
+.tf-btn.wrong    .tf-icon { color: var(--red); }
