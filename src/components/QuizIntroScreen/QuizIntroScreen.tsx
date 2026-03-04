@@ -280,7 +280,7 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
 
   return (
     <div className="intro-page" dir="rtl">
-      <button className="intro-back" onClick={() => navigate('/')}>
+      <button className="intro-back" onClick={() => navigate('/quiz')}>
         → חזרה לרשימה
       </button>
 

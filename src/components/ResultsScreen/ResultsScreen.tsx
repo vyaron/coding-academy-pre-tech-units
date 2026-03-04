@@ -21,7 +21,7 @@ export default function ResultsScreen() {
             <div className="results-header-title">// השאלון הושלם</div>
             <div className="results-header-sub">{exam.title}</div>
           </div>
-          <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/'); }}>
+          <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/quiz'); }}>
             ↩ חזרה לרשימה
           </button>
         </header>
@@ -48,7 +48,7 @@ export default function ResultsScreen() {
           <div className="results-header-title">// תוצאות המבחן</div>
           <div className="results-header-sub">{exam.title}</div>
         </div>
-        <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/'); }}>
+        <button className="btn-restart" onClick={() => { dispatch({ type: 'RESTART' }); navigate('/quiz'); }}>
           ↩ חזרה לרשימה
         </button>
       </header>
