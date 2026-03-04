@@ -6,20 +6,12 @@ import './HomeScreen.css';
 
 const EXAMPLE_EXAMS = [
   {
-    key: 'cyber-rtl',
-    icon: '🔒',
-    name: 'מבחן לדוגמה גאמא סייבר',
-    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ליחידה טכנולוגית. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
-    time: '60 דק',
-    questions: 11,
-  },
-  {
-    key: 'network-ltr',
-    icon: '🌐',
-    name: 'אבטחת רשתות',
-    desc: 'מבחן לדוגמה באבטחת רשתות – פרוטוקולים, פגיעויות ושיטות הגנה. מתאים להכנה למיונים טכנולוגיים.',
-    time: '30 דק',
-    questions: 11,
+    key: 'tech-fit',
+    icon: '⚡',
+    name: 'מבחן התאמה ליחידות טכנולוגיות',
+    desc: 'מבחן התאמה ראשוני שבודק פוטנציאל להתקבל ליחידות טכנולוגיות – חומרה, רשתות, תכנות Python ומושגי מחשוב.',
+    time: '40 דק',
+    questions: 10,
   },
   {
     key: 'child-8200',
@@ -28,6 +20,22 @@ const EXAMPLE_EXAMS = [
     desc: 'שאלון הערכה להורים – בדקו את הפוטנציאל של הילד/ה שלכם להתקבל ליחידה טכנולוגית על בסיס נטיות, כישורים והישגים.',
     time: '20 דק',
     questions: 10,
+  },
+  {
+    key: 'cyber-rtl',
+    icon: '🔒',
+    name: 'מבחן גאמא סייבר',
+    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ליחידה טכנולוגית. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
+    time: '60 דק',
+    questions: 11,
+  },
+  {
+    key: 'network-ltr',
+    icon: '🌐',
+    name: 'מבחן אבטחת רשתות',
+    desc: 'מבחן לדוגמה באבטחת רשתות – פרוטוקולים, פגיעויות ושיטות הגנה. מתאים להכנה למיונים טכנולוגיים.',
+    time: '30 דק',
+    questions: 11,
   },
 ];
 
@@ -54,6 +62,7 @@ const ROUTED_EXAMS: Record<string, string> = {
   'cyber-rtl':   '/quiz/gama-cyber',
   'network-ltr': '/quiz/network',
   'child-8200':  '/quiz/child-8200',
+  'tech-fit':    '/quiz/tech-fit',
 };
 
 export default function HomeScreen() {
