@@ -4,8 +4,22 @@ import type { Exam } from '../../types/exam';
 import './HomeScreen.css';
 
 const EXAMPLE_EXAMS = [
-  { key: 'cyber-rtl',   icon: '🔒', name: 'גאמא סייבר',        meta: '11 שאלות · 60 דק · RTL' },
-  { key: 'network-ltr', icon: '🌐', name: 'Network Security', meta: '11Q · 30min · LTR' },
+  {
+    key: 'cyber-rtl',
+    icon: '🔒',
+    name: 'מבחן לדוגמה גאמא סייבר',
+    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ל-8200. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
+    time: '60 דק',
+    questions: 11,
+  },
+  {
+    key: 'network-ltr',
+    icon: '🌐',
+    name: 'אבטחת רשתות',
+    desc: 'מבחן לדוגמה באבטחת רשתות – פרוטוקולים, פגיעויות ושיטות הגנה. מתאים להכנה למיונים טכנולוגיים.',
+    time: '30 דק',
+    questions: 11,
+  },
 ];
 
 function validateExam(data: unknown): Exam {
@@ -74,82 +88,96 @@ export default function HomeScreen() {
   }
 
   return (
-    <div className="home">
-      {/* Logo */}
-      <div className="home-logo">
-        <h1>
-          <span className="logo-cyber">CYBER</span>
-          <span className="logo-bracket">[</span>
-          <span className="logo-exam">EXAM</span>
-          <span className="logo-bracket">]</span>
-        </h1>
-        <p className="home-logo-sub">
-          // secure assessment terminal v1.0
-          <span className="home-logo-cursor" />
-        </p>
+    <div className="home" dir="rtl">
+      {/* Header */}
+      <div className="home-header">
+        <h1 className="home-title">מבחנים לדוגמה למיונים ל-8200</h1>
+        <p className="home-subtitle">מבחן גאמא סייבר | שאלון 8200 לדוגמה | הכנה מקצועית למיונים</p>
       </div>
 
-      {/* Main content */}
-      <div className="home-content">
-        <div>
-          <p className="home-section-label">// PRELOADED EXAMS</p>
-          <div className="home-exam-cards">
-            {EXAMPLE_EXAMS.map((ex) => (
-              <button
-                key={ex.key}
-                className="home-exam-card"
-                onClick={() => loadExample(ex.key)}
-                disabled={loading !== null}
-              >
-                <span className="home-exam-card-icon">{ex.icon}</span>
-                <div>
-                  <div className="home-exam-card-name">
-                    {loading === ex.key ? '...' : ex.name}
-                  </div>
-                  <div className="home-exam-card-meta">{ex.meta}</div>
+      {/* Cards */}
+      <div className="home-cards-section">
+        <p className="home-section-label">// מבחנים זמינים</p>
+        <div className="home-cards-grid">
+          {EXAMPLE_EXAMS.map((ex, i) => (
+            <button
+              key={ex.key}
+              className="home-exam-card"
+              onClick={() => loadExample(ex.key)}
+              disabled={loading !== null}
+            >
+              <div className="home-card-header">
+                <div className="home-card-name">
+                  {loading === ex.key ? '...' : ex.name}
                 </div>
-              </button>
-            ))}
-          </div>
+                <span className="home-card-badge">[{String(i + 1).padStart(2, '0')}]</span>
+              </div>
+              <div className="home-card-body">
+                <p className="home-card-desc">{ex.desc}</p>
+              </div>
+              <div className="home-card-divider" />
+              <div className="home-card-footer">
+                <div className="home-card-meta">
+                  <span className="home-card-meta-item">
+                    <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    {ex.time}
+                  </span>
+                  <span className="home-card-meta-item">
+                    <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    {ex.questions} שאלות
+                  </span>
+                </div>
+                <span className="home-card-start">התחל ←</span>
+              </div>
+            </button>
+          ))}
         </div>
-
-        <div className="home-divider">
-          <div className="home-divider-line" />
-          <span className="home-divider-text">OR</span>
-          <div className="home-divider-line" />
-        </div>
-
-        <div>
-          <p className="home-section-label">// LOAD CUSTOM JSON</p>
-          <div
-            className={`home-file-zone${dragOver ? ' drag-over' : ''}`}
-            onClick={() => fileRef.current?.click()}
-            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-            onDragLeave={() => setDragOver(false)}
-            onDrop={(e) => {
-              e.preventDefault();
-              setDragOver(false);
-              const f = e.dataTransfer.files[0];
-              if (f) handleFile(f);
-            }}
-          >
-            <span style={{ fontSize: '1.4rem', flexShrink: 0 }}>📂</span>
-            <span className="home-file-prompt">
-              &gt; load_exam --file{' '}
-              <span>[drop .json here or click to browse]</span>
-            </span>
-          </div>
-          <input
-            ref={fileRef}
-            type="file"
-            accept=".json"
-            style={{ display: 'none' }}
-            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
-          />
-        </div>
-
-        {error && <div className="home-error">! ERROR: {error}</div>}
       </div>
+
+      {/* Divider */}
+      <div className="home-divider">
+        <div className="home-divider-line" />
+        <span className="home-divider-text">או</span>
+        <div className="home-divider-line" />
+      </div>
+
+      {/* File upload */}
+      <div className="home-cards-section">
+        <p className="home-section-label">// טען מבחן מותאם אישית</p>
+        <div
+          className={`home-file-zone${dragOver ? ' drag-over' : ''}`}
+          onClick={() => fileRef.current?.click()}
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragOver(false);
+            const f = e.dataTransfer.files[0];
+            if (f) handleFile(f);
+          }}
+        >
+          <span style={{ fontSize: '1.4rem', flexShrink: 0 }}>📂</span>
+          <span className="home-file-prompt" dir="ltr">
+            &gt; load_exam --file{' '}
+            <span>[גרור קובץ .json לכאן או לחץ לבחירה]</span>
+          </span>
+        </div>
+        <input
+          ref={fileRef}
+          type="file"
+          accept=".json"
+          style={{ display: 'none' }}
+          onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
+        />
+      </div>
+
+      {error && <div className="home-error">! שגיאה: {error}</div>}
     </div>
   );
 }

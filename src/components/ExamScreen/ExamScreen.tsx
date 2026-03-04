@@ -48,6 +48,7 @@ export default function ExamScreen() {
           onConfirm={() => { setConfirmOpen(false); dispatch({ type: 'FINISH' }); }}
           onCancel={() => setConfirmOpen(false)}
           danger={unanswered > 0}
+          dir={state.exam?.direction}
         />
       )}
     </>

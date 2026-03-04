@@ -9,6 +9,7 @@ interface Props {
   onConfirm: () => void;
   onCancel: () => void;
   danger?: boolean;
+  dir?: string;
 }
 
 export default function Modal({
@@ -20,10 +21,11 @@ export default function Modal({
   onConfirm,
   onCancel,
   danger = false,
+  dir,
 }: Props) {
   return (
     <div className="modal-overlay" onClick={onCancel}>
-      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-box" dir={dir} onClick={(e) => e.stopPropagation()}>
         <div className="modal-icon">{icon}</div>
         <div className="modal-title">{title}</div>
         <p className={`modal-message${danger ? ' danger' : ''}`}>{message}</p>
