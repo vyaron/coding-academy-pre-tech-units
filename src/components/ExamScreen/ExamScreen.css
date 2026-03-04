@@ -238,6 +238,26 @@
   color: var(--cyan);
 }
 
+.q-story-btn {
+  background: transparent;
+  border: 1px solid var(--cyan-dim);
+  border-radius: var(--radius);
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.q-story-btn:hover {
+  background: rgba(0, 255, 255, 0.06);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+}
+
 .q-flag-btn {
   margin-inline-start: auto;
   background: transparent;

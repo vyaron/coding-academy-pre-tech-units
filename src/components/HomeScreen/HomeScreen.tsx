@@ -6,6 +6,14 @@ import './HomeScreen.css';
 
 const EXAMPLE_EXAMS = [
   {
+    key: 'klal-haman',
+    icon: '🏢',
+    name: 'מבחן לדוגמה כלל חמן',
+    desc: 'מבחן חשיבה אנליטית – יחסי גומלין ושיבוצים. נתונים על דיירים בבניין ועליכם להסיק מסקנות לוגיות.',
+    time: '60 דק',
+    questions: 15,
+  },
+  {
     key: 'tzav-rishon',
     icon: '📋',
     name: 'מבחן לדוגמה - צו ראשון',
@@ -81,6 +89,7 @@ const ROUTED_EXAMS: Record<string, string> = {
   'tech-fit':     '/quiz/tech-fit',
   'shalon-300':   '/quiz/shalon-300',
   'tzav-rishon':  '/quiz/tzav-rishon',
+  'klal-haman':   '/quiz/klal-haman',
 };
 
 export default function HomeScreen() {

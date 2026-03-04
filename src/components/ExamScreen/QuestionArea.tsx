@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { useExam } from '../../context/ExamContext';
 import { t } from '../../i18n';
 import SingleChoice from './questions/SingleChoice';
 import CodeQuestion from './questions/CodeQuestion';
 import OrderQuestion from './questions/OrderQuestion';
 import TrueFalseQuestion from './questions/TrueFalseQuestion';
+import StoryModal from '../ui/StoryModal';
 import type { SingleQuestion, CodeQuestion as CQType, OrderQuestion as OQType, TrueFalseQuestion as TFType, PersonalityQuestion as PQType } from '../../types/exam';
 
 export default function QuestionArea() {
   const { state, dispatch, currentQuestion, totalQuestions } = useExam();
+  const [storyOpen, setStoryOpen] = useState(false);
+
   if (!currentQuestion || !state.exam) return null;
 
   const { currentIndex, answers, flags, shuffledOrders, exam } = state;
@@ -36,6 +40,12 @@ export default function QuestionArea() {
         <div className="q-header">
           <span className="q-badge">{ui.questionBadge(qNum, totalQuestions)}</span>
           {q.type !== 'personality' && <span className="q-points-badge">{q.points} pts</span>}
+          {exam.story && (
+            <button className="q-story-btn" onClick={() => setStoryOpen(true)}>
+              <span>📖</span>
+               הוראות וסיפור המבחן
+            </button>
+          )}
           {q.type !== 'personality' && (
             <button
               className={`q-flag-btn${isFlagged ? ' active' : ''}`}
@@ -85,6 +95,10 @@ export default function QuestionArea() {
           />
         )}
       </div>
+
+      {storyOpen && exam.story && (
+        <StoryModal story={exam.story} onClose={() => setStoryOpen(false)} />
+      )}
     </main>
   );
 }

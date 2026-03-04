@@ -38,6 +38,17 @@ export interface PersonalityQuestion extends BaseQuestion {
 
 export type Question = SingleQuestion | CodeQuestion | OrderQuestion | TrueFalseQuestion | PersonalityQuestion;
 
+export interface ExamStorySection {
+  heading?: string;
+  text?: string;
+  items?: string[];
+}
+
+export interface ExamStory {
+  title: string;
+  sections: ExamStorySection[];
+}
+
 export interface Exam {
   title: string;
   subtitle?: string;
@@ -46,6 +57,7 @@ export interface Exam {
   duration: number;       // seconds; 0 = no timer
   passingScore: number;   // 0–100
   isPersonality?: boolean;
+  story?: ExamStory;
   questions: Question[];
 }
 

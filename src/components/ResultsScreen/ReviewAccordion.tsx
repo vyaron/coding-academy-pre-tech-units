@@ -15,7 +15,7 @@ function formatTime(ms: number): string {
   const totalSec = Math.floor(ms / 1000);
   const m = Math.floor(totalSec / 60);
   const s = totalSec % 60;
-  return `${m}m ${String(s).padStart(2, '0')}s`;
+  return `${m}:${String(s).padStart(2, '0')}`;
 }
 
 export default function ReviewAccordion({ perQuestion }: Props) {
@@ -38,9 +38,9 @@ export default function ReviewAccordion({ perQuestion }: Props) {
   return (
     <div className="review-section">
       <div className="review-section-header">
-        <span className="review-section-title">// ANSWER REVIEW</span>
+        <span className="review-section-title">// סקירת תשובות</span>
         <button className="review-toggle-all" onClick={toggleAll}>
-          {allOpen ? 'COLLAPSE ALL' : 'EXPAND ALL'}
+          {allOpen ? 'סגור הכל' : 'פתח הכל'}
         </button>
       </div>
 
@@ -60,9 +60,9 @@ export default function ReviewAccordion({ perQuestion }: Props) {
                 className={`review-item-bar ${status}`}
                 onClick={() => toggle(i)}
               >
-                <span className="review-item-num">Q{i + 1}</span>
+                <span className="review-item-num">ש{i + 1}</span>
                 <span className={`review-item-status ${status}`}>
-                  {status === 'correct' ? '✓ CORRECT' : status === 'wrong' ? '✗ WRONG' : status === 'answered' ? '◉ ANSWERED' : '— SKIPPED'}
+                  {status === 'correct' ? '✓ נכון' : status === 'wrong' ? '✗ שגוי' : status === 'answered' ? '◉ נענה' : '— דולג'}
                 </span>
                 <span className="review-item-text">{q.text}</span>
                 {!isPersonality && <span className="review-item-pts">{earned}/{q.points}pts</span>}
@@ -131,7 +131,7 @@ export default function ReviewAccordion({ perQuestion }: Props) {
       {state.results && (
         <div style={{ padding: '0.75rem 1rem', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-dim)' }}>
-            // EXAM DURATION: {formatTime(state.results.timeTaken)}
+            // זמן המבחן: {formatTime(state.results.timeTaken)}
           </span>
         </div>
       )}
