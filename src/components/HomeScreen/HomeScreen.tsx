@@ -136,7 +136,7 @@ export default function HomeScreen() {
     setLoading(key);
     setError(null);
     try {
-      const res = await fetch(`/exams/${key}.json`);
+      const res = await fetch(`${import.meta.env.BASE_URL}exams/${key}.json`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       await loadExamData(data);
