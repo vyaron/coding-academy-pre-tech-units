@@ -198,26 +198,95 @@
 .lp-stats {
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.03);
+  overflow: hidden;
   border-top: 1px solid var(--lp-border);
   border-bottom: 1px solid var(--lp-border);
   padding: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 4rem;
   flex-wrap: wrap;
+  height: 420px;
 }
-.lp-stat { text-align: center; }
+.lp-stats::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: url('/img/photo1.jpg') center / cover no-repeat;
+  filter: blur(3px);
+  z-index: 0;
+}
+.lp-stats::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+.lp-stat {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
 .lp-stat-v {
   font-family: 'Space Mono', monospace;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--lp-accent);
 }
 .lp-stat-l {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   color: var(--lp-muted);
   margin-top: 0.25rem;
+}
+
+/* ── Team banner ─────────────────────────────────────────────────────────── */
+.lp-team-banner {
+  position: relative;
+  z-index: 1;
+  height: 480px;
+  overflow: hidden;
+}
+.lp-team-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.6) contrast(1.1) saturate(0.4);
+}
+.lp-team-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 217, 255, 0.12) 0%,
+    rgba(5, 7, 15, 0.72) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  padding-top: 220px;
+}
+.lp-team-banner-tag {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--lp-accent);
+  font-family: 'Space Mono', monospace;
+}
+.lp-team-banner-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.35;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
 }
 
 /* ── Sections ────────────────────────────────────────────────────────────── */
@@ -388,6 +457,35 @@
   line-height: 1.7;
 }
 
+/* ── Yaron portrait ──────────────────────────────────────────────────────── */
+.lp-yaron-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -2px;
+}
+.lp-yaron-portrait {
+  position: relative;
+  width: 260px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -10px 60px rgba(0, 217, 255, 0.15);
+}
+.lp-yaron-portrait img {
+  width: 100%;
+  display: block;
+  filter: contrast(1.05) brightness(0.97);
+}
+.lp-yaron-portrait::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(transparent, var(--lp-bg));
+  pointer-events: none;
+}
+
 /* ── CTA Banner ──────────────────────────────────────────────────────────── */
 .lp-cta-banner {
   background: linear-gradient(135deg, rgba(0,217,255,0.08), rgba(124,58,237,0.1));
@@ -423,8 +521,15 @@
   width: auto;
   max-width: 200px;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 1;
   margin-bottom: 1rem;
+  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.7)) brightness(1.15);
+  transition: filter 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.lp-footer-logo:hover {
+  filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.9)) brightness(1.2);
+  transform: scale(1.05);
 }
 
 .lp-footer-grid {
@@ -509,6 +614,9 @@
   .lp-step-num { font-size: 1.5rem; }
   .lp-stats { gap: 2rem; }
   .lp-cta-banner { padding: 2.5rem 1.5rem; }
+  .lp-team-banner { height: 320px; }
+  .lp-team-banner-overlay { padding-top: 2rem; justify-content: center; }
+  .lp-team-banner-title { font-size: 1.3rem; white-space: normal; }
   .lp-footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
