@@ -61,6 +61,15 @@ const EXAMPLE_EXAMS = [
     time: '30 דק',
     questions: 11,
   },
+  {
+    key: 'machshevon-krav',
+    icon: '⚔️',
+    name: 'מחשבון קרב',
+    desc: 'הכנה למבחן מחשבון קרב של ממרם הנעזר בשפת תכנות בסיסית כדי לבדוק חשיבה לוגית',
+    time: '30 דק',
+    questions: 5,
+    href: 'https://vyaron.github.io/ca-entry-test/',
+  },
 ];
 
 function validateExam(data: unknown): Exam {
@@ -146,6 +155,11 @@ export default function HomeScreen() {
 
   return (
     <div className="home" dir="rtl">
+      {/* Back to home */}
+      <button className="home-back-btn" onClick={() => navigate('/')}>
+        ← חזרה לאתר
+      </button>
+
       {/* Header */}
       <div className="home-header">
         <h1 className="home-title">מבחנים לדוגמה למיונים ליחידה טכנולוגית</h1>
@@ -156,44 +170,65 @@ export default function HomeScreen() {
       <div className="home-cards-section">
         <p className="home-section-label">// מבחנים זמינים</p>
         <div className="home-cards-grid">
-          {EXAMPLE_EXAMS.map((ex, i) => (
-            <button
-              key={ex.key}
-              className="home-exam-card"
-              onClick={() => loadExample(ex.key)}
-              disabled={loading !== null}
-            >
-              <div className="home-card-header">
-                <div className="home-card-name">
-                  {loading === ex.key ? '...' : ex.name}
+          {EXAMPLE_EXAMS.map((ex, i) => {
+            const cardInner = (
+              <>
+                <div className="home-card-header">
+                  <div className="home-card-name">
+                    {loading === ex.key ? '...' : ex.name}
+                  </div>
+                  <span className="home-card-badge">[{String(i + 1).padStart(2, '0')}]</span>
                 </div>
-                <span className="home-card-badge">[{String(i + 1).padStart(2, '0')}]</span>
-              </div>
-              <div className="home-card-body">
-                <p className="home-card-desc">{ex.desc}</p>
-              </div>
-              <div className="home-card-divider" />
-              <div className="home-card-footer">
-                <div className="home-card-meta">
-                  <span className="home-card-meta-item">
-                    <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    {ex.time}
-                  </span>
-                  <span className="home-card-meta-item">
-                    <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <polyline points="14 2 14 8 20 8" />
-                    </svg>
-                    {ex.questions} שאלות
-                  </span>
+                <div className="home-card-body">
+                  <p className="home-card-desc">{ex.desc}</p>
                 </div>
-                <span className="home-card-start">התחל ←</span>
-              </div>
-            </button>
-          ))}
+                <div className="home-card-divider" />
+                <div className="home-card-footer">
+                  <div className="home-card-meta">
+                    {ex.time !== '—' && (
+                      <span className="home-card-meta-item">
+                        <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10" />
+                          <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        {ex.time}
+                      </span>
+                    )}
+                    {ex.questions > 0 && (
+                      <span className="home-card-meta-item">
+                        <svg className="home-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                          <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                        {ex.questions} שאלות
+                      </span>
+                    )}
+                  </div>
+                  <span className="home-card-start">התחל ←</span>
+                </div>
+              </>
+            );
+            return 'href' in ex ? (
+              <a
+                key={ex.key}
+                className="home-exam-card"
+                href={ex.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {cardInner}
+              </a>
+            ) : (
+              <button
+                key={ex.key}
+                className="home-exam-card"
+                onClick={() => loadExample(ex.key)}
+                disabled={loading !== null}
+              >
+                {cardInner}
+              </button>
+            );
+          })}
         </div>
       </div>
 

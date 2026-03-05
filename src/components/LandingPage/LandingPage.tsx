@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 
@@ -10,8 +10,8 @@ const ABOUT_CARDS = [
   },
   {
     icon: "🤝",
-    title: "ליווי מלא עד לקליטה",
-    desc: "סדנאות הכנה לראיונות, מחלקת השמה, תוכניות התמחות בחברות הייטק.",
+    title: "אנחנו איתך",
+    desc: "ליווי אישי בהכנה לראיונות ובכל שלב של הקבלה — לא נשארים לבד.",
   },
   {
     icon: "📹",
@@ -144,24 +144,6 @@ const WORKSHOP_PILLS = [
   "Backend Mastering",
 ];
 
-const WORKSHOP_CARDS = [
-  {
-    title: "🎯 חניכה בתהליך המיון",
-    desc: "ליווי אישי בהכנה לראיונות ובכל שלב של הקבלה — לא נשארים לבד.",
-  },
-  {
-    title: "👥 קהילת בוגרים פעילה",
-    desc: "קהילה מקצועית שיתופית לשאלות, ייעוץ, הזדמנויות ותמיכה מקצועית.",
-  },
-  {
-    title: "🎤 הרצאות ונטוורקינג",
-    desc: "אירועים מקצועיים, סדנאות מעשיות ומפגשי נטוורקינג עם מומחי תעשייה.",
-  },
-  {
-    title: "💼 הצעות עבודה לאורך זמן",
-    desc: "שיתופי פעולה עם חברות הייטק — הצעות רלוונטיות גם שנים לאחר הסיום.",
-  },
-];
 
 const FAQS = [
   {
@@ -189,6 +171,20 @@ const FAQS = [
 export default function LandingPage() {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const lightRef = useRef<HTMLDivElement>(null);
+
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!heroRef.current || !lightRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    lightRef.current.style.left = `${e.clientX - rect.left}px`;
+    lightRef.current.style.top = `${e.clientY - rect.top}px`;
+    lightRef.current.style.opacity = "1";
+  };
+
+  const handleHeroMouseLeave = () => {
+    if (lightRef.current) lightRef.current.style.opacity = "0";
+  };
 
   return (
     <div className="lp" dir="rtl">
@@ -217,7 +213,13 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <div className="lp-hero">
+      <div
+        className="lp-hero"
+        ref={heroRef}
+        onMouseMove={handleHeroMouseMove}
+        onMouseLeave={handleHeroMouseLeave}
+      >
+        <div ref={lightRef} className="lp-hero-cursor-light" />
         <div className="lp-hero-glow" />
         <div className="lp-hero-glow2" />
         <div className="lp-hero-inner">
@@ -236,13 +238,13 @@ export default function LandingPage() {
           </p>
           <div className="lp-hero-cta">
             <a href="#contact" className="lp-btn-primary">
-              🚀 קבע פגישת ייעוץ
+               קבע פגישת ייעוץ
             </a>
             <button
               className="lp-btn-outline"
               onClick={() => navigate("/quiz")}
             >
-              🎯 מבחני הדמייה
+              🧪 מבחני הדמייה
             </button>
           </div>
         </div>
@@ -340,14 +342,6 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <div className="lp-cards" style={{ marginTop: "3rem" }}>
-            {WORKSHOP_CARDS.map((c) => (
-              <div className="lp-card" key={c.title}>
-                <h3 style={{ marginBottom: "0.5rem" }}>{c.title}</h3>
-                <p>{c.desc}</p>
-              </div>
-            ))}
-          </div>
         </section>
       </div>
 
@@ -389,6 +383,19 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── COMMUNITY BANNER ── */}
+      <div className="lp-team-banner lp-community-banner">
+        <img
+          src={`${import.meta.env.BASE_URL}img/photo2.jpg`}
+          alt="קהילת בוגרים"
+          className="lp-team-banner-img"
+        />
+        <div className="lp-team-banner-overlay">
+          <div className="lp-team-banner-tag">// הקהילה שלנו</div>
+          <h2 className="lp-team-banner-title">הצטרף לקהילת בוגרים מקצועית שתתמוך בך גם אחרי הקורס</h2>
+        </div>
+      </div>
+
       {/* ── CTA ── */}
       <section
         className="lp-section"
@@ -407,7 +414,7 @@ export default function LandingPage() {
           <h2>🤝 פגישת ייעוץ עם מדריכ/ה מהקורס</h2>
           <p>
             מענה לכל שאלה ע"י יועצי לימוד מקצועיים, בחירת המסלול המתאים לך
-            והתנסות בקוד ראשונית.
+            והתנסות ראשונית בקוד.
           </p>
           <a
             href="https://www.coding-academy.org/#contact"

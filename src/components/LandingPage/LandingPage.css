@@ -152,6 +152,19 @@
 }
 .lp-hero-inner { position: relative; z-index: 1; }
 
+.lp-hero-cursor-light {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.13) 0%, rgba(0, 217, 255, 0.04) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: left 0.12s ease-out, top 0.12s ease-out, opacity 0.4s;
+  z-index: 0;
+  opacity: 0;
+}
+
 .lp-badge {
   display: inline-flex;
   align-items: center;
@@ -287,6 +300,25 @@
   line-height: 1.35;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9);
   white-space: nowrap;
+}
+
+/* Community banner overrides */
+.lp-community-banner .lp-team-banner-img {
+  filter: brightness(0.5) contrast(1.15) saturate(0.45) hue-rotate(200deg) blur(4px);
+  object-position: center 30%;
+}
+.lp-community-banner .lp-team-banner-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.18) 0%,
+    rgba(5, 7, 15, 0.75) 100%
+  );
+  padding-top: 2rem;
+}
+.lp-community-banner .lp-team-banner-title {
+  white-space: normal;
+  max-width: 680px;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
 }
 
 /* ── Sections ────────────────────────────────────────────────────────────── */
@@ -525,7 +557,6 @@
   margin-bottom: 1rem;
   filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.7)) brightness(1.15);
   transition: filter 0.3s, transform 0.3s;
-  cursor: pointer;
 }
 .lp-footer-logo:hover {
   filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.9)) brightness(1.2);
