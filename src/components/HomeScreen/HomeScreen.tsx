@@ -70,6 +70,15 @@ const EXAMPLE_EXAMS = [
     questions: 5,
     href: 'https://vyaron.github.io/ca-entry-test/',
   },
+  {
+    key: 'bot-bot',
+    icon: '🤖',
+    name: 'בוט-בוט',
+    desc: 'משחק המאמן את החשיבה אלגוריתמית באמצעות רובוט חביב וכלי התכנות הבסיסיים',
+    time: '90 דק',
+    questions: 15,
+    href: 'https://vyaron.github.io/CodingAcademy-BotGame/',
+  },
 ];
 
 function validateExam(data: unknown): Exam {
@@ -233,14 +242,14 @@ export default function HomeScreen() {
       </div>
 
       {/* Divider */}
-      <div className="home-divider">
+      <div hidden className="home-divider">
         <div className="home-divider-line" />
         <span className="home-divider-text">או</span>
         <div className="home-divider-line" />
       </div>
 
       {/* File upload */}
-      <div className="home-cards-section">
+      <div hidden className="home-cards-section">
         <p className="home-section-label">// טען מבחן מותאם אישית</p>
         <div
           className={`home-file-zone${dragOver ? ' drag-over' : ''}`}
