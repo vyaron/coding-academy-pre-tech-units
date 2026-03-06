@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.css";
 
 const ABOUT_CARDS = [
@@ -206,6 +206,9 @@ export default function LandingPage() {
           <li>
             <a href="#faq">שאלות</a>
           </li>
+          <li>
+            <Link to="/quiz" className="lp-nav-quiz-link">🧪 מבחני הדמיה</Link>
+          </li>
         </ul>
         <a href="#contact" className="lp-btn-primary lp-btn-sm">
           פגישת ייעוץ
@@ -400,7 +403,6 @@ export default function LandingPage() {
       <section
         className="lp-section"
         id="contact"
-        style={{ paddingTop: "2rem" }}
       >
         <div className="lp-yaron-wrap">
           <div className="lp-yaron-portrait">

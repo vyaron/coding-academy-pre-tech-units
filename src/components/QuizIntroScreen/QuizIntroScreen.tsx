@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
-import { useExam } from '../../context/ExamContext';
+import { useExam, loadProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
 import './QuizIntroScreen.css';
 
@@ -227,6 +227,7 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
   const [digits, setDigits] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const savedProgress = loadProgress(quizId);
   const inputRefs = [
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
@@ -257,6 +258,25 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
     }
   }
 
+  async function fetchAndStart(resume: boolean) {
+    setLoading(true);
+    try {
+      const res = await fetch(`${import.meta.env.BASE_URL}exams/${config.fileKey}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const exam = validateExam(data);
+      if (resume && savedProgress) {
+        dispatch({ type: 'RESUME_EXAM', exam, examKey: quizId, progress: savedProgress });
+      } else {
+        dispatch({ type: 'LOAD_EXAM', exam, examKey: quizId });
+      }
+      navigate(`/quiz/${quizId}/test`);
+    } catch {
+      setError(true);
+      setLoading(false);
+    }
+  }
+
   async function validate(code: string) {
     if (code !== config.password) {
       setError(true);
@@ -264,18 +284,8 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
       setTimeout(() => inputRefs[0].current?.focus(), 50);
       return;
     }
-    setLoading(true);
-    try {
-      const res = await fetch(`${import.meta.env.BASE_URL}exams/${config.fileKey}.json`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      const exam = validateExam(data);
-      dispatch({ type: 'LOAD_EXAM', exam });
-      navigate(`/quiz/${quizId}/test`);
-    } catch {
-      setError(true);
-      setLoading(false);
-    }
+    setModalOpen(false);
+    await fetchAndStart(false);
   }
 
   return (
@@ -317,9 +327,16 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
         </ul>
       </div>
 
-      <button className="intro-cta" onClick={openModal}>
-        התחל את המבחן 
-      </button>
+      <div className="intro-cta-row">
+        {savedProgress && (
+          <button className="intro-cta intro-cta-resume" onClick={() => fetchAndStart(true)} disabled={loading}>
+            {loading ? 'טוען...' : '▶ המשך מבחן'}
+          </button>
+        )}
+        <button className="intro-cta intro-cta-new" onClick={openModal} disabled={loading}>
+          {savedProgress ? 'התחל מחדש' : 'התחל את המבחן'}
+        </button>
+      </div>
 
       {modalOpen && (
         <div className="pin-overlay" onClick={() => !loading && setModalOpen(false)}>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useExam } from '../../context/ExamContext';
+import { useExam, clearAllProgress, hasAnyProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
 import './HomeScreen.css';
 
@@ -117,6 +117,12 @@ export default function HomeScreen() {
   const [dragOver, setDragOver] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<string | null>(null);
+  const [hasProgress, setHasProgress] = useState(() => hasAnyProgress());
+
+  function handleClearProgress() {
+    clearAllProgress();
+    setHasProgress(false);
+  }
 
   async function loadExamData(data: unknown) {
     try {
@@ -173,6 +179,11 @@ export default function HomeScreen() {
       <div className="home-header">
         <h1 className="home-title">מבחנים לדוגמה למיונים ליחידה טכנולוגית</h1>
         <h2 className="home-subtitle">מבחן גאמא סייבר | מבחני 8200 / ממרם | הכנה טכנולוגית למיונים</h2>
+        {hasProgress && (
+          <button className="home-clear-btn" onClick={handleClearProgress}>
+            🗑 נקה התקדמות שמורה
+          </button>
+        )}
       </div>
 
       {/* Cards */}
@@ -242,7 +253,7 @@ export default function HomeScreen() {
       </div>
 
       {/* Divider */}
-      <div hidden className="home-divider">
+      <div className="home-divider" style={{ display: 'none' }}>
         <div className="home-divider-line" />
         <span className="home-divider-text">או</span>
         <div className="home-divider-line" />

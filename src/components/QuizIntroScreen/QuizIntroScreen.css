@@ -130,7 +130,14 @@
   line-height: 1.55;
 }
 
-/* CTA button */
+/* CTA buttons */
+.intro-cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .intro-cta {
   background: var(--cyan);
   color: #06080f;
@@ -152,6 +159,21 @@
 
 .intro-cta:active {
   transform: translateY(0);
+}
+
+.intro-cta-resume {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+}
+
+.intro-cta-resume:hover {
+  background: rgba(0, 217, 255, 0.08);
+}
+
+.intro-cta-new {
+  background: var(--cyan);
+  color: #06080f;
 }
 
 /* ── PIN Modal ───────────────────────────────────────────────────────────── */

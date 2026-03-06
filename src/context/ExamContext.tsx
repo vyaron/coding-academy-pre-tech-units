@@ -1,6 +1,58 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { Exam, Answers, Results, Question, OrderQuestion, TrueFalseQuestion } from '../types/exam';
+
+// ── Persistence ───────────────────────────────────────────────────────────────
+
+const STORAGE_PREFIX = 'exam_progress_';
+
+export interface SavedProgress {
+  answers: Answers;
+  currentIndex: number;
+  flags: number[];
+  shuffledOrders: Record<number, number[]>;
+  timeLeft: number;
+  startTime: number | null;
+}
+
+export function loadProgress(examKey: string): SavedProgress | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_PREFIX + examKey);
+    return raw ? (JSON.parse(raw) as SavedProgress) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveProgress(examKey: string, state: State) {
+  try {
+    const data: SavedProgress = {
+      answers: state.answers,
+      currentIndex: state.currentIndex,
+      flags: [...state.flags],
+      shuffledOrders: state.shuffledOrders,
+      timeLeft: state.timeLeft,
+      startTime: state.startTime,
+    };
+    localStorage.setItem(STORAGE_PREFIX + examKey, JSON.stringify(data));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function clearProgress(examKey: string) {
+  localStorage.removeItem(STORAGE_PREFIX + examKey);
+}
+
+export function clearAllProgress() {
+  Object.keys(localStorage)
+    .filter((k) => k.startsWith(STORAGE_PREFIX))
+    .forEach((k) => localStorage.removeItem(k));
+}
+
+export function hasAnyProgress(): boolean {
+  return Object.keys(localStorage).some((k) => k.startsWith(STORAGE_PREFIX));
+}
 
 // ── State ────────────────────────────────────────────────────────────────────
 
@@ -9,6 +61,7 @@ type Screen = 'home' | 'exam' | 'results';
 interface State {
   screen: Screen;
   exam: Exam | null;
+  examKey: string | null;
   currentIndex: number;
   answers: Answers;
   flags: Set<number>;
@@ -22,6 +75,7 @@ interface State {
 const initialState: State = {
   screen: 'home',
   exam: null,
+  examKey: null,
   currentIndex: 0,
   answers: {},
   flags: new Set(),
@@ -35,7 +89,8 @@ const initialState: State = {
 // ── Actions ──────────────────────────────────────────────────────────────────
 
 type Action =
-  | { type: 'LOAD_EXAM'; exam: Exam }
+  | { type: 'LOAD_EXAM'; exam: Exam; examKey?: string }
+  | { type: 'RESUME_EXAM'; exam: Exam; examKey: string; progress: SavedProgress }
   | { type: 'SET_ANSWER'; qId: number; answer: number | number[] }
   | { type: 'SET_ORDER'; qId: number; order: number[] }
   | { type: 'TOGGLE_FLAG'; qId: number }
@@ -115,7 +170,7 @@ function computeResults(exam: Exam, answers: Answers, shuffledOrders: Record<num
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'LOAD_EXAM': {
-      const { exam } = action;
+      const { exam, examKey = null } = action;
       const shuffledOrders: Record<number, number[]> = {};
       exam.questions.forEach((q) => {
         if (q.type === 'order') {
@@ -127,11 +182,28 @@ function reducer(state: State, action: Action): State {
         ...initialState,
         screen: 'exam',
         exam,
+        examKey,
         answers: {},
         flags: new Set(),
         shuffledOrders,
         timeLeft: exam.duration,
         startTime: Date.now(),
+      };
+    }
+
+    case 'RESUME_EXAM': {
+      const { exam, examKey, progress } = action;
+      return {
+        ...initialState,
+        screen: 'exam',
+        exam,
+        examKey,
+        answers: progress.answers,
+        currentIndex: progress.currentIndex,
+        flags: new Set(progress.flags),
+        shuffledOrders: progress.shuffledOrders,
+        timeLeft: progress.timeLeft,
+        startTime: progress.startTime,
       };
     }
 
@@ -166,6 +238,7 @@ function reducer(state: State, action: Action): State {
 
     case 'FINISH': {
       if (!state.exam) return state;
+      if (state.examKey) clearProgress(state.examKey);
       const endTime = Date.now();
       const results = computeResults(state.exam, state.answers, state.shuffledOrders);
       results.timeTaken = endTime - (state.startTime ?? endTime);
@@ -173,6 +246,7 @@ function reducer(state: State, action: Action): State {
     }
 
     case 'RESTART':
+      if (state.examKey) clearProgress(state.examKey);
       return { ...initialState };
 
     default:
@@ -194,6 +268,12 @@ const ExamContext = createContext<ExamContextValue | null>(null);
 
 export function ExamProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (state.screen === 'exam' && state.examKey) {
+      saveProgress(state.examKey, state);
+    }
+  }, [state]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const currentQuestion = state.exam?.questions[state.currentIndex] ?? null;
   const answeredCount = Object.keys(state.answers).length;

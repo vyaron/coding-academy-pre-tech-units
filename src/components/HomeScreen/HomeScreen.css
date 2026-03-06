@@ -29,6 +29,24 @@
   border-color: var(--cyan);
 }
 
+.home-clear-btn {
+  margin-top: 0.75rem;
+  background: none;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  color: rgba(255, 120, 120, 0.7);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.home-clear-btn:hover {
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+  background: rgba(255, 80, 80, 0.07);
+}
+
 /* Header */
 .home-header {
   text-align: center;
