@@ -207,6 +207,9 @@ export default function LandingPage() {
             <a href="#faq">שאלות</a>
           </li>
           <li>
+            <Link to="/articles">מאמרים</Link>
+          </li>
+          <li>
             <Link to="/quiz" className="lp-nav-quiz-link">🧪 מבחני הדמיה</Link>
           </li>
         </ul>

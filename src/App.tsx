@@ -6,6 +6,8 @@ import HomeScreen from './components/HomeScreen/HomeScreen';
 import QuizIntroScreen from './components/QuizIntroScreen/QuizIntroScreen';
 import ExamScreen from './components/ExamScreen/ExamScreen';
 import ResultsScreen from './components/ResultsScreen/ResultsScreen';
+import BlogList from './components/Blog/BlogList';
+import BlogPost from './components/Blog/BlogPost';
 import './components/ExamScreen/questions/CodeQuestion.css';
 
 function ExamTestRoute() {
@@ -17,7 +19,7 @@ function ExamTestRoute() {
 
 function AppInner() {
   const { pathname } = useLocation();
-  const showCanvas = pathname !== '/';
+  const showCanvas = pathname !== '/' && !pathname.startsWith('/articles');
 
   return (
     <div style={{ minHeight: '100%', position: 'relative' }}>
@@ -27,6 +29,8 @@ function AppInner() {
         <Route path="/quiz" element={<HomeScreen />} />
         <Route path="/quiz/:quizId" element={<QuizIntroScreen />} />
         <Route path="/quiz/:quizId/test" element={<ExamTestRoute />} />
+        <Route path="/articles" element={<BlogList />} />
+        <Route path="/articles/:slug" element={<BlogPost />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

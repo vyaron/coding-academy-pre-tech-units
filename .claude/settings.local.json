@@ -14,7 +14,8 @@
       "Bash(pnpm add react-router-dom)",
       "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(q[''id''], q[''type''], q[''text''][:80]\\) for q in d[''questions'']]\")",
       "Bash(python3 -c \":*)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "WebFetch(domain:www.machon-noam.co.il)"
     ]
   }
 }
