@@ -11,7 +11,6 @@ export default function ResultsScreen() {
   if (!results || !exam) return null;
 
   const { score, passed, correct, wrong, unanswered, earned, total } = results;
-  const answeredCount = total - unanswered;
 
   if (exam.isPersonality) {
     const tier = score >= 70 ? 'high' : score >= 40 ? 'mid' : 'low';
