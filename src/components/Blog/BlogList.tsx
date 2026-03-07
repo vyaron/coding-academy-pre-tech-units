@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ARTICLES from '../../data/articles';
+import BackgroundCanvas from '../BackgroundCanvas';
 import './Blog.css';
 
 function formatDate(iso: string) {
@@ -11,6 +12,7 @@ export default function BlogList() {
 
   return (
     <div className="blog-page" dir="rtl">
+      <BackgroundCanvas />
       <button className="blog-back" onClick={() => navigate('/')}>← חזרה לאתר</button>
 
       <div className="blog-header">
@@ -20,10 +22,11 @@ export default function BlogList() {
       </div>
 
       <div className="blog-grid">
-        {ARTICLES.map((article) => (
+        {ARTICLES.map((article, i) => (
           <article
             key={article.slug}
             className="blog-card"
+            style={{ '--i': i } as React.CSSProperties}
             onClick={() => navigate(`/articles/${article.slug}`)}
           >
             <div className="blog-card-tags">

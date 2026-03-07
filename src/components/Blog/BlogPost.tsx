@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import ARTICLES from '../../data/articles';
+import BackgroundCanvas from '../BackgroundCanvas';
 import './Blog.css';
 
 function formatDate(iso: string) {
@@ -24,6 +25,7 @@ export default function BlogPost() {
 
   return (
     <div className="blog-page" dir="rtl">
+      <BackgroundCanvas />
       {modalImg && (
         <div className="blog-modal-overlay" onClick={() => setModalImg(null)}>
           <img src={modalImg} alt="" className="blog-modal-img" onClick={(e) => e.stopPropagation()} />
