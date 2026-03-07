@@ -1,138 +1,495 @@
 {
   "title": "מבחן גאמא סייבר",
-  "subtitle": "מבחן לדוגמה - 11 שאלות",
   "direction": "rtl",
   "lang": "he",
-  "duration": 3600,
-  "passingScore": 90,
+  "duration": 2400,
+  "passingScore": 70,
   "questions": [
     {
       "id": 1,
-      "type": "single",
-      "text": "מהו פרוטוקול ההצפנה הנפוץ ביותר לאבטחת תעבורת אינטרנט?",
-      "points": 3,
-      "options": ["SSL 2.0", "TLS 1.3", "SSH", "FTP"],
-      "correct": 1
+      "type": "truefalse",
+      "text": "כל ביט (bit) יכול לייצג רק שני ערכים: 0 או 1.",
+      "points": 2,
+      "correct": true
     },
     {
       "id": 2,
       "type": "single",
-      "text": "איזה מן הבאים מתאר את עיקרון ה-CIA Triad באבטחת מידע?",
+      "text": "מה תפקיד המעבד (CPU)?",
       "points": 2,
       "options": [
-        "Confidentiality, Integrity, Availability",
-        "Cryptography, Identification, Authentication",
-        "Control, Inspection, Analysis",
-        "Certification, Infrastructure, Authorization"
+        "מציג תמונות ווידאו על המסך",
+        "מבצע חישובים ומעבד פקודות",
+        "מאחסן קבצים לטווח ארוך",
+        "מנהל חיבורים לאינטרנט"
       ],
-      "correct": 0
+      "correct": 1
     },
     {
       "id": 3,
       "type": "single",
-      "text": "מהו מתקפת Man-in-the-Middle (MITM)?",
-      "points": 3,
+      "text": "אתר שכתובתו מתחילה ב-HTTPS מבטיח:",
+      "points": 2,
       "options": [
-        "מתקפה שמשביתה שרתים על ידי שיטפון בקשות",
-        "מתקפה שמאפשרת לתוקף לקרוא ולשנות תקשורת בין שני צדדים",
-        "ניצול חולשה בזיכרון כדי להריץ קוד זדוני",
-        "גניבת עוגיות הפעלה של משתמש"
+        "שהאתר אמין לחלוטין ואינו מרמה",
+        "שהתקשורת מוצפנת בין הדפדפן לשרת",
+        "מהירות גלישה גבוהה יותר",
+        "שאין צורך בסיסמה לכניסה"
       ],
       "correct": 1
     },
     {
       "id": 4,
       "type": "single",
-      "text": "באיזה שכבת OSI פועל פרוטוקול IP?",
+      "text": "כמה שילובים אפשריים יש לסיסמה בת 4 ספרות (0–9)?",
       "points": 2,
       "options": [
-        "שכבה 2 – Data Link",
-        "שכבה 3 – Network",
-        "שכבה 4 – Transport",
-        "שכבה 7 – Application"
+        "40",
+        "1,000",
+        "10,000",
+        "100,000"
       ],
-      "correct": 1
+      "correct": 2
     },
     {
       "id": 5,
-      "type": "code",
-      "text": "בהינתן הקוד הבא, איזו חולשת אבטחה קיימת?",
-      "code": "app.get('/user', (req, res) => {\n  const userId = req.query.id;\n  const query = `SELECT * FROM users WHERE id = ${userId}`;\n  db.query(query, (err, result) => {\n    res.json(result);\n  });\n});",
-      "language": "javascript",
-      "points": 4,
-      "options": ["Buffer Overflow", "SQL Injection", "XSS", "CSRF"],
-      "correct": 1
+      "type": "truefalse",
+      "text": "קובץ שנמחק לסל המחזור ניתן לשחזור לפני ריקון הסל.",
+      "points": 2,
+      "correct": true
     },
     {
       "id": 6,
-      "type": "code",
-      "text": "מה הבעיה באבטחה בקוד הפייתון הבא?",
-      "code": "import os\n\ndef run_command(user_input):\n    command = f\"ls {user_input}\"\n    output = os.system(command)\n    return output\n\n# Usage: run_command(request.args.get('path'))",
-      "language": "python",
-      "points": 4,
+      "type": "single",
+      "text": "מה זה Malware?",
+      "points": 2,
       "options": [
-        "SQL Injection",
-        "Path Traversal בלבד",
-        "Command Injection",
-        "Insecure Deserialization"
+        "תוכנה לניהול מיילים",
+        "מונח כולל לתוכנות זדוניות",
+        "פרוטוקול לחיבור לרשת",
+        "מנגנון הצפנה"
       ],
-      "correct": 2
+      "correct": 1
     },
     {
       "id": 7,
-      "type": "code",
-      "text": "מהי הבעיה בקוד JavaScript הבא?",
-      "code": "app.get('/search', (req, res) => {\n  const term = req.query.q;\n  res.send(`\n    <h1>Results for: ${term}</h1>\n    <p>No results found</p>\n  `);\n});",
-      "language": "javascript",
-      "points": 3,
-      "options": ["SQL Injection", "CSRF", "XSS – Reflected", "Buffer Overflow"],
-      "correct": 2
+      "type": "single",
+      "text": "מה ההבדל בין RAM ל-ROM?",
+      "points": 2,
+      "options": [
+        "RAM מהיר יותר, ROM מאובטח יותר",
+        "RAM זיכרון זמני (נמחק בכיבוי), ROM קבוע",
+        "RAM לקבצים, ROM לאינטרנט",
+        "אין הבדל מעשי בינהם"
+      ],
+      "correct": 1
     },
     {
       "id": 8,
-      "type": "code",
-      "text": "מהי הפגיעות שקיימת בקוד הבא?",
-      "code": "# Python Flask route\n@app.route('/login', methods=['POST'])\ndef login():\n    username = request.form['username']\n    password = request.form['password']\n    query = \"SELECT * FROM users WHERE username='\" + username + \"' AND password='\" + password + \"'\"\n    user = db.execute(query).fetchone()\n    if user:\n        session['user'] = username\n        return redirect('/dashboard')\n    return 'Invalid credentials', 401",
-      "language": "python",
-      "points": 4,
+      "type": "single",
+      "text": "מה תפקיד ה-DNS?",
+      "points": 2,
       "options": [
-        "Brute Force בלבד",
-        "SQL Injection",
-        "CSRF",
-        "Insecure Direct Object Reference"
+        "מאיץ את חיבור האינטרנט",
+        "מתרגם שמות דומיין (כמו google.com) לכתובות IP",
+        "מצפין תעבורת רשת",
+        "מנהל זיכרון זמני"
       ],
       "correct": 1
     },
     {
       "id": 9,
-      "type": "order",
-      "text": "סדר את שלבי לחיצת יד של TCP (3-Way Handshake) בסדר הנכון:",
-      "points": 4,
-      "items": [
-        "הלקוח שולח SYN לשרת",
-        "השרת משיב עם SYN-ACK",
-        "הלקוח שולח ACK לשרת",
-        "החיבור נוצר בהצלחה"
-      ]
+      "type": "truefalse",
+      "text": "כל מחשב המחובר לאינטרנט חייב לקבל כתובת IP.",
+      "points": 2,
+      "correct": true
     },
     {
       "id": 10,
-      "type": "order",
-      "text": "סדר את שלבי ביצוע ההוראה במעבד (Instruction Cycle) בסדר הנכון:",
-      "points": 4,
-      "items": [
-        "Fetch – קריאת ההוראה מהזיכרון",
-        "Decode – פענוח ההוראה",
-        "Execute – ביצוע ההוראה",
-        "Store – שמירת התוצאה"
-      ]
+      "type": "single",
+      "text": "מה הכי חשוב בבחירת סיסמה חזקה?",
+      "points": 2,
+      "options": [
+        "שתהיה קצרה ונוחה לזכירה",
+        "שתהיה שם של בן משפחה",
+        "שתכלול אותיות, ספרות וסימנים מיוחדים",
+        "שתהיה רק מספרים"
+      ],
+      "correct": 2
     },
     {
       "id": 11,
-      "type": "truefalse",
-      "text": "פרוטוקול HTTPS משתמש בהצפנה סימטרית בלבד להגנה על התעבורה.",
+      "type": "single",
+      "text": "בחדר ישבו 8 אנשים. כל אחד לוחץ יד עם כל האחרים פעם אחת בדיוק. כמה לחיצות ידיים יהיו בסך הכל?",
       "points": 2,
+      "options": [
+        "8",
+        "16",
+        "28",
+        "64"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "text": "איזה מהבאים הוא פרוטוקול תקשורת רשת?",
+      "points": 2,
+      "options": [
+        "HTML",
+        "Python",
+        "TCP/IP",
+        "USB"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 13,
+      "type": "truefalse",
+      "text": "בשפת Python, הערך 0 מוערך כ-False בתנאים בוליאניים.",
+      "points": 2,
+      "correct": true
+    },
+    {
+      "id": 14,
+      "type": "single",
+      "text": "מה ה-Port הסטנדרטי של HTTPS?",
+      "points": 2,
+      "options": [
+        "80",
+        "443",
+        "22",
+        "8080"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 15,
+      "type": "single",
+      "text": "מהו Stack Overflow?",
+      "points": 2,
+      "options": [
+        "אתר מפורסם לשאלות תכנות",
+        "שגיאה שמתרחשת כאשר ה-Call Stack מתמלא, לרוב בגלל רקורסיה אינסופית",
+        "תקיפה שמציפה שרת בבקשות",
+        "שיטת דחיסת נתונים"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 16,
+      "type": "single",
+      "text": "מה ההבדל בין GET ל-POST ב-HTTP?",
+      "points": 2,
+      "options": [
+        "GET מהיר יותר מ-POST",
+        "GET שולח נתונים ב-URL, POST שולח בגוף הבקשה",
+        "POST תמיד בטוח יותר מ-GET",
+        "GET לשליחה, POST לקבלת מידע"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 17,
+      "type": "single",
+      "text": "איזה מהבאים אינה כתובת IP תקינה?",
+      "points": 2,
+      "options": [
+        "192.168.1.1",
+        "10.0.0.1",
+        "255.255.255.0",
+        "300.168.1.1"
+      ],
+      "correct": 3
+    },
+    {
+      "id": 18,
+      "type": "truefalse",
+      "text": "לולאת while בודקת את התנאי לפני הכניסה, ולכן אם התנאי שגוי מהתחלה – הלולאה לא תרוץ כלל.",
+      "points": 2,
+      "correct": true
+    },
+    {
+      "id": 19,
+      "type": "single",
+      "text": "לאיזה מטרה משמש פרוטוקול SSH?",
+      "points": 2,
+      "options": [
+        "שליחת מיילים",
+        "גלישה באינטרנט",
+        "גישה מאובטחת למחשב מרוחק",
+        "אחסון קבצים בענן"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 20,
+      "type": "single",
+      "text": "מה זה Phishing?",
+      "points": 2,
+      "options": [
+        "שיטת הצפנה לאבטחת מידע",
+        "ניסיון להונות משתמשים ולגרום להם למסור מידע רגיש",
+        "פרוטוקול לחיבור לשרתי FTP",
+        "סוג של חומת אש"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 21,
+      "type": "code",
+      "text": "מה יודפס?",
+      "points": 3,
+      "code": "nums = [10, 20, 30, 40, 50]\nprint(nums[1] + nums[-2])",
+      "language": "python",
+      "options": [
+        "30",
+        "60",
+        "70",
+        "50"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 22,
+      "type": "code",
+      "text": "מה יודפס?",
+      "points": 3,
+      "code": "def double(x):\n    return x * 2\n\nresult = double(double(4))\nprint(result)",
+      "language": "python",
+      "options": [
+        "8",
+        "12",
+        "16",
+        "4"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 23,
+      "type": "single",
+      "text": "מה זה CSRF (Cross-Site Request Forgery)?",
+      "points": 3,
+      "options": [
+        "התקפה שמזייפת זהות אתר אחר",
+        "תקיפה שגורמת לדפדפן של הקורבן לשלוח בקשה לא מורשית בשמו",
+        "הצפנת בקשות HTTP",
+        "שיטה לעקיפת Firewall"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 24,
+      "type": "single",
+      "text": "מה תפקיד ה-Subnet Mask?",
+      "points": 3,
+      "options": [
+        "הצפנת תעבורת רשת",
+        "חלוקת כתובת IP לחלק הרשת ולחלק המארח",
+        "ניהול בקשות DNS",
+        "קביעת עדיפויות לפקטות"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 25,
+      "type": "truefalse",
+      "text": "פרוטוקול ARP ממיר כתובות IP לכתובות MAC.",
+      "points": 3,
+      "correct": true
+    },
+    {
+      "id": 26,
+      "type": "single",
+      "text": "מה ההבדל בין IDS ל-IPS?",
+      "points": 3,
+      "options": [
+        "IDS מגביל תעבורה, IPS רק מזהה",
+        "IDS מזהה ומדווח על אירועים, IPS מזהה וגם מסוגל לחסום",
+        "IDS לרשתות, IPS למחשבים בלבד",
+        "אין הבדל – שניהם זהים לחלוטין"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 27,
+      "type": "code",
+      "text": "מה החולשה האבטחתית בקוד הבא?",
+      "points": 3,
+      "code": "username = request.args.get('user')\nquery = \"SELECT * FROM users WHERE name = '\" + username + \"'\"\ncursor.execute(query)",
+      "language": "python",
+      "options": [
+        "Buffer Overflow",
+        "SQL Injection",
+        "XSS (Cross-Site Scripting)",
+        "Path Traversal"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 28,
+      "type": "single",
+      "text": "איזו מהשיטות הבאות היא הצפנה אסימטרית (Asymmetric)?",
+      "points": 3,
+      "options": [
+        "AES",
+        "DES",
+        "RSA",
+        "ChaCha20"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 29,
+      "type": "truefalse",
+      "text": "MD5 נחשב כיום לאלגוריתם hash בטוח לאחסון סיסמאות.",
+      "points": 3,
       "correct": false
+    },
+    {
+      "id": 30,
+      "type": "single",
+      "text": "מה ה-Time Complexity של Binary Search?",
+      "points": 3,
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n²)",
+        "O(1)"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 31,
+      "type": "code",
+      "text": "מה יודפס? (סדרת פיבונאצ'י מתחילה: 0, 1, 1, 2, 3, 5, 8, 13, ...)",
+      "points": 3,
+      "code": "def fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(7))",
+      "language": "python",
+      "options": [
+        "8",
+        "11",
+        "13",
+        "21"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 32,
+      "type": "single",
+      "text": "מה מטרת ה-Nonce בפרוטוקולי הצפנה?",
+      "points": 3,
+      "options": [
+        "אחסון מפתחות פרטיים",
+        "מניעת התקפות Replay על ידי שימוש בערך ייחודי לכל בקשה",
+        "דחיסת נתונים לפני שליחה",
+        "אימות זהות שרת"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 33,
+      "type": "code",
+      "text": "מה החולשה האבטחתית בקוד הבא?",
+      "points": 3,
+      "code": "app.get('/file', (req, res) => {\n  const name = req.query.filename;\n  res.send(fs.readFileSync('/data/' + name, 'utf8'));\n});",
+      "language": "javascript",
+      "options": [
+        "SQL Injection",
+        "XSS",
+        "Path Traversal",
+        "CSRF"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 34,
+      "type": "truefalse",
+      "text": "TLS 1.3 תומך ב-Perfect Forward Secrecy, שמשמעותה שאפילו אם המפתח הפרטי יחשף בעתיד, תעבורת עבר אינה ניתנת לפענוח.",
+      "points": 3,
+      "correct": true
+    },
+    {
+      "id": 35,
+      "type": "single",
+      "text": "מה ה-Time Complexity של מיון בועות (Bubble Sort) במקרה הגרוע?",
+      "points": 3,
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(n²)"
+      ],
+      "correct": 3
+    },
+    {
+      "id": 36,
+      "type": "single",
+      "text": "מהי התקפת Spear Phishing?",
+      "points": 3,
+      "options": [
+        "התקפת פישינג כללית שנשלחת למיליוני אנשים",
+        "התקפת פישינג ממוקדת ואישית נגד אדם או ארגון ספציפי",
+        "התקפת DDoS על שרת ספציפי",
+        "תקיפת רשת Wi-Fi"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 37,
+      "type": "single",
+      "text": "מה ההבדל העיקרי בין Symmetric ל-Asymmetric Encryption?",
+      "points": 3,
+      "options": [
+        "Symmetric משתמשת בשני מפתחות, Asymmetric במפתח אחד",
+        "Symmetric מהירה יותר אך דורשת חלוקת מפתח מאובטחת; Asymmetric פותרת את בעיית חלוקת המפתח",
+        "Symmetric לאינטרנט בלבד, Asymmetric לקבצים מקומיים",
+        "אין הבדל מעשי בינהם"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 38,
+      "type": "code",
+      "text": "מה החולשה האבטחתית בקוד C הבא?",
+      "points": 3,
+      "code": "void read_input() {\n    char buf[8];\n    gets(buf);\n    printf(\"%s\\n\", buf);\n}",
+      "language": "c",
+      "options": [
+        "SQL Injection",
+        "Format String Vulnerability",
+        "Buffer Overflow",
+        "Integer Overflow"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 39,
+      "type": "single",
+      "text": "מה עושה Certificate Pinning?",
+      "points": 3,
+      "options": [
+        "מגביר את מהירות TLS Handshake",
+        "מוודא שהתעודה שהתקבלה היא בדיוק זו שצפויה, ומונע התקפות MITM",
+        "מצפין את תוכן ה-HTTP body",
+        "מנהל סיסמאות משתמשים"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 40,
+      "type": "code",
+      "text": "מה המחרוזת המוסתרת לאחר פענוח Base64?",
+      "points": 3,
+      "code": "Q1RGe0g0Y2t9",
+      "language": "text",
+      "options": [
+        "CTF{H4ck}",
+        "CTF{hack}",
+        "CTF{H4CK}",
+        "CTF{HACK}"
+      ],
+      "correct": 0
     }
   ]
 }

@@ -22,7 +22,15 @@ const EXAMPLE_EXAMS = [
     questions: 15,
   },
   {
-    key: 'shalon-300',
+    key: 'dafar',
+    icon: '🧩',
+    name: 'מבחן דפ"ר לדוגמה - צו ראשון',
+    desc: 'מבחן דפ"ר לדוגמה – אנלוגיות, צורנים ויחסי קשר, הבנת הוראות ומתמטיקה. כולל שאלות צורניות עם תמונות.',
+    time: '16 דק',
+    questions: 12,
+  },
+  {
+    key: 'q300',
     icon: '🧠',
     name: 'שאלון 300',
     desc: 'שאלון אישיות ממוחשב לתהליכי מיון ליחידות טכנולוגיות – 300 היגדים להערכת התאמה אישיותית.',
@@ -38,7 +46,7 @@ const EXAMPLE_EXAMS = [
     questions: 10,
   },
   {
-    key: 'child-8200',
+    key: 'child-tech',
     icon: '🎯',
     name: 'האם הילד/ה שלי מתאים/ה ליחידה טכנולוגית?',
     desc: 'שאלון הערכה להורים – בדקו את הפוטנציאל של הילד/ה שלכם להתקבל ליחידה טכנולוגית על בסיס נטיות, כישורים והישגים.',
@@ -49,9 +57,9 @@ const EXAMPLE_EXAMS = [
     key: 'cyber-rtl',
     icon: '🔒',
     name: 'מבחן גאמא סייבר',
-    desc: 'מבחן לדוגמה גאמא סייבר – שאלון גאמא סייבר להכנה למיונים ליחידה טכנולוגית. מבחן 300 לדוגמה בסייבר ואבטחת מידע.',
-    time: '60 דק',
-    questions: 11,
+    desc: 'מבחן גאמא סייבר מלא – 40 שאלות ברמות עולות: יסודות מחשוב, רשתות, תכנות, חולשות אבטחה וקריפטוגרפיה.',
+    time: '40 דק',
+    questions: 40,
   },
   {
     key: 'network-ltr',
@@ -103,10 +111,11 @@ function validateExam(data: unknown): Exam {
 const ROUTED_EXAMS: Record<string, string> = {
   'cyber-rtl':    '/quiz/gama-cyber',
   'network-ltr':  '/quiz/network',
-  'child-8200':   '/quiz/child-8200',
+  'child-tech':   '/quiz/child-tech',
   'tech-fit':     '/quiz/tech-fit',
-  'shalon-300':   '/quiz/shalon-300',
+  'q300':         '/quiz/q300',
   'tzav-rishon':  '/quiz/tzav-rishon',
+  'dafar':        '/quiz/dafar',
   'klal-haman':   '/quiz/klal-haman',
 };
 

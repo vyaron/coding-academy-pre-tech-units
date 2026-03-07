@@ -1,4 +1,4 @@
-import type { SingleQuestion, CodeQuestion, PersonalityQuestion } from '../../../types/exam';
+import type { SingleQuestion, CodeQuestion, PersonalityQuestion, QuestionOption } from '../../../types/exam';
 
 interface Props {
   question: SingleQuestion | CodeQuestion | PersonalityQuestion;
@@ -10,11 +10,15 @@ interface Props {
 
 export default function SingleChoice({ question, selected, onSelect, reviewMode = false, noCorrect = false }: Props) {
   const correct = 'correct' in question ? question.correct : undefined;
+  const hasImageOptions = question.options.some(
+    (opt) => typeof opt === 'object' && (opt as QuestionOption).image
+  );
 
   return (
-    <div className="options-list">
+    <div className={hasImageOptions ? 'options-grid' : 'options-list'}>
       {question.options.map((opt, i) => {
         let cls = 'option-btn';
+        if (hasImageOptions) cls += ' image-option';
         if (reviewMode && !noCorrect && correct !== undefined) {
           if (i === correct) cls += ' correct';
           else if (i === selected && selected !== correct) cls += ' wrong';
@@ -23,6 +27,13 @@ export default function SingleChoice({ question, selected, onSelect, reviewMode 
         }
 
         const letter = String.fromCharCode(65 + i); // A, B, C, D
+        const isObj = typeof opt === 'object';
+        const optObj = isObj ? (opt as QuestionOption) : null;
+        const optText = isObj ? optObj!.text : (opt as string);
+        const rawImg = isObj ? optObj!.image : null;
+        const optImg = rawImg
+          ? { ...rawImg, url: rawImg.url.startsWith('http') ? rawImg.url : `${import.meta.env.BASE_URL}${rawImg.url}` }
+          : null;
 
         return (
           <button
@@ -32,7 +43,11 @@ export default function SingleChoice({ question, selected, onSelect, reviewMode 
             disabled={reviewMode}
           >
             <span className="option-letter">{letter}</span>
-            <span className="option-text">{opt}</span>
+            {optImg ? (
+              <img className="option-img" src={optImg.url} alt={optImg.alt} />
+            ) : (
+              <span className="option-text">{optText}</span>
+            )}
             {reviewMode && !noCorrect && correct !== undefined && i === correct && (
               <span className="option-marker correct-mark">✓</span>
             )}

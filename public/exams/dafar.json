@@ -1,0 +1,125 @@
+{
+  "title": "מבחן דפ\"ר לדוגמה - צו ראשון",
+  "direction": "rtl",
+  "lang": "he",
+  "duration": 960,
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "text": "ספר : מדף = תמונה : ?",
+      "points": 8,
+      "options": ["אמן", "שנה", "קיר", "מסגרת"],
+      "correct": 2
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "text": "סכום הגילים של 3 אחים הוא 81. דני, האח הצעיר, קטן ב-6 שנים מרוני. גילו של שמעון, האח הבכור, כפול מגילו של דני. מהו גילו של רוני?",
+      "points": 8,
+      "options": ["18", "21", "24", "27"],
+      "correct": 2
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "text": "אם תוצאת התרגיל 8×11 גדולה מתוצאת התרגיל 9×10, יש לסמן את העיר הדרומית ביותר. אם תוצאת התרגיל 8×11 אינה גדולה מתוצאת התרגיל 9×10, יש לסמן את העיר הצפונית ביותר.",
+      "points": 8,
+      "options": ["אילת", "תל אביב", "חיפה", "קרית שמונה"],
+      "correct": 3
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "text": "איזו מהצורות ממשיכה את הסדרה?",
+      "points": 8,
+      "image": {
+        "url": "img/exam/dafar/q4.svg",
+        "alt": "סדרת צורות גיאומטריות",
+        "position": "above"
+      },
+      "options": [
+        { "text": null, "image": { "url": "img/exam/dafar/q4a.svg", "alt": "תשובה א" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q4b.svg", "alt": "תשובה ב" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q4c.svg", "alt": "תשובה ג" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q4d.svg", "alt": "תשובה ד" } }
+      ],
+      "correct": 3
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "text": "איזו תנועה ממשיכה את הסדרה המוצגת?",
+      "points": 8,
+      "image": {
+        "url": "img/exam/dafar/q5.svg",
+        "alt": "סדרת תנועות",
+        "position": "above"
+      },
+      "options": [
+        { "text": null, "image": { "url": "img/exam/dafar/q5a.svg", "alt": "תשובה א" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q5b.svg", "alt": "תשובה ב" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q5c.svg", "alt": "תשובה ג" } },
+        { "text": null, "image": { "url": "img/exam/dafar/q5d.svg", "alt": "תשובה ד" } }
+      ],
+      "correct": 0
+    },
+    {
+      "id": 6,
+      "type": "single",
+      "text": "ספורטאי שקל בתחילת אימון אינטנסיבי 180 ק\"ג ובמהלכו הפחית ממשקלו 40%. לאחר תקופה של מנוחה, משקלו עלה פי שניים. מה יהיה משקלו הסופי (בק\"ג)?",
+      "points": 8,
+      "options": ["180", "216", "224", "240"],
+      "correct": 1
+    },
+    {
+      "id": 7,
+      "type": "single",
+      "text": "4 חיילים מסיימים שק שבו 12 כדורי אנרגיה ב-8 דקות. אם כל החיילים אוכלים בקצב זהה, בתוך כמה זמן יסיימו 6 חיילים 18 כדורי אנרגיה?",
+      "points": 8,
+      "options": ["8 דקות", "6 דקות", "10 דקות", "12 דקות"],
+      "correct": 1
+    },
+    {
+      "id": 8,
+      "type": "single",
+      "text": "נגר : בונה = טבח : ?",
+      "points": 8,
+      "options": ["מבשל", "אופה", "אוכל", "מגיש"],
+      "correct": 0
+    },
+    {
+      "id": 9,
+      "type": "single",
+      "text": "מצאו את המילה שאם נהפוך את סדר אותיותיה, נקבל מילה זהה לה.",
+      "points": 8,
+      "options": ["שלטון", "היפיפיה", "מלחמה", "ספינה"],
+      "correct": 1
+    },
+    {
+      "id": 10,
+      "type": "single",
+      "text": "ניר רוצה לסדר על מדף 4 ספרים שונים: אדום, כחול, ירוק וצהוב. כמה סידורים שונים אפשריים?",
+      "points": 8,
+      "options": ["16", "24", "12", "8"],
+      "correct": 1
+    },
+    {
+      "id": 11,
+      "type": "single",
+      "text": "אופניסט רכב 45 ק\"מ ב-90 דקות. מה הייתה מהירותו בקמ\"ש?",
+      "points": 8,
+      "options": ["30 קמ\"ש", "45 קמ\"ש", "50 קמ\"ש", "60 קמ\"ש", "90 קמ\"ש"],
+      "correct": 0
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "text": "0.0036 ÷ 0.09 = ?",
+      "points": 8,
+      "options": ["0.4", "0.04", "4", "אף תשובה אינה נכונה"],
+      "correct": 1
+    }
+  ]
+}

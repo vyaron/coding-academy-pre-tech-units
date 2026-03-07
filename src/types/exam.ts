@@ -7,10 +7,25 @@ interface BaseQuestion {
   points: number;
 }
 
+export interface QuestionImage {
+  url: string;
+  alt: string;
+  position?: 'above' | 'below';
+}
+
+export interface QuestionOption {
+  text: string | null;
+  image?: {
+    url: string;
+    alt: string;
+  };
+}
+
 export interface SingleQuestion extends BaseQuestion {
   type: 'single';
-  options: string[];
+  options: (string | QuestionOption)[];
   correct: number;
+  image?: QuestionImage;
 }
 
 export interface CodeQuestion extends BaseQuestion {

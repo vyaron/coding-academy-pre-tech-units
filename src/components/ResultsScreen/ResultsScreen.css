@@ -361,3 +361,38 @@
   background: rgba(0, 229, 255, 0.08);
   box-shadow: var(--glow-cyan);
 }
+
+/* ── CTA section ─────────────────────────────────────────────────────────── */
+.results-cta {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.results-cta-text {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+  font-weight: 600;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 0.75rem 2.5rem;
+  background: var(--cyan);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-cta:hover {
+  opacity: 0.85;
+  box-shadow: var(--glow-cyan);
+}

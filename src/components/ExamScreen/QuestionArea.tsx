@@ -60,6 +60,15 @@ export default function QuestionArea() {
         {/* Question text */}
         <p className="q-text">{q.text}</p>
 
+        {/* Question image (above options) */}
+        {'image' in q && q.image && q.image.position !== 'below' && (
+          <img
+            className="q-image"
+            src={q.image.url.startsWith('http') ? q.image.url : `${import.meta.env.BASE_URL}${q.image.url}`}
+            alt={q.image.alt}
+          />
+        )}
+
         {/* Question type */}
         {(q.type === 'single' || q.type === 'personality') && (
           <SingleChoice

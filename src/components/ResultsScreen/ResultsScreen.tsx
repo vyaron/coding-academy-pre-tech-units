@@ -36,6 +36,13 @@ export default function ResultsScreen() {
           </div>
 
           <ReviewAccordion perQuestion={results.perQuestion} />
+
+          <div className="results-cta" dir="rtl">
+            <p className="results-cta-text">נשמח לסייע בתהליך הקבלה</p>
+            <a className="btn-cta" href="https://www.coding-academy.org/#contact" target="_blank" rel="noopener noreferrer">
+              צור קשר
+            </a>
+          </div>
         </div>
       </div>
     );
