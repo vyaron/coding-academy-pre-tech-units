@@ -2,6 +2,8 @@ export interface ArticleSection {
   heading?: string;
   body: string;
   image?: string;
+  images?: string[];
+  imageStyle?: 'cover' | 'contain';
 }
 
 export interface Article {
@@ -217,6 +219,153 @@ const ARTICLES: Article[] = [
       {
         heading: 'איך מתכוננים?',
         body: 'ההכנה הנכונה מתחילה הרבה לפני הגיוס. חזקו את הבסיס המתמטי, למדו יסודות תכנות (Python היא נקודת פתיחה מצוינת), והתנסו בפתרון אתגרי CTF (Capture The Flag) בסייבר. אם אתם רוצים להגדיל את הסיכויים – שקלו גם לימוד ערבית. מבחני ההדמיה שלנו נבנו בדיוק כדי לחשוף אתכם לסגנון החשיבה הנדרש.',
+      },
+    ],
+  },
+  {
+    slug: '7-tools-of-a-developer',
+    title: 'שבעת הכלים של המתכנת',
+    date: '2023-04-23',
+    readTime: '4 דק׳ קריאה',
+    excerpt: 'יש שבעה מושגים בסיסיים שמופיעים בכל שפת תכנות – מ-Assembly ועד Python. מי שמבין אותם באמת, יכול ללמוד כל שפה חדשה בקלות.',
+    tags: ['תכנות', 'מושגי יסוד', 'מתחילים'],
+    sections: [
+      {
+        heading: 'כלים שחוצים שפות',
+        body: 'כשאנשים שומעים "תכנות" הם חושבים מיד על שפות: Python, JavaScript, C++. אבל האמת היא שכל השפות האלה חולקות את אותם שבעה כלים בסיסיים. מי שמבין אותם – מבין בעצם תכנות. השאר הוא פרטי תחביר.',
+        image: 'https://coding-academy.org/blog/wp-content/uploads/2023/04/seven-tools-ninja.png',
+        images: ['https://vyaron.github.io/ca-blog/img/seven/seven-tools.png'],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 1: משתנים',
+        body: 'משתנה הוא "קופסה עם שם" שבה ניתן לאחסן ערך כלשהו – מספר, טקסט, תוצאת חישוב. הערך יכול להשתנות תוך כדי ריצת התוכנית. לדוגמה: score = 0 מגדיר קופסה בשם score עם ערך 0. בכל שפה יש משתנים, ורק הדרך להצהיר עליהם שונה.',
+        images: [
+          'https://vyaron.github.io/ca-blog/img/seven/vars.png',
+          'https://vyaron.github.io/ca-blog/img/seven/var1.png',
+        ],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 2: ביטויים',
+        body: 'ביטוי הוא פעולה חישובית או לוגית שמחזירה ערך. חיבור, חיסור, השוואה – כולם ביטויים. 3 + 4 הוא ביטוי שמחזיר 7. x > 10 הוא ביטוי שמחזיר אמת או שקר. ביטויים הם הדרך שהמחשב מבצע חישוב.',
+        images: [
+          'https://vyaron.github.io/ca-blog/img/seven/exp1.png',
+          'https://vyaron.github.io/ca-blog/img/seven/exp2.png',
+          'https://vyaron.github.io/ca-blog/img/seven/exp3.png',
+        ],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 3: תנאים',
+        body: 'תנאי (if/else) מאפשר לתוכנית לקבל החלטות. "אם הסיסמה נכונה – כנס למערכת. אחרת – הצג שגיאה." בלי תנאים, תוכנית תמיד תרוץ בדיוק אותו הדבר, ללא כל הסתגלות למצב.',
+        images: ['https://vyaron.github.io/ca-blog/img/seven/if.png'],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 4: פונקציות',
+        body: 'פונקציה היא בלוק קוד בעל שם, שניתן לקרוא לו שוב ושוב. במקום לכתוב את אותו הקוד עשר פעמים, כותבים אותו פעם אחת ומזמינים אותו לפי הצורך. פונקציות הן הדרך לארגן קוד ולמנוע כפילות.',
+        images: ['https://vyaron.github.io/ca-blog/img/seven/func.png'],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 5: לולאות',
+        body: 'לולאה גורמת לבלוק קוד לרוץ שוב ושוב – כל עוד תנאי מסוים מתקיים, או מספר קבוע של פעמים. לולאת for ולולאת while הן הנפוצות ביותר. בלי לולאות, כל פעולה חוזרת הייתה דורשת שכתוב ידני.',
+        images: [
+          'https://vyaron.github.io/ca-blog/img/seven/loop1.png',
+          'https://vyaron.github.io/ca-blog/img/seven/loop2.png',
+        ],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 6: מערכים (Arrays)',
+        body: 'מערך הוא אוסף של ערכים תחת שם אחד. במקום להגדיר עשרה משתנים נפרדים לעשרה ציונים, מגדירים מערך אחד. ניתן לגשת לכל איבר לפי המיקום שלו (index). מערכים הם הבסיס לאחסון ועיבוד קולקציות של מידע.',
+        images: [
+          'https://vyaron.github.io/ca-blog/img/seven/array1.png',
+          'https://vyaron.github.io/ca-blog/img/seven/array2.png',
+        ],
+        imageStyle: 'contain',
+      },
+      {
+        heading: 'כלי 7: אובייקטים',
+        body: 'אובייקט מייצג "ישות" בעלת תכונות. משתמש באתר הוא אובייקט: יש לו שם, גיל, כתובת מייל. מוצר בחנות הוא אובייקט: שם, מחיר, כמות. אובייקטים מאפשרים לארגן מידע בצורה טבעית ולעבוד איתו בצורה קריאה.',
+        images: [
+          'https://vyaron.github.io/ca-blog/img/seven/obj1.png',
+          'https://vyaron.github.io/ca-blog/img/seven/obj2.png',
+        ],
+        imageStyle: 'contain',
+      },
+    ],
+  },
+  {
+    slug: 'should-you-still-learn-how-to-code',
+    title: 'יש ChatGPT – עדיין כדאי ללמוד תכנות?',
+    date: '2023-04-23',
+    readTime: '3 דק׳ קריאה',
+    excerpt: 'בינה מלאכותית כבר כותבת קוד, מציירת תמונות וכותבת מאמרים. האם כדאי עדיין ללמוד תכנות, או שהמקצוע הזה בדרך להיעלם?',
+    tags: ['בינה מלאכותית', 'תכנות', 'קריירה'],
+    sections: [
+      {
+        heading: 'מה בעצם AI יודע לעשות היום?',
+        body: 'כלים כמו ChatGPT, Midjourney ו-GitHub Copilot כבר מסוגלים לכתוב קוד, לצייר תמונות ולנסח טקסטים ברמה מרשימה. מדובר בתוצאה של machine learning – אלגוריתמים שלמדו מדוגמאות עצומות ומבצעים משימות שבעבר דרשו מומחיות אנושית.',
+        image: 'https://coding-academy.org/blog/wp-content/uploads/2023/04/ai.jpg',
+        images: ['https://vyaron.github.io/ca-blog/img/gpt.gif'],
+      },
+      {
+        heading: 'ההיסטוריה חוזרת על עצמה',
+        body: 'כל מהפכה טכנולוגית פגעה בחלק מהמקצועות – ויצרה חדשים. כשהופיעו מכונות טוויה, האורגים מקצועיים איבדו עבודה. כשהופיעה הדפסה, עתידם של המעתיקים הידניים נראה קודר. אבל בכל פעם, הטכנולוגיה יצרה שוקי עבודה חדשים לגמרי שלא ניתן היה לדמיין לפני כן.',
+        images: ['https://coding-academy.org/blog/wp-content/uploads/2023/04/189686986-mountain-view-ca-usa-may-2-2022-editorial-use-only-3d-cgi-google-signage-logo-on-top-of-glass.webp'],
+      },
+      {
+        heading: 'מה AI עדיין לא יכול לעשות?',
+        body: 'בניית מערכת תוכנה אמיתית כרוכה בהבנת דרישות עסקיות, קבלת החלטות ארכיטקטוניות, ניפוי באגים מורכבים, עבודת צוות, אבטחה ותחזוקה לאורך זמן. כל אלה דורשים הבנה רחבה שמכונה אין לה – לפחות כיום. AI הוא כלי עוצמתי בידי מתכנת, לא תחליף לו.',
+      },
+      {
+        heading: 'המסקנה',
+        body: 'תכנות כנראה יהיה אחד המקצועות האחרונים שיוחלפו לגמרי על ידי אוטומציה – כי הוא בעצמו הכלי שבונה את האוטומציה. מי שלומד תכנות היום, לומד לרכוב על הגל – לא להיסחף ממנו.',
+      },
+    ],
+  },
+  {
+    slug: 'frontend-backend-and-whats-between',
+    title: 'פרונטאנד – בקאנד ומה שביניהם',
+    date: '2023-04-23',
+    readTime: '4 דק׳ קריאה',
+    excerpt: 'מה ההבדל בין פרונטאנד לבקאנד, מה זה Full Stack, ולמה JavaScript הפכה לשפת התכנות הפופולרית ביותר בעולם?',
+    tags: ['פרונטאנד', 'בקאנד', 'פולסטאק'],
+    sections: [
+      {
+        heading: 'פרונטאנד – מה שהמשתמש רואה',
+        body: 'פרונטאנד הוא כל מה שמתרחש בצד המשתמש – כפתורים, אנימציות, עיצוב, טפסים. הפרונטאנד רץ בדפדפן, על כל מכשיר: מחשב, טלפון, טלוויזיה, שעון חכם. הטכנולוגיות הנפוצות הן React, Angular ו-Vue – כולן מבוססות JavaScript.',
+        image: 'https://coding-academy.org/blog/wp-content/uploads/2023/04/frontend-backend.gif',
+        images: [
+          'https://coding-academy.org/blog/wp-content/uploads/2023/04/Syntactics-ReactJS-vs-VueJS-vs-Angular.webp',
+          'https://coding-academy.org/blog/wp-content/uploads/2023/04/css.png',
+          'https://coding-academy.org/blog/wp-content/uploads/2023/04/screen-scaled.webp',
+        ],
+      },
+      {
+        heading: 'בקאנד – מה שקורה מאחורי הקלעים',
+        body: 'הבקאנד אחראי על ניהול משתמשים, בסיסי נתונים, אימות זהות, אבטחה ו-API. כשמשתמש נרשם לאתר, הפרונטאנד שולח את הנתונים לבקאנד שמאמת, מצפין ושומר אותם. Node.js היא אחת הפלטפורמות הפופולריות לבקאנד – וגם היא מבוססת JavaScript.',
+        images: ['https://vyaron.github.io/ca-blog/img/internet.gif'],
+      },
+      {
+        heading: 'Full Stack – מהקצה לקצה',
+        body: 'מפתח Full Stack הוא מי שיכול לבנות אפליקציה מסחרית שלמה – פרונטאנד ובקאנד גם יחד. זו לא מיומנות פשוטה, אבל היא נחשבת ליעילה מאוד בשוק העבודה. סטארטאפים בפרט מחפשים מפתחי Full Stack שיכולים לכסות הרבה צרכים עם צוות קטן.',
+        images: ['https://vyaron.github.io/ca-blog/img/fullstack.gif'],
+      },
+      {
+        heading: 'למה JavaScript שולטת בכול?',
+        body: 'JavaScript היא שפת התכנות היחידה שרצה ישירות בדפדפן. זאת אומרת שאם רוצים לפתח ווב – אין ברירה, חייבים JavaScript. כשהופיעה Node.js, אפשר היה לרוץ JavaScript גם בשרת. פתאום שפה אחת מכסה את הכול – ולכן JavaScript הפכה לשפה הפופולרית ביותר בעולם.',
+        images: [
+          'https://coding-academy.org/blog/wp-content/uploads/2023/04/189686986-mountain-view-ca-usa-may-2-2022-editorial-use-only-3d-cgi-google-signage-logo-on-top-of-glass.webp',
+          'https://coding-academy.org/blog/wp-content/uploads/2023/04/mt.gif',
+        ],
+      },
+      {
+        heading: 'האם צריך תואר כדי להיכנס לתחום?',
+        body: 'לא. תעשיית ההייטק היא אחת היחידות שבה הכישורים מדברים יותר מהתעודות. מפתחים רבים מהמובילים בתחום למדו בעצמם, בקורסים, או בבוטקאמפים. ניתן ללמוד את הדיסציפלינה לעומק תוך מספר חודשים – ולהיות מוכן לשוק העבודה.',
+        images: ['https://vyaron.github.io/ca-blog/img/community.gif'],
       },
     ],
   },

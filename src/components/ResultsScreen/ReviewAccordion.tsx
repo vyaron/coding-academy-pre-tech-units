@@ -49,7 +49,7 @@ export default function ReviewAccordion({ perQuestion }: Props) {
           const { q, correct, earned } = pq;
           const isOpen = open[i] ?? false;
           const rawAnswer = state.answers[q.id];
-          const isPersonality = q.type === 'personality';
+          const isPersonality = q.type === 'personality' || !!state.exam?.isPersonality;
           const status = isPersonality
             ? (rawAnswer !== undefined ? 'answered' : 'skip')
             : (correct ? 'correct' : rawAnswer !== undefined ? 'wrong' : 'skip');

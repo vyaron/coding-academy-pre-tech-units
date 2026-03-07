@@ -267,6 +267,92 @@
   filter: brightness(0.88) contrast(1.08) saturate(0.85);
 }
 
+/* ── Contain variant (code screenshots / diagrams) ───────────────────────── */
+.blog-img-wrap--contain {
+  height: auto;
+  min-height: 80px;
+  background: rgb(12, 12, 22);
+}
+
+.blog-img-wrap--contain .blog-img {
+  position: static;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: none;
+  filter: none;
+}
+
+.blog-img-wrap--contain:hover .blog-img {
+  animation: none;
+  filter: none;
+}
+
+/* ── Clickable images ────────────────────────────────────────────────────── */
+.blog-img-clickable {
+  cursor: zoom-in;
+}
+
+/* ── Gallery: multiple images per section ────────────────────────────────── */
+.blog-img-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.blog-img-gallery .blog-img-wrap {
+  margin-top: 0;
+}
+
+.blog-img-gallery--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ── Full-size modal ─────────────────────────────────────────────────────── */
+.blog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+}
+
+.blog-modal-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+}
+
+.blog-modal-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(30, 30, 40, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.blog-modal-close:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .blog-grid { grid-template-columns: 1fr; }

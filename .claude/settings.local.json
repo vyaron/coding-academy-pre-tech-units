@@ -20,7 +20,8 @@
       "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/05rj0cgs/h_zav_rishon_free_005_a.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5a.svg\")",
       "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/qcucjuv3/h_zav_rishon_free_005_b.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5b.svg\")",
       "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/yjyabwk3/h_zav_rishon_free_005_c.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5c.svg\")",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/hrhjgwdi/h_zav_rishon_free_005_d.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5d.svg\")"
+      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/hrhjgwdi/h_zav_rishon_free_005_d.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5d.svg\")",
+      "WebFetch(domain:coding-academy.org)"
     ]
   }
 }

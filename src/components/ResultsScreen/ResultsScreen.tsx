@@ -14,6 +14,15 @@ export default function ResultsScreen() {
   const answeredCount = total - unanswered;
 
   if (exam.isPersonality) {
+    const tier = score >= 70 ? 'high' : score >= 40 ? 'mid' : 'low';
+    const tierLabel   = tier === 'high' ? 'התאמה גבוהה'   : tier === 'mid' ? 'התאמה בינונית' : 'התאמה נמוכה';
+    const tierColor   = tier === 'high' ? 'var(--green)'   : tier === 'mid' ? 'var(--cyan)'    : 'var(--text-dim)';
+    const ctaText     = tier === 'high'
+      ? 'נשמח ללוות אותך בתהליך'
+      : tier === 'mid'
+      ? 'נשמח לסייע לך לשפר תוצאות וללוות אותך בתהליך'
+      : 'סקרנות ורצון פעיל הן התכונות החשובות ביותר, נשמח לתמוך בך בתהליך ההכנה';
+
     return (
       <div className="results-screen">
         <header className="results-header">
@@ -28,9 +37,9 @@ export default function ResultsScreen() {
 
         <div className="results-body">
           <div className="results-score-section">
-            <div className="score-verdict pass" style={{ fontSize: '2rem' }}>✓ הושלם</div>
-            <div className="score-detail">
-              ענית על {answeredCount} מתוך {total} שאלות
+            <div className="score-verdict" style={{ fontSize: '1.6rem', color: tierColor }}>{tierLabel}</div>
+            <div className="score-detail" style={{ marginTop: '0.4rem' }}>
+              ענית על {results.perQuestion.length - unanswered} מתוך {results.perQuestion.length} שאלות
               {unanswered > 0 && ` · ${unanswered} לא נענו`}
             </div>
           </div>
@@ -38,7 +47,7 @@ export default function ResultsScreen() {
           <ReviewAccordion perQuestion={results.perQuestion} />
 
           <div className="results-cta" dir="rtl">
-            <p className="results-cta-text">נשמח לסייע בתהליך הקבלה</p>
+            <p className="results-cta-text">{ctaText}</p>
             <a className="btn-cta" href="https://www.coding-academy.org/#contact" target="_blank" rel="noopener noreferrer">
               צור קשר
             </a>
