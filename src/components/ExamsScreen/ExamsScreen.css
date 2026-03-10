@@ -1,4 +1,4 @@
-/* ── HomeScreen ──────────────────────────────────────────────────────────── */
+/* ── ExamsScreen ─────────────────────────────────────────────────────────── */
 .home {
   position: relative;
   z-index: 10;
@@ -150,10 +150,15 @@
 }
 
 .home-card-desc {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--text-dim);
   line-height: 1.6;
   margin: 0;
+  transition: color 0.25s ease;
+}
+
+.home-exam-card:hover .home-card-desc {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Divider */

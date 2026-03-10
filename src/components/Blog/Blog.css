@@ -145,6 +145,11 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.25s ease;
+}
+
+.blog-card:hover .blog-card-excerpt {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .blog-card-footer {

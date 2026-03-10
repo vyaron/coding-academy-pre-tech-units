@@ -18,7 +18,7 @@ export default function BlogList() {
       <div className="blog-header">
         <div className="blog-header-tag">// מאמרים</div>
         <h1 className="blog-title">מדריכים וטיפים להכנה</h1>
-        <p className="blog-subtitle">מאמרים מקצועיים על הכנה למיונים, שאלות טכניות ותהליכי קבלה ליחידות טכנולוגיות.</p>
+        <p className="blog-subtitle">מאמרים מקצועיים על הכנה למיונים,<br /> שאלות טכניות ותהליכי קבלה ליחידות טכנולוגיות.</p>
       </div>
 
       <div className="blog-grid">

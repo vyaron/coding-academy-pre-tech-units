@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam, clearAllProgress, hasAnyProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
-import './HomeScreen.css';
+import './ExamsScreen.css';
 
 const EXAMPLE_EXAMS = [
   {
@@ -119,7 +119,7 @@ const ROUTED_EXAMS: Record<string, string> = {
   'klal-haman':   '/quiz/klal-haman',
 };
 
-export default function HomeScreen() {
+export default function ExamsScreen() {
   const navigate = useNavigate();
   const { dispatch } = useExam();
   const fileRef = useRef<HTMLInputElement>(null);

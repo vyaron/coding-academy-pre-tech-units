@@ -2,7 +2,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ExamProvider, useExam } from './context/ExamContext';
 import BackgroundCanvas from './components/BackgroundCanvas';
 import LandingPage from './components/LandingPage/LandingPage';
-import HomeScreen from './components/HomeScreen/HomeScreen';
+import ExamsScreen from './components/ExamsScreen/ExamsScreen';
 import QuizIntroScreen from './components/QuizIntroScreen/QuizIntroScreen';
 import ExamScreen from './components/ExamScreen/ExamScreen';
 import ResultsScreen from './components/ResultsScreen/ResultsScreen';
@@ -26,7 +26,7 @@ function AppInner() {
       {showCanvas && <BackgroundCanvas />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/quiz" element={<HomeScreen />} />
+        <Route path="/quiz" element={<ExamsScreen />} />
         <Route path="/quiz/:quizId" element={<QuizIntroScreen />} />
         <Route path="/quiz/:quizId/test" element={<ExamTestRoute />} />
         <Route path="/articles" element={<BlogList />} />
