@@ -15,12 +15,6 @@
       "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(q[''id''], q[''type''], q[''text''][:80]\\) for q in d[''questions'']]\")",
       "Bash(python3 -c \":*)",
       "Bash(node -e \":*)",
-      "WebFetch(domain:www.machon-noam.co.il)",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/uz2ha4ld/h_zav_rishon_free_005_q.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5.svg\")",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/05rj0cgs/h_zav_rishon_free_005_a.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5a.svg\")",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/qcucjuv3/h_zav_rishon_free_005_b.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5b.svg\")",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/yjyabwk3/h_zav_rishon_free_005_c.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5c.svg\")",
-      "Bash(curl -s \"https://ts-prd.jobtestprep.se/media/hrhjgwdi/h_zav_rishon_free_005_d.svg\" -o \"c:/dev/coding-academy/pre-army/gama-test/public/img/exam/dafar/q5d.svg\")",
       "WebFetch(domain:coding-academy.org)"
     ]
   }
