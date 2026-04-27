@@ -43,6 +43,26 @@ export default function BlogList() {
           </article>
         ))}
       </div>
+
+      <section className="blog-bottom-cta" aria-label="יצירת קשר">
+        <img
+          src={`${import.meta.env.BASE_URL}img/YaronBiton.gif`}
+          alt="ירון ביטון"
+          className="blog-bottom-cta-gif"
+          loading="lazy"
+        />
+        <div className="blog-bottom-cta-content">
+          <h3>למידע נוסף, ייעוץ חינם וכל שאלה</h3>
+          <a
+            href="https://www.coding-academy.org/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="blog-bottom-cta-link"
+          >
+            צור קשר
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

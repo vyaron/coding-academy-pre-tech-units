@@ -299,6 +299,26 @@ export default function ExamsScreen() {
       </div>
 
       {error && <div className="home-error">! שגיאה: {error}</div>}
+
+      <section className="home-bottom-cta" aria-label="קביעת פגישת ייעוץ">
+        <img
+          src={`${import.meta.env.BASE_URL}img/YaronBiton.gif`}
+          alt="ירון ביטון"
+          className="home-bottom-cta-gif"
+          loading="lazy"
+        />
+        <div className="home-bottom-cta-content">
+          <h3>בקורס נתאמן על מבחנים וסימולציות עד מוכנות מלאה</h3>
+          <a
+            href="https://www.coding-academy.org/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="home-bottom-cta-link"
+          >
+            קבע פגישה עכשיו
+          </a>
+        </div>
+      </section>
     </div>
   );
 }
