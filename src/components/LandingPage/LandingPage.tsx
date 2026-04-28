@@ -152,6 +152,51 @@ const PARTNER_LOGOS = [
   { src: "img/partners/soldiers.png", alt: "פיקדון חיילים משוחררים" },
 ];
 
+const SOCIAL_PROOF_REVIEWS = [
+  {
+    name: "נועה ברק",
+    avatar: "נב",
+    quote:
+      "חיפשתי הכנה אמיתית לעולמות הסייבר, ובקורס קיבלתי בדיוק את זה: תרגול hands-on, חשיבה התקפית והגנתית, וסימולציות שנתנו לי ביטחון להגיע מוכנה למיונים.",
+    highlight: "נתן לי כיוון ברור לסייבר",
+  },
+  {
+    name: "עידו שחם",
+    avatar: "עש",
+    quote:
+      "ההכנה למיונים היתה מדויקת. עבדנו על רשתות, אבטחת מידע ופתרון אתגרים ברמה גבוהה, וזה עזר לי להגיע לתפקיד הטכנולוגי שבאמת רציתי.",
+    highlight: "הכנה מדויקת לתפקיד שרציתי",
+  },
+  {
+    name: "מאיה קדם",
+    avatar: "מק",
+    quote:
+      "הגעתי בלי רקע משמעותי בסייבר, ובמהלך הקורס בניתי בסיס חזק מאוד. השילוב בין מדריכים חזקים לתרגולים מעשיים נתן לי יתרון אמיתי בתהליך הקבלה.",
+    highlight: "יתרון אמיתי במיונים",
+  },
+  {
+    name: "יואב תמר",
+    avatar: "גם",
+    quote:
+      "מה שהיה חזק במיוחד זו ההבנה איך נראים המיונים באמת. התאמנו על אתגרי סייבר, חשיבה מהירה וראיונות, ובסוף הרגשתי שאני מגיע חד ומוכן.",
+    highlight: "הרגשתי מוכן ליום האמת",
+  },
+  {
+    name: "תמר נבון",
+    avatar: "תנ",
+    quote:
+      "הקורס חיבר בין תכנות, רשתות וסייבר בצורה שעשתה לי סדר. מעבר לידע, קיבלתי גם הכוונה אמיתית איך לכוון ליחידה הנכונה ואיך לבלוט במיונים.",
+    highlight: "עזר לי לכוון ליחידה הנכונה",
+  },
+  {
+    name: "רועי הדר",
+    avatar: "רה",
+    quote:
+      "זו לא רק למידה תאורטית. יש כאן הכנה ממוקדת למי שרוצה להשתלב ביחידה טכנולוגית, עם דגש חזק על סייבר, פתרון בעיות והיכרות עם סוגי האתגרים שפוגשים בדרך.",
+    highlight: "ממוקד ליעד של יחידה טכנולוגית",
+  },
+];
+
 
 const FAQS = [
   {
@@ -286,6 +331,36 @@ export default function LandingPage() {
           </div>
         ))}
       </div>
+
+      <section className="lp-social-proof" aria-labelledby="social-proof-title">
+        <div className="lp-social-proof-head">
+          <h2 className="lp-section-title" id="social-proof-title">
+            מה בוגרים מספרים עלינו
+          </h2>
+          <p className="lp-section-sub">
+            משובים וחוות דעת של בוגרי קודינג אקדמי
+          </p>
+        </div>
+        <div className="lp-social-proof-strip" role="list" aria-label="חוות דעת בוגרים">
+          {SOCIAL_PROOF_REVIEWS.map((review) => (
+            <article className="lp-review-card" key={review.name} role="listitem">
+              <div className="lp-review-top">
+                <div className="lp-review-avatar" aria-hidden="true">
+                  {review.avatar}
+                </div>
+                <div>
+                  <h3>{review.name}</h3>
+                  <div className="lp-review-stars" aria-label="5 מתוך 5 כוכבים">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <div className="lp-review-highlight">{review.highlight}</div>
+              <p>{review.quote}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
       {/* ── ABOUT ── */}
       <section className="lp-section" id="about">
