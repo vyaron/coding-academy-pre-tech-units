@@ -247,6 +247,86 @@
   flex-wrap: wrap;
 }
 
+.lp-hero-start-date {
+  margin-top: 1rem;
+  color: #f8fafc;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lp-hero-offer {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(0, 217, 255, 0.24);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(124, 58, 237, 0.08));
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.lp-hero-offer-line {
+  color: #f8fafc;
+  font-size: 0.97rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.lp-hero-offer-note {
+  color: #cbd5e1;
+  font-size: 0.86rem;
+  margin-bottom: 0.4rem;
+}
+
+.lp-hero-offer-tier {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.lp-hero-offer-label {
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.lp-hero-offer-price {
+  color: #c4f7ff;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.lp-hero-offer-tier--active {
+  border-color: rgba(0, 217, 255, 0.5);
+  background: rgba(0, 217, 255, 0.14);
+}
+
+.lp-hero-offer-tier--active .lp-hero-offer-label,
+.lp-hero-offer-tier--active .lp-hero-offer-price {
+  color: #7ce7ff;
+}
+
+.lp-hero-offer-tier--soldout {
+  opacity: 0.72;
+}
+
+.lp-hero-offer-soldout {
+  color: #fca5a5;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.lp-hero-offer-btn {
+  margin-top: 0.8rem;
+}
+
 /* ── Stats ───────────────────────────────────────────────────────────────── */
 .lp-stats {
   position: relative;

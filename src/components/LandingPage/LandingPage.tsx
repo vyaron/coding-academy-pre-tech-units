@@ -313,6 +313,31 @@ export default function LandingPage() {
               🧪 מבחני הדמייה
             </button>
           </div>
+          <div className="lp-hero-start-date">יוצאים לדרך ב: 1.7.2026</div>
+          <div className="lp-hero-offer" aria-label="הצעת רכישה">
+            <div className="lp-hero-offer-line">
+              מומלץ לרכוש את ערכת ההכנה ולתפוס מקום במחזור הקרוב
+            </div>
+            <div className="lp-hero-offer-note">
+              המחיר מתייחס לערכת ההכנה בלבד ואינו כולל את הקורס המלא
+            </div>
+            <div className="lp-hero-offer-tier lp-hero-offer-tier--soldout">
+              <span className="lp-hero-offer-label">מקדימי רישום</span>
+              <span className="lp-hero-offer-price">280 ש"ח</span>
+              <span className="lp-hero-offer-soldout">SOLD OUT</span>
+            </div>
+            <div className="lp-hero-offer-tier lp-hero-offer-tier--active">
+              <span className="lp-hero-offer-label">רישום בהנחה לזמן מוגבל</span>
+              <span className="lp-hero-offer-price">320 ש"ח</span>
+            </div>
+            <div className="lp-hero-offer-tier">
+              <span className="lp-hero-offer-label">מצטרפים אחרונים</span>
+              <span className="lp-hero-offer-price">460 ש"ח</span>
+            </div>
+            <a href="#contact" className="lp-btn-primary lp-hero-offer-btn">
+              לרכוש כעת
+            </a>
+          </div>
         </div>
       </div>
 
@@ -321,7 +346,7 @@ export default function LandingPage() {
         {[
           { v: "20+", l: "שנות ניסיון" },
           { v: "אלפי", l: "בוגרים מוצלחים" },
-          { v: "12", l: "שבועות אינטנסיביים" },
+          { v: "12", l: "שבועות מרתקים" },
           { v: "4", l: "מקצועות בקורס אחד" },
           { v: "1:1", l: "ליווי אישי" },
         ].map((s) => (
