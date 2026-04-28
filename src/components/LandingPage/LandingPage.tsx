@@ -247,16 +247,15 @@ export default function LandingPage() {
         <div className="lp-hero-inner">
           <div className="lp-badge">🏅 המוביל מסוגו בישראל</div>
           <h1 className="lp-hero-h1">
-            המסלול שלך
-            <br />ל<span>השתלבות מוצלחת</span>
-            <br />
-            ביחידה טכנולוגית
+                קורס הכנה למיוני
+                <br /><span>היחידות הטכנולוגיות</span>
           </h1>
           <p className="lp-hero-p">
-            קודינג-אקדמי הכשיר אלפי אנשים ונחשב למוביל מסוגו.
-            <br />
-            בהובלת ירון ביטון — מוביל קורס התכנות הצבאי (ממר"ם) עם 20+ שנות
-            ניסיון.
+            <span className="lp-hero-subtitle">
+              ממר"ם · 8200 · שחקים · גאמא · חבצלות
+            </span>
+            בהובלת <strong>ירון ביטון</strong> - לשעבר מוביל קורסי ההכשרה
+            הצבאיים, המדריך המוערך בישראל להכשרת מתכנתים ואנשי סייבר
           </p>
           <div className="lp-hero-cta">
             <a href="#contact" className="lp-btn-primary">

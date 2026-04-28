@@ -225,11 +225,19 @@
 }
 
 .lp-hero-p {
-  padding: 2em;
+  margin-top: 0.35rem;
+  padding: 0 2em 2em;
   font-size: 1.4rem;
   color: var(--lp-muted);
   /* margin: 0 auto 2.5rem; */
   line-height: 1.7;
+}
+
+.lp-hero-subtitle {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #7ce7ff;
+  font-weight: 800;
 }
 
 .lp-hero-cta {
