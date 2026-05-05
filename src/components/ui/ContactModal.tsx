@@ -11,16 +11,23 @@ export default function ContactModal({ onClose }: Props) {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value, type, checked } = e.target;
-    e.target.setCustomValidity('');
+    e.currentTarget.setCustomValidity('');
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   }
 
   function invalidMsg(msg: string) {
-    return (e: React.InvalidEvent<HTMLInputElement>) => e.target.setCustomValidity(msg);
+    return (e: React.InvalidEvent<HTMLInputElement>) => e.currentTarget.setCustomValidity(msg);
   }
+
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycby7KTiWjeh9liVmukk-2oug-p9-WzDxBDEdOSfQ5Q6KVsQeCPSFSOP0Sws8gVRmkQnV4w/exec';
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({ name: form.name, phone: form.phone, email: form.email }),
+    }).catch(() => {});
     setSubmitted(true);
     setTimeout(() => onClose(), 3500);
   }
