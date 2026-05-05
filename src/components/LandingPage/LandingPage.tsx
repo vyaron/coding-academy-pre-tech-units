@@ -304,16 +304,13 @@ export default function LandingPage() {
         </a>
         <ul className="lp-nav-links">
           <li>
-            <a href="#about">אודות</a>
+            <a href="#reviews">עדויות בוגרים</a>
           </li>
           <li>
-            <a href="#curriculum">תוכנית</a>
+            <a href="#curriculum">מבנה ההכשרה</a>
           </li>
           <li>
-            <a href="#workshops">סדנאות</a>
-          </li>
-          <li>
-            <a href="#faq">שאלות</a>
+            <a href="#faq">שאלות שנשאלנו</a>
           </li>
           <li>
             <Link to="/articles">מאמרים</Link>
@@ -395,7 +392,7 @@ export default function LandingPage() {
         ))}
       </div>
 
-      <section className="lp-social-proof" aria-labelledby="social-proof-title">
+      <section className="lp-social-proof" id="reviews" aria-labelledby="social-proof-title">
         <div className="lp-social-proof-head">
           <h2 className="lp-section-title" id="social-proof-title">
             מה בוגרים מספרים עלינו
