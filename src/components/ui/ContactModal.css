@@ -1,0 +1,163 @@
+.cm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(6, 8, 15, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  animation: glow-in 0.18s ease;
+}
+
+/* ── Flip container ── */
+.cm-box {
+  position: relative;
+  max-width: 420px;
+  width: 90%;
+  perspective: 900px;
+}
+
+.cm-flipper {
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cm-flipped {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared face styles ── */
+.cm-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--surface2, #0d1117);
+  border: 1px solid var(--cyan-dim, #00e5ff55);
+  border-radius: var(--radius, 8px);
+  box-shadow: var(--glow-cyan, 0 0 24px #00e5ff33);
+  padding: 2.25rem 2.5rem 2rem;
+}
+
+.cm-front {
+  position: relative;
+}
+
+.cm-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ── Success back face ── */
+.cm-success-gif {
+  width: 120px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.cm-success-msg {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.05rem;
+  color: var(--cyan, #00e5ff);
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cm-close {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--text-dim, #8899aa);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.cm-close:hover { color: var(--cyan, #00e5ff); }
+
+.cm-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.1rem;
+  color: var(--cyan, #00e5ff);
+  letter-spacing: 0.1em;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+.cm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cm-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-dim, #8899aa);
+}
+
+.cm-input {
+  background: var(--bg, #06080f);
+  border: 1px solid var(--border, #1e2a38);
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  color: var(--text, #e2e8f0);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.cm-input:focus {
+  border-color: var(--cyan, #00e5ff);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.12);
+}
+
+.cm-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-dim, #8899aa);
+  cursor: pointer;
+  line-height: 1.45;
+}
+.cm-checkbox-label input[type="checkbox"] {
+  margin-top: 0.15rem;
+  accent-color: var(--cyan, #00e5ff);
+  flex-shrink: 0;
+}
+
+.cm-submit {
+  margin-top: 0.25rem;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--green, #00ff88);
+  color: var(--green, #00ff88);
+  border-radius: var(--radius, 8px);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+  align-self: stretch;
+}
+.cm-submit:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: var(--glow-green, 0 0 16px #00ff8844);
+}

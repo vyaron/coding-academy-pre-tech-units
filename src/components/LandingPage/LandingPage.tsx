@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.css";
+import ContactModal from "../ui/ContactModal";
 
 const ABOUT_CARDS = [
   {
@@ -232,6 +233,7 @@ const FAQS = [
 export default function LandingPage() {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const lightRef = useRef<HTMLDivElement>(null);
 
@@ -249,6 +251,7 @@ export default function LandingPage() {
 
   return (
     <div className="lp" dir="rtl">
+      {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {/* ── NAV ── */}
       <nav className="lp-nav">
         <a href="#" className="lp-logo">
@@ -274,9 +277,9 @@ export default function LandingPage() {
             <Link to="/quiz" className="lp-nav-quiz-link">🧪 מבחני הדמיה</Link>
           </li>
         </ul>
-        <a href="#contact" className="lp-btn-primary lp-btn-sm">
-          פגישת ייעוץ
-        </a>
+        <button className="lp-btn-primary lp-btn-sm" onClick={() => setContactOpen(true)}>
+          דברו איתי
+        </button>
       </nav>
 
       {/* ── HERO ── */}
@@ -302,17 +305,7 @@ export default function LandingPage() {
             בהובלת <strong>ירון ביטון</strong> - לשעבר מוביל קורסי ההכשרה
             הצבאיים, המדריך המוערך בישראל להכשרת מתכנתים ואנשי סייבר
           </p>
-          <div className="lp-hero-cta">
-            <a href="#contact" className="lp-btn-primary">
-               קבע פגישת ייעוץ
-            </a>
-            <button
-              className="lp-btn-outline"
-              onClick={() => navigate("/quiz")}
-            >
-              🧪 מבחני הדמייה
-            </button>
-          </div>
+
           <div className="lp-hero-start-date">יוצאים לדרך ב: 1.7.2026</div>
           <div className="lp-hero-offer" aria-label="הצעת רכישה">
             <div className="lp-hero-offer-line">
