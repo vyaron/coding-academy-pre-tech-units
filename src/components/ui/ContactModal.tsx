@@ -100,7 +100,7 @@ export default function ContactModal({ onClose }: Props) {
 
         {/* ── BACK ── */}
         <div className="cm-face cm-back">
-          <img src="/img/phone.gif" alt="" className="cm-success-gif" />
+          <img src="img/phone.gif" alt="" className="cm-success-gif" />
           <p className="cm-success-msg">נעים להכיר, נהיה בקשר איתך בקרוב</p>
         </div>
       </div>
