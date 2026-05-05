@@ -630,6 +630,9 @@
   border-top: 1px solid var(--lp-border);
   border-bottom: 1px solid var(--lp-border);
 }
+.lp-bg-alt .lp-section {
+  padding-bottom: 2rem;
+}
 .lp-professions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -670,6 +673,35 @@
 .lp-prof-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
 .lp-prof-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
 .lp-prof-card p { font-size: 0.85rem; color: var(--lp-muted); }
+
+/* ── Units Text ──────────────────────────────────────────────────────────── */
+.lp-units-text {
+  cursor: default;
+}
+
+.lp-unit-name {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.lp-unit-name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--cyan);
+  transition: width 0.4s ease;
+}
+
+.lp-unit-name:hover {
+  color: var(--cyan);
+}
+
+.lp-unit-name:hover::after {
+  width: 100%;
+}
 
 /* ── Curriculum ──────────────────────────────────────────────────────────── */
 .lp-curriculum { display: flex; flex-direction: column; }
@@ -917,7 +949,7 @@
   object-fit: contain;
   opacity: 1;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.7)) brightness(1.15);
+  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.5)) brightness(1.15);
   transition: filter 0.3s, transform 0.3s;
 }
 .lp-footer-logo:hover {

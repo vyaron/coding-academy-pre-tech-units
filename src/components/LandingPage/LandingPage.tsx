@@ -202,7 +202,19 @@ const SOCIAL_PROOF_REVIEWS = [
 const FAQS = [
   {
     q: "איך אדע אם אני מתאימ.ה?",
-    a: "ניתן לבדוק את התאמתך באמצעות פגישה (אונליין) עם יועץ לימודים — מדריך מהקורס, במהלכה ניתן לקבל תחושה לגבי מידת המשיכה שלך לתחום. לא נדרש רקע קודם — מה שחשוב זה המוטיבציה והסקרנות.",
+    a: (
+      <>
+        הדרך המומלצת ביותר לבדוק את התאמתך היא באמצעות{' '}
+        <a href="#hero-offer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>
+          ערכת ההכנה לקורס
+        </a>
+        {' '}.
+        <br />
+        ניתן גם לבדוק באמצעות פגישה (אונליין) עם יועץ לימודים — מדריך מהקורס,
+        <br />
+        במהלכה ניתן לקבל תחושה לגבי מידת המשיכה שלך לתחום. לא נדרש רקע קודם — מה שחשוב זה המוטיבציה והסקרנות.
+      </>
+    ),
   },
   {
     q: "היכן מתקיים הקורס?",
@@ -307,7 +319,7 @@ export default function LandingPage() {
           </p>
 
           <div className="lp-hero-start-date">יוצאים לדרך ב: 1.7.2026</div>
-          <div className="lp-hero-offer" aria-label="הצעת רכישה">
+          <div className="lp-hero-offer" id="hero-offer" aria-label="הצעת רכישה">
             <div className="lp-hero-offer-line">
               מומלץ לרכוש את ערכת ההכנה ולתפוס מקום במחזור הקרוב
             </div>
@@ -417,6 +429,11 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
+          <p className="lp-section-sub lp-units-text" style={{ marginTop: '0.75rem', marginBottom: '0.5rem', textAlign: 'center' }}>
+            התפקידים הינם ביחידות הטכנולוגיות<br />
+            <span className="lp-unit-name">ממר"ם</span> · <span className="lp-unit-name">8200</span> · <span className="lp-unit-name">שחקים</span> · <span className="lp-unit-name">גאמ"א סייבר</span> · <span className="lp-unit-name">חבצלות</span> · <span className="lp-unit-name">כלל חמ"ן</span><br />
+            ויחידות נוספות
+          </p>
         </section>
       </div>
 
