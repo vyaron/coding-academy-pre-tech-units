@@ -1,38 +1,38 @@
-import { useState, useRef } from "react";
+﻿import { useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.css";
 import ContactModal from "../ui/ContactModal";
 
 const ABOUT_CARDS = [
   {
-    icon: "🎯",
+    img: "/img/adv/exam.jpg",
     title: "הכנה מקיפה למבחני המיון",
-    desc: "שאלות טכניות, סימולציות ושיפור מיומנויות רכות — הכל כלול.",
+    desc: "שאלות טכניות, סימולציות מעשיות ופיתוח מיומנויות רכות — הכל כלול, כדי שתגיעו מוכנים, בטוחים ובעלי יתרון אמיתי בכל שלב במיונים.",
   },
   {
-    icon: "🤝",
+    img: "/img/adv/staff.jpg",
     title: "אנחנו איתך",
-    desc: "ליווי אישי בהכנה לראיונות ובכל שלב של הקבלה — לא נשארים לבד.",
+    desc: "ליווי אישי וצמוד לאורך כל שלבי תהליך הקבלה — לא מתמודדים לבד. ליווי 1:1 יומיומי שמגדיל משמעותית את סיכויי ההצלחה ומעניק ביטחון בכל צעד בדרך.",
   },
   {
-    icon: "📹",
-    title: "ספריית הקלטות עשירה",
-    desc: "גישה 24/7 להקלטות השיעורים ולחומרי לימוד — לכל החיים, גם אחרי הקורס.",
+    img: "/img/adv/lib.png",
+    title: "ספריית קלטות עשירה ומלאת ערך",
+    desc: "גישה חופשית 24/7 לכל ההקלטות וחומרי הלימוד, לכל החיים. ממשיכים ללמוד, לרענן ולהעמיק גם הרבה אחרי שהקורס מסתיים.",
   },
   {
-    icon: "�",
+    img: "/img/adv/tech.jpg",
     title: "שער כניסה להייטק",
     desc: "קודינג אקדמי הכשיר אלפים רבים של אנשי מקצוע לחזית הטכנולוגיה בצבא, בסטרטאפים ובהייטק הישראלי.",
   },
   {
-    icon: "🏴",
+    img: "/img/adv/approved.png",
     title: 'מוסד מוכר ע"י המדינה',
-    desc: 'קודינג-אקדמי מוכר ע"י משרד הביטחון ומוסדות המדינה.',
+    desc: 'המוסד פועל תחת תקנים מחמירים ומקפיד על סטנדרטים מקצועיים שמאפשרים לכם ללמוד במקום אמין, מפוקח ובעל הכרה רשמית.',
   },
   {
-    icon: "🤖",
-    title: "תכנות בעידן ה-AI",
-    desc: "לומדים לנצל כלי AI להאצת כתיבת קוד, איתור תקלות ותכנון מערכות.",
+    img: "/img/adv/ai.jpg",
+    title: "תכנות וסייבר בעידן ה-AI",
+    desc: "איך להפוך את ה-AI למנוע טורבו בפיתוח: כתיבת קוד מהירה יותר, איתור תקלות חכם, הגנה מפני האקרים ותכנון מערכות שמקפיץ את רמת הביצוע.",
   },
 ];
 
@@ -162,8 +162,8 @@ const SOCIAL_PROOF_REVIEWS = [
     highlight: "נתן לי כיוון ברור לסייבר",
   },
   {
-    name: "עידו שחם",
-    avatar: "עש",
+    name: "נתי ששונוב",
+    avatar: "נש",
     quote:
       "ההכנה למיונים היתה מדויקת. עבדנו על רשתות, אבטחת מידע ופתרון אתגרים ברמה גבוהה, וזה עזר לי להגיע לתפקיד הטכנולוגי שבאמת רציתי.",
     highlight: "הכנה מדויקת לתפקיד שרציתי",
@@ -176,22 +176,22 @@ const SOCIAL_PROOF_REVIEWS = [
     highlight: "יתרון אמיתי במיונים",
   },
   {
-    name: "יואב תמר",
-    avatar: "גם",
+    name: "יואב יוספי",
+    avatar: "יי",
     quote:
       "מה שהיה חזק במיוחד זו ההבנה איך נראים המיונים באמת. התאמנו על אתגרי סייבר, חשיבה מהירה וראיונות, ובסוף הרגשתי שאני מגיע חד ומוכן.",
     highlight: "הרגשתי מוכן ליום האמת",
   },
   {
-    name: "תמר נבון",
-    avatar: "תנ",
+    name: "תמר לופז",
+    avatar: "תל",
     quote:
       "הקורס חיבר בין תכנות, רשתות וסייבר בצורה שעשתה לי סדר. מעבר לידע, קיבלתי גם הכוונה אמיתית איך לכוון ליחידה הנכונה ואיך לבלוט במיונים.",
     highlight: "עזר לי לכוון ליחידה הנכונה",
   },
   {
-    name: "רועי הדר",
-    avatar: "רה",
+    name: "רועי מרגלית",
+    avatar: "רמ",
     quote:
       "זו לא רק למידה תאורטית. יש כאן הכנה ממוקדת למי שרוצה להשתלב ביחידה טכנולוגית, עם דגש חזק על סייבר, פתרון בעיות והיכרות עם סוגי האתגרים שפוגשים בדרך.",
     highlight: "ממוקד ליעד של יחידה טכנולוגית",
@@ -246,6 +246,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [purchaseOpen, setPurchaseOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const lightRef = useRef<HTMLDivElement>(null);
 
@@ -264,6 +265,38 @@ export default function LandingPage() {
   return (
     <div className="lp" dir="rtl">
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
+      {purchaseOpen && (
+        <div className="lp-purchase-overlay" onClick={() => setPurchaseOpen(false)}>
+          <div className="lp-purchase-modal" dir="rtl" onClick={e => e.stopPropagation()}>
+            <button className="lp-purchase-close" onClick={() => setPurchaseOpen(false)} aria-label="סגור">✕</button>
+            <h2 className="lp-purchase-title">ערכת ההכנה לקורס</h2>
+            <div className="lp-purchase-rating">
+              <span style={{ color: 'var(--lp-accent)' }}>231 חוות דעת</span>
+              <span className="lp-purchase-sep">|</span>
+              <span className="lp-purchase-score">4.9</span>
+              <span className="lp-purchase-stars">★★★★★</span>
+            </div>
+            <ul className="lp-purchase-bullets">
+              <li>למידה של יסודות התכנות, הכנה למבחני להב ומחשבון קרב</li>
+              <li>היכרות עם חומרה, טכנולוגיות האינטרנט ורשתות</li>
+              <li>הבנת תהליכים, חשיבה אלגוריתמית ולוגיקה</li>
+              <li>שיעורי וידאו, הדרכות מהבסיס בעברית ע"י מדריכים מוסמכים של קודינג אקדמי</li>
+            </ul>
+            <div className="lp-purchase-price">
+              <span className="lp-purchase-price-label">רישום בהנחה לזמן מוגבל</span>
+              <span className="lp-purchase-price-amount">320 ש"ח</span>
+            </div>
+            <a
+              href="https://www.coding.co.il"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lp-btn-primary lp-purchase-cta"
+            >
+              לרכישה
+            </a>
+          </div>
+        </div>
+      )}
       {/* ── NAV ── */}
       <nav className="lp-nav">
         <a href="#" className="lp-logo">
@@ -339,9 +372,9 @@ export default function LandingPage() {
               <span className="lp-hero-offer-label">מצטרפים אחרונים</span>
               <span className="lp-hero-offer-price">460 ש"ח</span>
             </div>
-            <a href="#contact" className="lp-btn-primary lp-hero-offer-btn">
-              לרכוש כעת
-            </a>
+            <button className="lp-btn-primary lp-hero-offer-btn" onClick={() => setPurchaseOpen(true)}>
+              לפרטים ורכישה
+            </button>
           </div>
         </div>
       </div>
@@ -403,7 +436,7 @@ export default function LandingPage() {
         <div className="lp-cards">
           {ABOUT_CARDS.map((c) => (
             <div className="lp-card" key={c.title}>
-              <div className="lp-card-icon">{c.icon}</div>
+              <div className="lp-card-icon"><img src={c.img} alt={c.title} /></div>
               <h3>{c.title}</h3>
               <p>{c.desc}</p>
             </div>
@@ -563,6 +596,10 @@ export default function LandingPage() {
       >
         <div className="lp-yaron-wrap">
           <div className="lp-yaron-portrait">
+            <div className="lp-yaron-caption">
+              <span className="lp-yaron-name">ירון ביטון, המדריך הראשי</span>
+              <span className="lp-yaron-sub">לשעבר מוביל המיונים וההכשרות ליחידות המחשוב</span>
+            </div>
             <img
               src={`${import.meta.env.BASE_URL}img/YaronBiton.png`}
               alt="ירון ביטון"
@@ -570,20 +607,18 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="lp-cta-banner">
-          <h2>🤝 פגישת ייעוץ עם מדריכ/ה מהקורס</h2>
+          <h2>לכל שאלה - אנחנו פה</h2>
           <p>
             מענה לכל שאלה ע"י יועצי לימוד מקצועיים, בחירת המסלול המתאים לך
             והתנסות ראשונית בקוד.
           </p>
-          <a
-            href="https://www.coding-academy.org/#contact"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="lp-btn-primary"
             style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
+            onClick={() => setContactOpen(true)}
           >
-            קבע/י פגישה עכשיו
-          </a>
+            דברו איתי
+          </button>
         </div>
       </section>
 
