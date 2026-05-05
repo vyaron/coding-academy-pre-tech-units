@@ -1,5 +1,5 @@
 ﻿import { useState, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import ContactModal from "../ui/ContactModal";
 
@@ -243,7 +243,6 @@ const FAQS = [
 ];
 
 export default function LandingPage() {
-  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [purchaseOpen, setPurchaseOpen] = useState(false);
