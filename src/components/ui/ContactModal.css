@@ -71,6 +71,15 @@
   margin: 0;
 }
 
+.cm-access-code-msg {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  color: var(--green, #00ff88);
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin: 1rem 0 0;
+}
+
 .cm-close {
   position: absolute;
   top: 0.75rem;

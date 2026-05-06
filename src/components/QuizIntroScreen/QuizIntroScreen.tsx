@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useExam, loadProgress } from '../../context/ExamContext';
+import ContactModal from '../ui/ContactModal';
 import type { Exam } from '../../types/exam';
 import './QuizIntroScreen.css';
 
@@ -250,6 +251,7 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
   const navigate = useNavigate();
   const { dispatch } = useExam();
   const [modalOpen, setModalOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const [digits, setDigits] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -394,12 +396,19 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
             {error && <div className="pin-error-msg">✗ קוד שגוי, נסה שנית</div>}
             {loading && <div className="pin-loading">טוען מבחן...</div>}
 
-            <button className="pin-cancel" onClick={() => setModalOpen(false)} disabled={loading}>
-              ביטול
-            </button>
+            <div className="pin-button-group">
+              <button className="pin-cancel" onClick={() => setModalOpen(false)} disabled={loading}>
+                ביטול
+              </button>
+              <button className="pin-get-code" onClick={() => setContactModalOpen(true)} disabled={loading}>
+                השג את הקוד
+              </button>
+            </div>
           </div>
         </div>
       )}
+
+      {contactModalOpen && <ContactModal onClose={() => setContactModalOpen(false)} />}
     </div>
   );
 }

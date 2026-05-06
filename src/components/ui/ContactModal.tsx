@@ -102,6 +102,7 @@ export default function ContactModal({ onClose }: Props) {
         <div className="cm-face cm-back">
           <img src="img/phone.gif" alt="" className="cm-success-gif" />
           <p className="cm-success-msg">נעים להכיר, נהיה בקשר איתך בקרוב</p>
+          <p className="cm-access-code-msg">אם ברצונך להתנסות במבחני ההדמיה, קוד הגישה הינו 4747</p>
         </div>
       </div>
     </div>
