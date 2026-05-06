@@ -318,9 +318,14 @@ export default function LandingPage() {
             <Link to="/quiz" className="lp-nav-quiz-link">🧪 מבחני הדמיה</Link>
           </li>
         </ul>
-        <button className="lp-btn-primary lp-btn-sm" onClick={() => setContactOpen(true)}>
-          דברו איתי
-        </button>
+        <div className="lp-nav-actions">
+          <button className="lp-btn-primary lp-btn-sm" onClick={() => setPurchaseOpen(true)}>
+            לפרטים ורכישה
+          </button>
+          <button className="lp-btn-primary lp-btn-contact lp-btn-sm" onClick={() => setContactOpen(true)}>
+            <span className="lp-chat-icon" aria-hidden="true">🗪</span> דברו איתי
+          </button>
+        </div>
       </nav>
 
       {/* ── HERO ── */}
@@ -609,11 +614,11 @@ export default function LandingPage() {
             והתנסות ראשונית בקוד.
           </p>
           <button
-            className="lp-btn-primary"
+            className="lp-btn-primary lp-btn-contact"
             style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}
             onClick={() => setContactOpen(true)}
           >
-            דברו איתי
+            <span className="lp-chat-icon" aria-hidden="true">🗪</span> דברו איתי
           </button>
         </div>
       </section>

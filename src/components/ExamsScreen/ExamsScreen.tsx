@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam, clearAllProgress, hasAnyProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
+import ContactModal from '../ui/ContactModal';
 import './ExamsScreen.css';
 
 const EXAMPLE_EXAMS = [
@@ -127,6 +128,7 @@ export default function ExamsScreen() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<string | null>(null);
   const [hasProgress, setHasProgress] = useState(() => hasAnyProgress());
+  const [contactOpen, setContactOpen] = useState(false);
 
   function handleClearProgress() {
     clearAllProgress();
@@ -179,6 +181,7 @@ export default function ExamsScreen() {
 
   return (
     <div className="home" dir="rtl">
+      {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {/* Back to home */}
       <button className="home-back-btn" onClick={() => navigate('/')}>
         ← חזרה לאתר
@@ -309,14 +312,13 @@ export default function ExamsScreen() {
         />
         <div className="home-bottom-cta-content">
           <h3>בקורס נתאמן על מבחנים וסימולציות עד מוכנות מלאה</h3>
-          <a
-            href="https://www.coding-academy.org/#contact"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="home-bottom-cta-link"
+            onClick={() => setContactOpen(true)}
           >
             קבע פגישה עכשיו
-          </a>
+          </button>
         </div>
       </section>
     </div>

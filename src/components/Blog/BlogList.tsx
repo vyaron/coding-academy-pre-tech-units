@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ARTICLES from '../../data/articles';
 import BackgroundCanvas from '../BackgroundCanvas';
+import ContactModal from '../ui/ContactModal';
 import './Blog.css';
 
 function formatDate(iso: string) {
@@ -9,9 +11,11 @@ function formatDate(iso: string) {
 
 export default function BlogList() {
   const navigate = useNavigate();
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <div className="blog-page" dir="rtl">
+      {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       <BackgroundCanvas />
       <button className="blog-back" onClick={() => navigate('/')}>← חזרה לאתר</button>
 
@@ -53,14 +57,13 @@ export default function BlogList() {
         />
         <div className="blog-bottom-cta-content">
           <h3>למידע נוסף, ייעוץ חינם וכל שאלה</h3>
-          <a
-            href="https://www.coding-academy.org/#contact"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="blog-bottom-cta-link"
+            onClick={() => setContactOpen(true)}
           >
             צור קשר
-          </a>
+          </button>
         </div>
       </section>
     </div>

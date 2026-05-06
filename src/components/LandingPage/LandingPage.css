@@ -64,6 +64,20 @@
 }
 .lp-btn-sm { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
 
+.lp-btn-contact {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: #062018;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.34);
+}
+.lp-btn-contact:hover {
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.52);
+}
+
+.lp-chat-icon {
+  color: #000;
+  line-height: 1;
+}
+
 .lp-btn-outline {
   background: transparent;
   color: var(--lp-text);
@@ -114,6 +128,11 @@
 .lp-nav-links {
   display: flex;
   gap: 2rem;
+}
+.lp-nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 .lp-nav-links a {
   color: var(--lp-muted);
@@ -1053,7 +1072,17 @@
   .lp-review-card {
     flex-basis: calc(100vw - 2rem);
   }
+  .lp-nav {
+    padding: 0.85rem 1rem;
+  }
   .lp-nav-links { display: none; }
+  .lp-nav-actions {
+    gap: 0.35rem;
+  }
+  .lp-nav .lp-btn-sm {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.78rem;
+  }
   .lp-step { flex-direction: column; gap: 0.75rem; }
   .lp-step-num { font-size: 1.5rem; }
   .lp-stats { gap: 2rem; }
