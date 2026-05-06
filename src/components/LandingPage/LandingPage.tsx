@@ -286,7 +286,7 @@ export default function LandingPage() {
               <span className="lp-purchase-price-amount">320 ש"ח</span>
             </div>
             <a
-              href="https://www.coding.co.il"
+              href="https://mrng.to/3cvjSH26Ax"
               target="_blank"
               rel="noopener noreferrer"
               className="lp-btn-primary lp-purchase-cta"
