@@ -7,6 +7,8 @@ interface SeoProps {
   title: string;
   description: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   noIndex?: boolean;
   type?: 'website' | 'article';
   canonicalPath?: string;
@@ -42,6 +44,8 @@ export default function Seo({
   title,
   description,
   image = 'img/logo.png',
+  imageWidth = 1200,
+  imageHeight = 630,
   noIndex = false,
   type = 'website',
   canonicalPath,
@@ -60,12 +64,16 @@ export default function Seo({
       <meta name="robots" content={noIndex ? 'noindex,follow' : 'index,follow'} />
 
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" href={canonicalUrl} hrefLang="he" />
+      <link rel="alternate" href={canonicalUrl} hrefLang="x-default" />
 
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content={String(imageWidth)} />
+      <meta property="og:image:height" content={String(imageHeight)} />
       <meta property="og:locale" content="he_IL" />
       <meta property="og:site_name" content="Coding Academy" />
 
