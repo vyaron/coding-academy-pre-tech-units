@@ -1,6 +1,6 @@
 ﻿import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import Seo from "../Seo";
+import Seo, { buildCanonicalUrl } from "../Seo";
 import "./LandingPage.css";
 import ContactModal from "../ui/ContactModal";
 
@@ -249,6 +249,43 @@ export default function LandingPage() {
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const lightRef = useRef<HTMLDivElement>(null);
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: typeof item.a === 'string' ? item.a : 'ניתן לבדוק התאמה באמצעות ערכת ההכנה לקורס או פגישה עם יועץ לימודים.',
+      },
+    })),
+  };
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'קורס הכנה למיוני היחידות הטכנולוגיות',
+    description: 'קורס הכנה למיוני 8200, ממרם, שחקים וגאמא סייבר עם סימולציות, תכנות, סייבר וליווי אישי.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Coding Academy',
+      url: buildCanonicalUrl('/'),
+    },
+    review: SOCIAL_PROOF_REVIEWS.map((review) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: review.name,
+      },
+      reviewBody: review.quote,
+      name: review.highlight,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5',
+      },
+    })),
+  };
 
   const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!heroRef.current || !lightRef.current) return;
@@ -268,6 +305,7 @@ export default function LandingPage() {
         title="קודינג אקדמי | הכנה למיוני יחידות טכנולוגיות"
         description="קורס הכנה למיוני 8200, ממרם וגאמא סייבר עם סימולציות, תרגול מעשי וליווי אישי עד יום המיון."
         canonicalPath="/"
+        structuredData={[faqSchema, courseSchema]}
       />
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {purchaseOpen && (

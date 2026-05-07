@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
+type StructuredData = Record<string, unknown>;
+
 interface SeoProps {
   title: string;
   description: string;
@@ -8,9 +10,10 @@ interface SeoProps {
   noIndex?: boolean;
   type?: 'website' | 'article';
   canonicalPath?: string;
+  structuredData?: StructuredData | StructuredData[];
 }
 
-function getOrigin() {
+export function getOrigin() {
   if (typeof window === 'undefined') return 'https://cyber.coding-academy.co.il';
   return window.location.origin;
 }
@@ -20,14 +23,14 @@ function normalizeBaseUrl(baseUrl: string) {
   return baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 }
 
-function buildCanonicalUrl(pathname: string) {
+export function buildCanonicalUrl(pathname: string) {
   const origin = getOrigin();
   const baseUrl = normalizeBaseUrl(import.meta.env.BASE_URL || '/');
   if (pathname === '/') return `${origin}${baseUrl}`;
   return `${origin}${baseUrl}#${pathname}`;
 }
 
-function buildImageUrl(image: string) {
+export function buildImageUrl(image: string) {
   if (/^https?:\/\//i.test(image)) return image;
   const origin = getOrigin();
   const baseUrl = normalizeBaseUrl(import.meta.env.BASE_URL || '/');
@@ -42,11 +45,13 @@ export default function Seo({
   noIndex = false,
   type = 'website',
   canonicalPath,
+  structuredData,
 }: SeoProps) {
   const { pathname } = useLocation();
   const finalPath = canonicalPath ?? pathname;
   const canonicalUrl = buildCanonicalUrl(finalPath);
   const imageUrl = buildImageUrl(image);
+  const schemas = structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : [];
 
   return (
     <Helmet>
@@ -68,6 +73,12 @@ export default function Seo({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+
+      {schemas.map((schema, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 }

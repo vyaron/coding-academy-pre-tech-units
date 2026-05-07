@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useExam, clearAllProgress, hasAnyProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
 import ContactModal from '../ui/ContactModal';
-import Seo from '../Seo';
+import Seo, { buildCanonicalUrl } from '../Seo';
 import './ExamsScreen.css';
 
 const EXAMPLE_EXAMS = [
@@ -131,6 +131,19 @@ export default function ExamsScreen() {
   const [hasProgress, setHasProgress] = useState(() => hasAnyProgress());
   const [contactOpen, setContactOpen] = useState(false);
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'מבחני הדמיה ליחידות טכנולוגיות',
+    itemListElement: EXAMPLE_EXAMS.filter((exam) => !('href' in exam)).map((exam, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: exam.name,
+      description: exam.desc,
+      url: buildCanonicalUrl(ROUTED_EXAMS[exam.key]),
+    })),
+  };
+
   function handleClearProgress() {
     clearAllProgress();
     setHasProgress(false);
@@ -185,6 +198,8 @@ export default function ExamsScreen() {
       <Seo
         title="מבחני הדמיה ליחידות טכנולוגיות | קודינג אקדמי"
         description={'בחרו מבחן הדמיה לגאמא סייבר, דפ"ר, צו ראשון, רשתות ומבחני התאמה ליחידות טכנולוגיות.'}
+        canonicalPath="/quiz"
+        structuredData={itemListSchema}
       />
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {/* Back to home */}

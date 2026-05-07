@@ -13,15 +13,53 @@
   animation: glow-in 0.4s ease;
 }
 
+.intro-breadcrumbs {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  direction: rtl;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.intro-breadcrumb-link {
+  appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.intro-breadcrumb-link:hover {
+  color: var(--cyan);
+}
+
+.intro-breadcrumb-current {
+  color: var(--cyan);
+}
+
+.intro-breadcrumb-sep {
+  opacity: 0.6;
+}
+
 /* Back button */
 .intro-back {
-  align-self: flex-end;
+  align-self: auto;
+  margin-left: auto;
+  margin-right: 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-dim);
   background: none;
   border: none;
   cursor: pointer;
+  direction: rtl;
+  unicode-bidi: plaintext;
   letter-spacing: 0.1em;
   transition: color var(--transition);
   padding: 0;

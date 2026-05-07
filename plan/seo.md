@@ -14,6 +14,34 @@ Improve organic visibility and click-through rate by fixing technical SEO, addin
 - Content pages exist for exams and blog, but route-level SEO metadata is missing.
 - Actual public routes in this app are `/quiz` and `/articles`, not `/exams` and `/blog`.
 
+## Router Decision: HashRouter vs BrowserRouter
+
+### Current situation
+- The app currently uses `HashRouter`.
+- This means deep pages resolve as fragment URLs such as `/#/quiz/gama-cyber` rather than clean paths like `/quiz/gama-cyber`.
+
+### SEO impact
+- Search engines can index the root page, but hash-fragment routes are weaker as canonical public URLs.
+- Social sharing, canonical consistency, sitemap accuracy, and Search Console coverage are all better with clean path routing.
+- `robots.txt` does not control URL fragments, so runtime exclusion must rely on meta robots rather than crawler path rules.
+
+### Recommended direction
+- Keep the current metadata work in place immediately.
+- Plan a separate migration from `HashRouter` to `BrowserRouter` once deployment rewrites are confirmed.
+
+### Migration prerequisites
+- Hosting must rewrite unknown routes to the app entry point.
+- GitHub Pages does not support this natively without a workaround.
+- If this project remains on GitHub Pages, we should either:
+	- keep `HashRouter`, or
+	- add a known SPA fallback workaround and verify it carefully.
+
+### Approval gate
+- Do not change routing yet.
+- Before any router migration work, explicitly approve one of these options:
+	- stay on `HashRouter` and accept limited SEO depth for route pages
+	- migrate to `BrowserRouter` with hosting support or SPA fallback handling
+
 ## Priority 1: Critical (Do First)
 
 ### 1. Add dynamic meta management

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useExam, loadProgress } from '../../context/ExamContext';
 import ContactModal from '../ui/ContactModal';
-import Seo from '../Seo';
+import Seo, { buildCanonicalUrl } from '../Seo';
 import type { Exam } from '../../types/exam';
 import './QuizIntroScreen.css';
 
@@ -257,6 +257,30 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const savedProgress = loadProgress(quizId);
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'דף הבית',
+        item: buildCanonicalUrl('/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'מבחני הדמיה',
+        item: buildCanonicalUrl('/quiz'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: config.title,
+        item: buildCanonicalUrl(`/quiz/${quizId}`),
+      },
+    ],
+  };
   const inputRefs = [
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
@@ -323,9 +347,21 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
         title={`${config.title} | קודינג אקדמי`}
         description={config.subtitle}
         canonicalPath={`/quiz/${quizId}`}
+        structuredData={breadcrumbSchema}
       />
-      <button className="intro-back" onClick={() => navigate('/quiz')}>
-        → חזרה לרשימה
+      <nav className="intro-breadcrumbs" aria-label="פירורי לחם">
+        <button type="button" className="intro-breadcrumb-link" onClick={() => navigate('/')}>
+          דף הבית
+        </button>
+        <span className="intro-breadcrumb-sep">/</span>
+        <button type="button" className="intro-breadcrumb-link" onClick={() => navigate('/quiz')}>
+          מבחני הדמיה
+        </button>
+        <span className="intro-breadcrumb-sep">/</span>
+        <span className="intro-breadcrumb-current">{config.title}</span>
+      </nav>
+      <button className="intro-back" onClick={() => navigate('/quiz')} dir="rtl">
+        חזרה לרשימה ←
       </button>
 
       <div className="intro-header">

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import ARTICLES from '../../data/articles';
 import BackgroundCanvas from '../BackgroundCanvas';
-import Seo from '../Seo';
+import Seo, { buildCanonicalUrl, buildImageUrl } from '../Seo';
 import './Blog.css';
 
 function formatDate(iso: string) {
@@ -24,6 +24,55 @@ export default function BlogPost() {
 
   if (!article) return <Navigate to="/articles" replace />;
 
+  const primaryImage = article.sections.flatMap((section) => [section.image, ...(section.images ?? [])]).find(Boolean);
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: 'he',
+    mainEntityOfPage: buildCanonicalUrl(`/articles/${article.slug}`),
+    image: primaryImage ? [buildImageUrl(primaryImage)] : undefined,
+    author: {
+      '@type': 'Organization',
+      name: 'Coding Academy',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Coding Academy',
+      logo: {
+        '@type': 'ImageObject',
+        url: buildImageUrl('img/logo.png'),
+      },
+    },
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'דף הבית',
+        item: buildCanonicalUrl('/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'מאמרים',
+        item: buildCanonicalUrl('/articles'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.title,
+        item: buildCanonicalUrl(`/articles/${article.slug}`),
+      },
+    ],
+  };
+
   return (
     <div className="blog-page" dir="rtl">
       <Seo
@@ -31,6 +80,8 @@ export default function BlogPost() {
         description={article.excerpt}
         canonicalPath={`/articles/${article.slug}`}
         type="article"
+        image={primaryImage ?? 'img/logo.png'}
+        structuredData={[articleSchema, breadcrumbSchema]}
       />
       <BackgroundCanvas />
       {modalImg && (
@@ -42,6 +93,17 @@ export default function BlogPost() {
       <button className="blog-back" onClick={() => navigate('/articles')}>← חזרה למאמרים</button>
 
       <article className="blog-post">
+        <nav className="blog-breadcrumbs" aria-label="פירורי לחם">
+          <button type="button" className="blog-breadcrumb-link" onClick={() => navigate('/')}>
+            דף הבית
+          </button>
+          <span className="blog-breadcrumb-sep">/</span>
+          <button type="button" className="blog-breadcrumb-link" onClick={() => navigate('/articles')}>
+            מאמרים
+          </button>
+          <span className="blog-breadcrumb-sep">/</span>
+          <span className="blog-breadcrumb-current">{article.title}</span>
+        </nav>
         <div className="blog-card-tags">
           {article.tags.map((tag) => (
             <span className="blog-tag" key={tag}>{tag}</span>
