@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /quiz/*/test
+Disallow: /results
 
-Sitemap: https://gama.coding-academy.co.il/sitemap.xml
+Sitemap: https://cyber.coding-academy.co.il/sitemap.xml

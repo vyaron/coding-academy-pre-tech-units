@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { useExam, loadProgress } from '../../context/ExamContext';
 import ContactModal from '../ui/ContactModal';
+import Seo from '../Seo';
 import type { Exam } from '../../types/exam';
 import './QuizIntroScreen.css';
 
@@ -318,6 +319,11 @@ function QuizIntro({ quizId, config }: { quizId: string; config: QuizConfig }) {
 
   return (
     <div className="intro-page" dir="rtl">
+      <Seo
+        title={`${config.title} | קודינג אקדמי`}
+        description={config.subtitle}
+        canonicalPath={`/quiz/${quizId}`}
+      />
       <button className="intro-back" onClick={() => navigate('/quiz')}>
         → חזרה לרשימה
       </button>

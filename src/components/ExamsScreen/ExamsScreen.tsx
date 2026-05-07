@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useExam, clearAllProgress, hasAnyProgress } from '../../context/ExamContext';
 import type { Exam } from '../../types/exam';
 import ContactModal from '../ui/ContactModal';
+import Seo from '../Seo';
 import './ExamsScreen.css';
 
 const EXAMPLE_EXAMS = [
@@ -181,6 +182,10 @@ export default function ExamsScreen() {
 
   return (
     <div className="home" dir="rtl">
+      <Seo
+        title="מבחני הדמיה ליחידות טכנולוגיות | קודינג אקדמי"
+        description={'בחרו מבחן הדמיה לגאמא סייבר, דפ"ר, צו ראשון, רשתות ומבחני התאמה ליחידות טכנולוגיות.'}
+      />
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {/* Back to home */}
       <button className="home-back-btn" onClick={() => navigate('/')}>

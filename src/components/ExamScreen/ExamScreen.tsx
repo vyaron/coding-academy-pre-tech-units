@@ -5,6 +5,7 @@ import { t } from '../../i18n';
 import Sidebar from './Sidebar';
 import QuestionArea from './QuestionArea';
 import Modal from '../ui/Modal';
+import Seo from '../Seo';
 import './ExamScreen.css';
 
 export default function ExamScreen() {
@@ -33,6 +34,11 @@ export default function ExamScreen() {
 
   return (
     <>
+      <Seo
+        title="מבחן פעיל | קודינג אקדמי"
+        description="מסך מבחן פעיל. עמוד זה מיועד למשתמשים בזמן פתרון מבחן ואינו מיועד לאינדוקס."
+        noIndex
+      />
       <div className="exam-layout">
         <Sidebar onFinish={() => setConfirmOpen(true)} />
         <QuestionArea />

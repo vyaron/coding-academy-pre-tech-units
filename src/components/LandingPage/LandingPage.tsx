@@ -1,5 +1,6 @@
 ﻿import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import Seo from "../Seo";
 import "./LandingPage.css";
 import ContactModal from "../ui/ContactModal";
 
@@ -263,6 +264,11 @@ export default function LandingPage() {
 
   return (
     <div className="lp" dir="rtl">
+      <Seo
+        title="קודינג אקדמי | הכנה למיוני יחידות טכנולוגיות"
+        description="קורס הכנה למיוני 8200, ממרם וגאמא סייבר עם סימולציות, תרגול מעשי וליווי אישי עד יום המיון."
+        canonicalPath="/"
+      />
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       {purchaseOpen && (
         <div className="lp-purchase-overlay" onClick={() => setPurchaseOpen(false)}>

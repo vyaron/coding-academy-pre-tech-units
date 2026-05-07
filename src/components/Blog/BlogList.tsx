@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ARTICLES from '../../data/articles';
 import BackgroundCanvas from '../BackgroundCanvas';
 import ContactModal from '../ui/ContactModal';
+import Seo from '../Seo';
 import './Blog.css';
 
 function formatDate(iso: string) {
@@ -15,6 +16,11 @@ export default function BlogList() {
 
   return (
     <div className="blog-page" dir="rtl">
+      <Seo
+        title="מאמרים והכנה למיונים טכנולוגיים | קודינג אקדמי"
+        description="מדריכים מעשיים להכנה למיוני 8200, ממרם, גאמא סייבר וחיל התקשוב, כולל טיפים ושיטות עבודה."
+        canonicalPath="/articles"
+      />
       {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
       <BackgroundCanvas />
       <button className="blog-back" onClick={() => navigate('/')}>← חזרה לאתר</button>

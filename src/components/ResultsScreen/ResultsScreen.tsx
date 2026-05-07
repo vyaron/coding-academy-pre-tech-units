@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useExam } from '../../context/ExamContext';
 import ScoreCircle from './ScoreCircle';
 import ReviewAccordion from './ReviewAccordion';
+import Seo from '../Seo';
 import './ResultsScreen.css';
 
 export default function ResultsScreen() {
@@ -24,6 +25,11 @@ export default function ResultsScreen() {
 
     return (
       <div className="results-screen">
+        <Seo
+          title="תוצאות מבחן | קודינג אקדמי"
+          description="עמוד תוצאות אישי למבחן. העמוד אינו מיועד לאינדוקס במנועי חיפוש."
+          noIndex
+        />
         <header className="results-header">
           <div>
             <div className="results-header-title">// השאלון הושלם</div>
@@ -58,6 +64,11 @@ export default function ResultsScreen() {
 
   return (
     <div className="results-screen">
+      <Seo
+        title="תוצאות מבחן | קודינג אקדמי"
+        description="עמוד תוצאות אישי למבחן. העמוד אינו מיועד לאינדוקס במנועי חיפוש."
+        noIndex
+      />
       <header className="results-header">
         <div>
           <div className="results-header-title">// תוצאות המבחן</div>
