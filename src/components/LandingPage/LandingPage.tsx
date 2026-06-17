@@ -330,7 +330,7 @@ export default function LandingPage() {
               <span className="lp-purchase-price-amount">320 ש"ח</span>
             </div>
             <a
-              href="https://mrng.to/3cvjSH26Ax"
+              href="https://secure.cardcom.solutions/EA/EA5/xJZr3vSHC0ORd1McAWGe1A/PaymentSP"
               target="_blank"
               rel="noopener noreferrer"
               className="lp-btn-primary lp-purchase-cta"
@@ -396,7 +396,7 @@ export default function LandingPage() {
             הצבאיים, המדריך המוערך בישראל להכשרת מתכנתים ואנשי סייבר
           </p>
 
-          <div className="lp-hero-start-date">יוצאים לדרך ב: 1.7.2026</div>
+          <div className="lp-hero-start-date">יוצאים לדרך ב: 16.8.2026</div>
           <div className="lp-hero-offer" id="hero-offer" aria-label="הצעת רכישה">
             <div className="lp-hero-offer-line">
               מומלץ לרכוש את ערכת ההכנה ולתפוס מקום במחזור הקרוב
