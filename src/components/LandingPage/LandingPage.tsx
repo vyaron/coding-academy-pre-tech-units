@@ -17,7 +17,7 @@ const ABOUT_CARDS = [
   },
   {
     img: "img/adv/lib.png",
-    title: "ספריית קלטות עשירה ומלאת ערך",
+    title: "ספריית הקלטות עשירה ומלאת ערך",
     desc: "גישה חופשית 24/7 לכל ההקלטות וחומרי הלימוד, לכל החיים. ממשיכים ללמוד, לרענן ולהעמיק גם הרבה אחרי שהקורס מסתיים.",
   },
   {
@@ -396,7 +396,7 @@ export default function LandingPage() {
             הצבאיים, המדריך המוערך בישראל להכשרת מתכנתים ואנשי סייבר
           </p>
 
-          <div className="lp-hero-start-date">יוצאים לדרך ב: 06.10.2026</div>
+          <div className="lp-hero-start-date">יוצאים לדרך ב: 14.10.2026</div>
           <div className="lp-hero-offer" id="hero-offer" aria-label="הצעת רכישה">
             <div className="lp-hero-offer-line">
               מומלץ לרכוש את ערכת ההכנה ולתפוס מקום במחזור הקרוב
@@ -630,7 +630,7 @@ export default function LandingPage() {
         />
         <div className="lp-team-banner-overlay">
           <div className="lp-team-banner-tag">// הקהילה שלנו</div>
-          <h2 className="lp-team-banner-title">הצטרף לקהילת בוגרים מקצועית שתתמוך בך גם אחרי הקורס</h2>
+          <h2 className="lp-team-banner-title">הצטרפו לקהילת בוגרים מקצועית שתתמוך בך גם אחרי הקורס</h2>
         </div>
       </div>
 
